@@ -14,23 +14,11 @@ PHP 5.5 and later
 ## Installation & Usage
 ### Composer
 
-To install the bindings via [Composer](http://getcomposer.org/), add the following to `composer.json`:
+To install the bindings via [Composer](http://getcomposer.org/), execute the following command:
 
+```bash
+$ composer require jorijn/ynab-sdk-php
 ```
-{
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/jorijn/ynab-sdk-php.git"
-    }
-  ],
-  "require": {
-    "jorijn/ynab-sdk-php": "*@dev"
-  }
-}
-```
-
-Then run `composer install`
 
 ### Manual Installation
 
