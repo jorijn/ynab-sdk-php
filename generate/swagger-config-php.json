@@ -1,0 +1,17 @@
+{
+  "sortParamsByRequiredFlag": true,
+  "ensureUniqueParams": true,
+  "allowUnicodeIdentifiers": false,
+  "modelPackage": "Model",
+  "apiPackage": "Client",
+  "variableNamingConvention": "camelCase",
+  "invokerPackage": "YNAB\\Api",
+  "packagePath": "YNAB-SDK-PHP",
+  "srcBasePath": "src",
+  "composerVendorName": "jorijn",
+  "gitUserId": "jorijn",
+  "composerProjectName": "ynab-sdk-php",
+  "gitRepoId": "ynab-sdk-php",
+  "artifactVersion": "1.0.0",
+  "hideGenerationTimestamp": true
+}

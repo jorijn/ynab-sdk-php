@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+swagger-codegen generate -i "https://api.youneedabudget.com/papi/spec-v1-swagger.json" \
+    -l "php" \
+    -c "./swagger-config-php.json" \
+    --git-repo-id="ynab-sdk-php" \
+    --git-user-id="jorijn" \
+    --http-user-agent="YNAB-SDK-PHP"
