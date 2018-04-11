@@ -47,8 +47,7 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
 $config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $apiInstance = new YNAB\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
