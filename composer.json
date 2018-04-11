@@ -35,12 +35,12 @@
   },
   "autoload": {
     "psr-4": {
-      "YNAB\\Api\\": "src/"
+      "YNAB\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "YNAB\\Api\\": "test/"
+      "YNAB\\": "test/"
     }
   }
 }
