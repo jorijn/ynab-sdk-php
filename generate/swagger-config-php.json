@@ -5,7 +5,7 @@
   "modelPackage": "Model",
   "apiPackage": "Client",
   "variableNamingConvention": "camelCase",
-  "invokerPackage": "YNAB\\Api",
+  "invokerPackage": "YNAB",
   "packagePath": "YNAB-SDK-PHP",
   "srcBasePath": "src",
   "composerVendorName": "jorijn",

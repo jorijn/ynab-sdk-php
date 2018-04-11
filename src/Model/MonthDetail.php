@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * MonthDetail Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -58,7 +58,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'month' => '\DateTime',
-        'categories' => '\YNAB\Api\Model\Category[]'
+        'categories' => '\YNAB\Model\Category[]'
     ];
 
     /**
@@ -250,7 +250,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
     /**
      * Gets categories
      *
-     * @return \YNAB\Api\Model\Category[]
+     * @return \YNAB\Model\Category[]
      */
     public function getCategories()
     {
@@ -260,7 +260,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
     /**
      * Sets categories
      *
-     * @param \YNAB\Api\Model\Category[] $categories The budget month categories
+     * @param \YNAB\Model\Category[] $categories The budget month categories
      *
      * @return $this
      */

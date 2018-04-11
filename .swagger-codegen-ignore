@@ -1,0 +1,6 @@
+git_push.sh
+composer.json
+README.md
+phpunit.xml.dist
+.travis.yml
+.php_cs

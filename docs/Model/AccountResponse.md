@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\YNAB\Api\Model\AccountWrapper**](AccountWrapper.md) |  | 
+**data** | [**\YNAB\Model\AccountWrapper**](AccountWrapper.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

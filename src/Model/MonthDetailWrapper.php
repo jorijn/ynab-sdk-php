@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * MonthDetailWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class MonthDetailWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'month' => '\YNAB\Api\Model\MonthDetail'
+        'month' => '\YNAB\Model\MonthDetail'
     ];
 
     /**
@@ -214,7 +214,7 @@ class MonthDetailWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets month
      *
-     * @return \YNAB\Api\Model\MonthDetail
+     * @return \YNAB\Model\MonthDetail
      */
     public function getMonth()
     {
@@ -224,7 +224,7 @@ class MonthDetailWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets month
      *
-     * @param \YNAB\Api\Model\MonthDetail $month month
+     * @param \YNAB\Model\MonthDetail $month month
      *
      * @return $this
      */

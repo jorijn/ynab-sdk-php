@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * PayeesApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -90,9 +90,9 @@ class PayeesApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\PayeeResponse
+     * @return \YNAB\Model\PayeeResponse
      */
     public function getPayeeById($budgetId, $payeeId)
     {
@@ -108,13 +108,13 @@ class PayeesApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\PayeeResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\PayeeResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPayeeByIdWithHttpInfo($budgetId, $payeeId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeResponse';
+        $returnType = '\YNAB\Model\PayeeResponse';
         $request = $this->getPayeeByIdRequest($budgetId, $payeeId);
 
         try {
@@ -166,7 +166,7 @@ class PayeesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\PayeeResponse',
+                        '\YNAB\Model\PayeeResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class PayeesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,7 +182,7 @@ class PayeesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class PayeesApi
      */
     public function getPayeeByIdAsyncWithHttpInfo($budgetId, $payeeId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeResponse';
+        $returnType = '\YNAB\Model\PayeeResponse';
         $request = $this->getPayeeByIdRequest($budgetId, $payeeId);
 
         return $this->client
@@ -391,9 +391,9 @@ class PayeesApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\PayeesResponse
+     * @return \YNAB\Model\PayeesResponse
      */
     public function getPayees($budgetId)
     {
@@ -408,13 +408,13 @@ class PayeesApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\PayeesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\PayeesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPayeesWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\PayeesResponse';
+        $returnType = '\YNAB\Model\PayeesResponse';
         $request = $this->getPayeesRequest($budgetId);
 
         try {
@@ -466,7 +466,7 @@ class PayeesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\PayeesResponse',
+                        '\YNAB\Model\PayeesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -474,7 +474,7 @@ class PayeesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -482,7 +482,7 @@ class PayeesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class PayeesApi
      */
     public function getPayeesAsyncWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\PayeesResponse';
+        $returnType = '\YNAB\Model\PayeesResponse';
         $request = $this->getPayeesRequest($budgetId);
 
         return $this->client

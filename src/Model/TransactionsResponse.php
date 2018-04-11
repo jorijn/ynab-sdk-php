@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * TransactionsResponse Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class TransactionsResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'data' => '\YNAB\Api\Model\TransactionsWrapper'
+        'data' => '\YNAB\Model\TransactionsWrapper'
     ];
 
     /**
@@ -214,7 +214,7 @@ class TransactionsResponse implements ModelInterface, ArrayAccess
     /**
      * Gets data
      *
-     * @return \YNAB\Api\Model\TransactionsWrapper
+     * @return \YNAB\Model\TransactionsWrapper
      */
     public function getData()
     {
@@ -224,7 +224,7 @@ class TransactionsResponse implements ModelInterface, ArrayAccess
     /**
      * Sets data
      *
-     * @param \YNAB\Api\Model\TransactionsWrapper $data data
+     * @param \YNAB\Model\TransactionsWrapper $data data
      *
      * @return $this
      */

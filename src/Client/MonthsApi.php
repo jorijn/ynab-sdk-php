@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * MonthsApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -90,9 +90,9 @@ class MonthsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  \DateTime $month The Budget Month.  \&quot;current\&quot; can also be used to specify the current calendar month (UTC). (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\MonthDetailResponse
+     * @return \YNAB\Model\MonthDetailResponse
      */
     public function getBudgetMonth($budgetId, $month)
     {
@@ -108,13 +108,13 @@ class MonthsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  \DateTime $month The Budget Month.  \&quot;current\&quot; can also be used to specify the current calendar month (UTC). (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\MonthDetailResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\MonthDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBudgetMonthWithHttpInfo($budgetId, $month)
     {
-        $returnType = '\YNAB\Api\Model\MonthDetailResponse';
+        $returnType = '\YNAB\Model\MonthDetailResponse';
         $request = $this->getBudgetMonthRequest($budgetId, $month);
 
         try {
@@ -166,7 +166,7 @@ class MonthsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\MonthDetailResponse',
+                        '\YNAB\Model\MonthDetailResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class MonthsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,7 +182,7 @@ class MonthsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class MonthsApi
      */
     public function getBudgetMonthAsyncWithHttpInfo($budgetId, $month)
     {
-        $returnType = '\YNAB\Api\Model\MonthDetailResponse';
+        $returnType = '\YNAB\Model\MonthDetailResponse';
         $request = $this->getBudgetMonthRequest($budgetId, $month);
 
         return $this->client
@@ -391,9 +391,9 @@ class MonthsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\MonthSummariesResponse
+     * @return \YNAB\Model\MonthSummariesResponse
      */
     public function getBudgetMonths($budgetId)
     {
@@ -408,13 +408,13 @@ class MonthsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\MonthSummariesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\MonthSummariesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBudgetMonthsWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\MonthSummariesResponse';
+        $returnType = '\YNAB\Model\MonthSummariesResponse';
         $request = $this->getBudgetMonthsRequest($budgetId);
 
         try {
@@ -466,7 +466,7 @@ class MonthsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\MonthSummariesResponse',
+                        '\YNAB\Model\MonthSummariesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -474,7 +474,7 @@ class MonthsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -482,7 +482,7 @@ class MonthsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class MonthsApi
      */
     public function getBudgetMonthsAsyncWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\MonthSummariesResponse';
+        $returnType = '\YNAB\Model\MonthSummariesResponse';
         $request = $this->getBudgetMonthsRequest($budgetId);
 
         return $this->client

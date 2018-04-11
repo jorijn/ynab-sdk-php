@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * AccountsWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class AccountsWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'accounts' => '\YNAB\Api\Model\Account[]'
+        'accounts' => '\YNAB\Model\Account[]'
     ];
 
     /**
@@ -214,7 +214,7 @@ class AccountsWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets accounts
      *
-     * @return \YNAB\Api\Model\Account[]
+     * @return \YNAB\Model\Account[]
      */
     public function getAccounts()
     {
@@ -224,7 +224,7 @@ class AccountsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets accounts
      *
-     * @param \YNAB\Api\Model\Account[] $accounts accounts
+     * @param \YNAB\Model\Account[] $accounts accounts
      *
      * @return $this
      */

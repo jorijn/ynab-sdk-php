@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * BudgetsApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -90,9 +90,9 @@ class BudgetsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  float $lastKnowledgeOfServer The starting server knowledge.  If provided, only entities that have changed since last_knowledge_of_server will be included. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\BudgetDetailResponse
+     * @return \YNAB\Model\BudgetDetailResponse
      */
     public function getBudgetById($budgetId, $lastKnowledgeOfServer = null)
     {
@@ -108,13 +108,13 @@ class BudgetsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  float $lastKnowledgeOfServer The starting server knowledge.  If provided, only entities that have changed since last_knowledge_of_server will be included. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\BudgetDetailResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\BudgetDetailResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBudgetByIdWithHttpInfo($budgetId, $lastKnowledgeOfServer = null)
     {
-        $returnType = '\YNAB\Api\Model\BudgetDetailResponse';
+        $returnType = '\YNAB\Model\BudgetDetailResponse';
         $request = $this->getBudgetByIdRequest($budgetId, $lastKnowledgeOfServer);
 
         try {
@@ -166,7 +166,7 @@ class BudgetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\BudgetDetailResponse',
+                        '\YNAB\Model\BudgetDetailResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class BudgetsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,7 +182,7 @@ class BudgetsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class BudgetsApi
      */
     public function getBudgetByIdAsyncWithHttpInfo($budgetId, $lastKnowledgeOfServer = null)
     {
-        $returnType = '\YNAB\Api\Model\BudgetDetailResponse';
+        $returnType = '\YNAB\Model\BudgetDetailResponse';
         $request = $this->getBudgetByIdRequest($budgetId, $lastKnowledgeOfServer);
 
         return $this->client
@@ -380,9 +380,9 @@ class BudgetsApi
      * List budgets
      *
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\BudgetSummaryResponse
+     * @return \YNAB\Model\BudgetSummaryResponse
      */
     public function getBudgets()
     {
@@ -396,13 +396,13 @@ class BudgetsApi
      * List budgets
      *
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\BudgetSummaryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\BudgetSummaryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBudgetsWithHttpInfo()
     {
-        $returnType = '\YNAB\Api\Model\BudgetSummaryResponse';
+        $returnType = '\YNAB\Model\BudgetSummaryResponse';
         $request = $this->getBudgetsRequest();
 
         try {
@@ -454,7 +454,7 @@ class BudgetsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\BudgetSummaryResponse',
+                        '\YNAB\Model\BudgetSummaryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -462,7 +462,7 @@ class BudgetsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -470,7 +470,7 @@ class BudgetsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -510,7 +510,7 @@ class BudgetsApi
      */
     public function getBudgetsAsyncWithHttpInfo()
     {
-        $returnType = '\YNAB\Api\Model\BudgetSummaryResponse';
+        $returnType = '\YNAB\Model\BudgetSummaryResponse';
         $request = $this->getBudgetsRequest();
 
         return $this->client

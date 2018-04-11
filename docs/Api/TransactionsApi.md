@@ -1,4 +1,4 @@
-# YNAB\Api\TransactionsApi
+# YNAB\TransactionsApi
 
 All URIs are relative to *https://api.youneedabudget.com/v1*
 
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **bulkCreateTransactions**
-> \YNAB\Api\Model\BulkResponse bulkCreateTransactions($budgetId, $transactions)
+> \YNAB\Model\BulkResponse bulkCreateTransactions($budgetId, $transactions)
 
 Bulk create transactions
 
@@ -27,18 +27,18 @@ Creates multiple transactions
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $budgetId = "budgetId_example"; // string | The ID of the Budget.
-$transactions = new \YNAB\Api\Model\BulkTransactions(); // \YNAB\Api\Model\BulkTransactions | The list of Transactions to create.
+$transactions = new \YNAB\Model\BulkTransactions(); // \YNAB\Model\BulkTransactions | The list of Transactions to create.
 
 try {
     $result = $apiInstance->bulkCreateTransactions($budgetId, $transactions);
@@ -54,11 +54,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
- **transactions** | [**\YNAB\Api\Model\BulkTransactions**](../Model/BulkTransactions.md)| The list of Transactions to create. |
+ **transactions** | [**\YNAB\Model\BulkTransactions**](../Model/BulkTransactions.md)| The list of Transactions to create. |
 
 ### Return type
 
-[**\YNAB\Api\Model\BulkResponse**](../Model/BulkResponse.md)
+[**\YNAB\Model\BulkResponse**](../Model/BulkResponse.md)
 
 ### Authorization
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createTransaction**
-> \YNAB\Api\Model\TransactionResponse createTransaction($budgetId, $transaction)
+> \YNAB\Model\TransactionResponse createTransaction($budgetId, $transaction)
 
 Create new transaction
 
@@ -84,18 +84,18 @@ Creates a transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $budgetId = "budgetId_example"; // string | The ID of the Budget.
-$transaction = new \YNAB\Api\Model\SaveTransactionWrapper(); // \YNAB\Api\Model\SaveTransactionWrapper | The Transaction to create.
+$transaction = new \YNAB\Model\SaveTransactionWrapper(); // \YNAB\Model\SaveTransactionWrapper | The Transaction to create.
 
 try {
     $result = $apiInstance->createTransaction($budgetId, $transaction);
@@ -111,11 +111,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
- **transaction** | [**\YNAB\Api\Model\SaveTransactionWrapper**](../Model/SaveTransactionWrapper.md)| The Transaction to create. |
+ **transaction** | [**\YNAB\Model\SaveTransactionWrapper**](../Model/SaveTransactionWrapper.md)| The Transaction to create. |
 
 ### Return type
 
-[**\YNAB\Api\Model\TransactionResponse**](../Model/TransactionResponse.md)
+[**\YNAB\Model\TransactionResponse**](../Model/TransactionResponse.md)
 
 ### Authorization
 
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTransactions**
-> \YNAB\Api\Model\TransactionsResponse getTransactions($budgetId, $sinceDate, $type)
+> \YNAB\Model\TransactionsResponse getTransactions($budgetId, $sinceDate, $type)
 
 List transactions
 
@@ -141,11 +141,11 @@ Returns budget transactions
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\TransactionsResponse**](../Model/TransactionsResponse.md)
+[**\YNAB\Model\TransactionsResponse**](../Model/TransactionsResponse.md)
 
 ### Authorization
 
@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTransactionsByAccount**
-> \YNAB\Api\Model\TransactionsResponse getTransactionsByAccount($budgetId, $accountId, $sinceDate)
+> \YNAB\Model\TransactionsResponse getTransactionsByAccount($budgetId, $accountId, $sinceDate)
 
 List account transactions
 
@@ -200,11 +200,11 @@ Returns all transactions for a specified account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\TransactionsResponse**](../Model/TransactionsResponse.md)
+[**\YNAB\Model\TransactionsResponse**](../Model/TransactionsResponse.md)
 
 ### Authorization
 
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTransactionsByCategory**
-> \YNAB\Api\Model\HybridTransactionsResponse getTransactionsByCategory($budgetId, $categoryId, $sinceDate)
+> \YNAB\Model\HybridTransactionsResponse getTransactionsByCategory($budgetId, $categoryId, $sinceDate)
 
 List category transactions
 
@@ -259,11 +259,11 @@ Returns all transactions for a specified category
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -292,7 +292,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\HybridTransactionsResponse**](../Model/HybridTransactionsResponse.md)
+[**\YNAB\Model\HybridTransactionsResponse**](../Model/HybridTransactionsResponse.md)
 
 ### Authorization
 
@@ -306,7 +306,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTransactionsById**
-> \YNAB\Api\Model\TransactionResponse getTransactionsById($budgetId, $transactionId)
+> \YNAB\Model\TransactionResponse getTransactionsById($budgetId, $transactionId)
 
 Single transaction
 
@@ -318,11 +318,11 @@ Returns a single transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -349,7 +349,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\TransactionResponse**](../Model/TransactionResponse.md)
+[**\YNAB\Model\TransactionResponse**](../Model/TransactionResponse.md)
 
 ### Authorization
 
@@ -363,7 +363,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTransactionsByPayee**
-> \YNAB\Api\Model\HybridTransactionsResponse getTransactionsByPayee($budgetId, $payeeId, $sinceDate)
+> \YNAB\Model\HybridTransactionsResponse getTransactionsByPayee($budgetId, $payeeId, $sinceDate)
 
 List payee transactions
 
@@ -375,11 +375,11 @@ Returns all transactions for a specified payee
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -408,7 +408,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\HybridTransactionsResponse**](../Model/HybridTransactionsResponse.md)
+[**\YNAB\Model\HybridTransactionsResponse**](../Model/HybridTransactionsResponse.md)
 
 ### Authorization
 
@@ -422,7 +422,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateTransaction**
-> \YNAB\Api\Model\TransactionResponse updateTransaction($budgetId, $transactionId, $transaction)
+> \YNAB\Model\TransactionResponse updateTransaction($budgetId, $transactionId, $transaction)
 
 Updates an existing transaction
 
@@ -434,11 +434,11 @@ Updates a transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\TransactionsApi(
+$apiInstance = new YNAB\Api\TransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -446,7 +446,7 @@ $apiInstance = new YNAB\Api\Api\TransactionsApi(
 );
 $budgetId = "budgetId_example"; // string | The ID of the Budget.
 $transactionId = "transactionId_example"; // string | The ID of the Transaction.
-$transaction = new \YNAB\Api\Model\SaveTransactionWrapper(); // \YNAB\Api\Model\SaveTransactionWrapper | The Transaction to update.
+$transaction = new \YNAB\Model\SaveTransactionWrapper(); // \YNAB\Model\SaveTransactionWrapper | The Transaction to update.
 
 try {
     $result = $apiInstance->updateTransaction($budgetId, $transactionId, $transaction);
@@ -463,11 +463,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
  **transactionId** | [**string**](../Model/.md)| The ID of the Transaction. |
- **transaction** | [**\YNAB\Api\Model\SaveTransactionWrapper**](../Model/SaveTransactionWrapper.md)| The Transaction to update. |
+ **transaction** | [**\YNAB\Model\SaveTransactionWrapper**](../Model/SaveTransactionWrapper.md)| The Transaction to update. |
 
 ### Return type
 
-[**\YNAB\Api\Model\TransactionResponse**](../Model/TransactionResponse.md)
+[**\YNAB\Model\TransactionResponse**](../Model/TransactionResponse.md)
 
 ### Authorization
 

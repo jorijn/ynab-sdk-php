@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * CategoryWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class CategoryWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'category' => '\YNAB\Api\Model\Category'
+        'category' => '\YNAB\Model\Category'
     ];
 
     /**
@@ -214,7 +214,7 @@ class CategoryWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets category
      *
-     * @return \YNAB\Api\Model\Category
+     * @return \YNAB\Model\Category
      */
     public function getCategory()
     {
@@ -224,7 +224,7 @@ class CategoryWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets category
      *
-     * @param \YNAB\Api\Model\Category $category category
+     * @param \YNAB\Model\Category $category category
      *
      * @return $this
      */

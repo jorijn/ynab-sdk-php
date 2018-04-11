@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **amount** | **float** | The scheduled transaction amount in milliunits format | 
 **accountId** | **string** |  | 
 **accountName** | **string** |  | 
-**subtransactions** | [**\YNAB\Api\Model\ScheduledSubTransaction[]**](ScheduledSubTransaction.md) | If a split scheduled transaction, the subtransactions. | 
+**subtransactions** | [**\YNAB\Model\ScheduledSubTransaction[]**](ScheduledSubTransaction.md) | If a split scheduled transaction, the subtransactions. | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

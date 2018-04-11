@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * CategoryGroupWithCategories Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -60,7 +60,7 @@ class CategoryGroupWithCategories implements ModelInterface, ArrayAccess
         'id' => 'string',
         'name' => 'string',
         'hidden' => 'bool',
-        'categories' => '\YNAB\Api\Model\Category[]'
+        'categories' => '\YNAB\Model\Category[]'
     ];
 
     /**
@@ -322,7 +322,7 @@ class CategoryGroupWithCategories implements ModelInterface, ArrayAccess
     /**
      * Gets categories
      *
-     * @return \YNAB\Api\Model\Category[]
+     * @return \YNAB\Model\Category[]
      */
     public function getCategories()
     {
@@ -332,7 +332,7 @@ class CategoryGroupWithCategories implements ModelInterface, ArrayAccess
     /**
      * Sets categories
      *
-     * @param \YNAB\Api\Model\Category[] $categories Category group categories
+     * @param \YNAB\Model\Category[] $categories Category group categories
      *
      * @return $this
      */

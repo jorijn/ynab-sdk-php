@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * TransactionDetail Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -64,7 +64,7 @@ class TransactionDetail implements ModelInterface, ArrayAccess
         'approved' => 'bool',
         'accountId' => 'string',
         'accountName' => 'string',
-        'subtransactions' => '\YNAB\Api\Model\SubTransaction[]'
+        'subtransactions' => '\YNAB\Model\SubTransaction[]'
     ];
 
     /**
@@ -504,7 +504,7 @@ class TransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Gets subtransactions
      *
-     * @return \YNAB\Api\Model\SubTransaction[]
+     * @return \YNAB\Model\SubTransaction[]
      */
     public function getSubtransactions()
     {
@@ -514,7 +514,7 @@ class TransactionDetail implements ModelInterface, ArrayAccess
     /**
      * Sets subtransactions
      *
-     * @param \YNAB\Api\Model\SubTransaction[] $subtransactions If a split transaction, the subtransactions.
+     * @param \YNAB\Model\SubTransaction[] $subtransactions If a split transaction, the subtransactions.
      *
      * @return $this
      */

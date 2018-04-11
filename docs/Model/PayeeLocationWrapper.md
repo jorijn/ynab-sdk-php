@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**payeeLocation** | [**\YNAB\Api\Model\PayeeLocation**](PayeeLocation.md) |  | 
+**payeeLocation** | [**\YNAB\Model\PayeeLocation**](PayeeLocation.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

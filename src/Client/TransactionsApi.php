@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * TransactionsApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -88,11 +88,11 @@ class TransactionsApi
      * Bulk create transactions
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\BulkTransactions $transactions The list of Transactions to create. (required)
+     * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\BulkResponse
+     * @return \YNAB\Model\BulkResponse
      */
     public function bulkCreateTransactions($budgetId, $transactions)
     {
@@ -106,15 +106,15 @@ class TransactionsApi
      * Bulk create transactions
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\BulkTransactions $transactions The list of Transactions to create. (required)
+     * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\BulkResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\BulkResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function bulkCreateTransactionsWithHttpInfo($budgetId, $transactions)
     {
-        $returnType = '\YNAB\Api\Model\BulkResponse';
+        $returnType = '\YNAB\Model\BulkResponse';
         $request = $this->bulkCreateTransactionsRequest($budgetId, $transactions);
 
         try {
@@ -166,7 +166,7 @@ class TransactionsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\BulkResponse',
+                        '\YNAB\Model\BulkResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -190,7 +190,7 @@ class TransactionsApi
      * Bulk create transactions
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\BulkTransactions $transactions The list of Transactions to create. (required)
+     * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -211,14 +211,14 @@ class TransactionsApi
      * Bulk create transactions
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\BulkTransactions $transactions The list of Transactions to create. (required)
+     * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function bulkCreateTransactionsAsyncWithHttpInfo($budgetId, $transactions)
     {
-        $returnType = '\YNAB\Api\Model\BulkResponse';
+        $returnType = '\YNAB\Model\BulkResponse';
         $request = $this->bulkCreateTransactionsRequest($budgetId, $transactions);
 
         return $this->client
@@ -262,7 +262,7 @@ class TransactionsApi
      * Create request for operation 'bulkCreateTransactions'
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\BulkTransactions $transactions The list of Transactions to create. (required)
+     * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -377,11 +377,11 @@ class TransactionsApi
      * Create new transaction
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\TransactionResponse
+     * @return \YNAB\Model\TransactionResponse
      */
     public function createTransaction($budgetId, $transaction)
     {
@@ -395,15 +395,15 @@ class TransactionsApi
      * Create new transaction
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function createTransactionWithHttpInfo($budgetId, $transaction)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->createTransactionRequest($budgetId, $transaction);
 
         try {
@@ -455,7 +455,7 @@ class TransactionsApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\TransactionResponse',
+                        '\YNAB\Model\TransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -463,7 +463,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -471,7 +471,7 @@ class TransactionsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -487,7 +487,7 @@ class TransactionsApi
      * Create new transaction
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -508,14 +508,14 @@ class TransactionsApi
      * Create new transaction
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function createTransactionAsyncWithHttpInfo($budgetId, $transaction)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->createTransactionRequest($budgetId, $transaction);
 
         return $this->client
@@ -559,7 +559,7 @@ class TransactionsApi
      * Create request for operation 'createTransaction'
      *
      * @param  string $budgetId The ID of the Budget. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -677,9 +677,9 @@ class TransactionsApi
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\TransactionsResponse
+     * @return \YNAB\Model\TransactionsResponse
      */
     public function getTransactions($budgetId, $sinceDate = null, $type = null)
     {
@@ -696,13 +696,13 @@ class TransactionsApi
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\TransactionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\TransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsWithHttpInfo($budgetId, $sinceDate = null, $type = null)
     {
-        $returnType = '\YNAB\Api\Model\TransactionsResponse';
+        $returnType = '\YNAB\Model\TransactionsResponse';
         $request = $this->getTransactionsRequest($budgetId, $sinceDate, $type);
 
         try {
@@ -754,7 +754,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\TransactionsResponse',
+                        '\YNAB\Model\TransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -762,7 +762,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -770,7 +770,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -816,7 +816,7 @@ class TransactionsApi
      */
     public function getTransactionsAsyncWithHttpInfo($budgetId, $sinceDate = null, $type = null)
     {
-        $returnType = '\YNAB\Api\Model\TransactionsResponse';
+        $returnType = '\YNAB\Model\TransactionsResponse';
         $request = $this->getTransactionsRequest($budgetId, $sinceDate, $type);
 
         return $this->client
@@ -978,9 +978,9 @@ class TransactionsApi
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\TransactionsResponse
+     * @return \YNAB\Model\TransactionsResponse
      */
     public function getTransactionsByAccount($budgetId, $accountId, $sinceDate = null)
     {
@@ -997,13 +997,13 @@ class TransactionsApi
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\TransactionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\TransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsByAccountWithHttpInfo($budgetId, $accountId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\TransactionsResponse';
+        $returnType = '\YNAB\Model\TransactionsResponse';
         $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate);
 
         try {
@@ -1055,7 +1055,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\TransactionsResponse',
+                        '\YNAB\Model\TransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1063,7 +1063,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1071,7 +1071,7 @@ class TransactionsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1117,7 +1117,7 @@ class TransactionsApi
      */
     public function getTransactionsByAccountAsyncWithHttpInfo($budgetId, $accountId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\TransactionsResponse';
+        $returnType = '\YNAB\Model\TransactionsResponse';
         $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate);
 
         return $this->client
@@ -1289,9 +1289,9 @@ class TransactionsApi
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\HybridTransactionsResponse
+     * @return \YNAB\Model\HybridTransactionsResponse
      */
     public function getTransactionsByCategory($budgetId, $categoryId, $sinceDate = null)
     {
@@ -1308,13 +1308,13 @@ class TransactionsApi
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsByCategoryWithHttpInfo($budgetId, $categoryId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\HybridTransactionsResponse';
+        $returnType = '\YNAB\Model\HybridTransactionsResponse';
         $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate);
 
         try {
@@ -1366,7 +1366,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\HybridTransactionsResponse',
+                        '\YNAB\Model\HybridTransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1374,7 +1374,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1382,7 +1382,7 @@ class TransactionsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1428,7 +1428,7 @@ class TransactionsApi
      */
     public function getTransactionsByCategoryAsyncWithHttpInfo($budgetId, $categoryId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\HybridTransactionsResponse';
+        $returnType = '\YNAB\Model\HybridTransactionsResponse';
         $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate);
 
         return $this->client
@@ -1599,9 +1599,9 @@ class TransactionsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\TransactionResponse
+     * @return \YNAB\Model\TransactionResponse
      */
     public function getTransactionsById($budgetId, $transactionId)
     {
@@ -1617,13 +1617,13 @@ class TransactionsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsByIdWithHttpInfo($budgetId, $transactionId)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->getTransactionsByIdRequest($budgetId, $transactionId);
 
         try {
@@ -1675,7 +1675,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\TransactionResponse',
+                        '\YNAB\Model\TransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1683,7 +1683,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1691,7 +1691,7 @@ class TransactionsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1735,7 +1735,7 @@ class TransactionsApi
      */
     public function getTransactionsByIdAsyncWithHttpInfo($budgetId, $transactionId)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->getTransactionsByIdRequest($budgetId, $transactionId);
 
         return $this->client
@@ -1902,9 +1902,9 @@ class TransactionsApi
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\HybridTransactionsResponse
+     * @return \YNAB\Model\HybridTransactionsResponse
      */
     public function getTransactionsByPayee($budgetId, $payeeId, $sinceDate = null)
     {
@@ -1921,13 +1921,13 @@ class TransactionsApi
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getTransactionsByPayeeWithHttpInfo($budgetId, $payeeId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\HybridTransactionsResponse';
+        $returnType = '\YNAB\Model\HybridTransactionsResponse';
         $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate);
 
         try {
@@ -1979,7 +1979,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\HybridTransactionsResponse',
+                        '\YNAB\Model\HybridTransactionsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1987,7 +1987,7 @@ class TransactionsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1995,7 +1995,7 @@ class TransactionsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2041,7 +2041,7 @@ class TransactionsApi
      */
     public function getTransactionsByPayeeAsyncWithHttpInfo($budgetId, $payeeId, $sinceDate = null)
     {
-        $returnType = '\YNAB\Api\Model\HybridTransactionsResponse';
+        $returnType = '\YNAB\Model\HybridTransactionsResponse';
         $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate);
 
         return $this->client
@@ -2211,11 +2211,11 @@ class TransactionsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\TransactionResponse
+     * @return \YNAB\Model\TransactionResponse
      */
     public function updateTransaction($budgetId, $transactionId, $transaction)
     {
@@ -2230,15 +2230,15 @@ class TransactionsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function updateTransactionWithHttpInfo($budgetId, $transactionId, $transaction)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->updateTransactionRequest($budgetId, $transactionId, $transaction);
 
         try {
@@ -2290,7 +2290,7 @@ class TransactionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\TransactionResponse',
+                        '\YNAB\Model\TransactionResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2298,7 +2298,7 @@ class TransactionsApi
                 case 400:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2315,7 +2315,7 @@ class TransactionsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2337,14 +2337,14 @@ class TransactionsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
     public function updateTransactionAsyncWithHttpInfo($budgetId, $transactionId, $transaction)
     {
-        $returnType = '\YNAB\Api\Model\TransactionResponse';
+        $returnType = '\YNAB\Model\TransactionResponse';
         $request = $this->updateTransactionRequest($budgetId, $transactionId, $transaction);
 
         return $this->client
@@ -2389,7 +2389,7 @@ class TransactionsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
-     * @param  \YNAB\Api\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
+     * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

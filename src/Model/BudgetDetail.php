@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * BudgetDetail Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -59,18 +59,18 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'name' => 'string',
-        'dateFormat' => '\YNAB\Api\Model\DateFormat',
-        'currencyFormat' => '\YNAB\Api\Model\CurrencyFormat',
-        'accounts' => '\YNAB\Api\Model\Account[]',
-        'payees' => '\YNAB\Api\Model\Payee[]',
-        'payeeLocations' => '\YNAB\Api\Model\PayeeLocation[]',
-        'categoryGroups' => '\YNAB\Api\Model\CategoryGroup[]',
-        'categories' => '\YNAB\Api\Model\Category[]',
-        'months' => '\YNAB\Api\Model\MonthDetail[]',
-        'transactions' => '\YNAB\Api\Model\TransactionSummary[]',
-        'subtransactions' => '\YNAB\Api\Model\SubTransaction[]',
-        'scheduledTransactions' => '\YNAB\Api\Model\ScheduledTransactionSummary[]',
-        'scheduledSubtransactions' => '\YNAB\Api\Model\ScheduledSubTransaction[]'
+        'dateFormat' => '\YNAB\Model\DateFormat',
+        'currencyFormat' => '\YNAB\Model\CurrencyFormat',
+        'accounts' => '\YNAB\Model\Account[]',
+        'payees' => '\YNAB\Model\Payee[]',
+        'payeeLocations' => '\YNAB\Model\PayeeLocation[]',
+        'categoryGroups' => '\YNAB\Model\CategoryGroup[]',
+        'categories' => '\YNAB\Model\Category[]',
+        'months' => '\YNAB\Model\MonthDetail[]',
+        'transactions' => '\YNAB\Model\TransactionSummary[]',
+        'subtransactions' => '\YNAB\Model\SubTransaction[]',
+        'scheduledTransactions' => '\YNAB\Model\ScheduledTransactionSummary[]',
+        'scheduledSubtransactions' => '\YNAB\Model\ScheduledSubTransaction[]'
     ];
 
     /**
@@ -346,7 +346,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets dateFormat
      *
-     * @return \YNAB\Api\Model\DateFormat
+     * @return \YNAB\Model\DateFormat
      */
     public function getDateFormat()
     {
@@ -356,7 +356,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets dateFormat
      *
-     * @param \YNAB\Api\Model\DateFormat $dateFormat dateFormat
+     * @param \YNAB\Model\DateFormat $dateFormat dateFormat
      *
      * @return $this
      */
@@ -370,7 +370,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets currencyFormat
      *
-     * @return \YNAB\Api\Model\CurrencyFormat
+     * @return \YNAB\Model\CurrencyFormat
      */
     public function getCurrencyFormat()
     {
@@ -380,7 +380,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets currencyFormat
      *
-     * @param \YNAB\Api\Model\CurrencyFormat $currencyFormat currencyFormat
+     * @param \YNAB\Model\CurrencyFormat $currencyFormat currencyFormat
      *
      * @return $this
      */
@@ -394,7 +394,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets accounts
      *
-     * @return \YNAB\Api\Model\Account[]
+     * @return \YNAB\Model\Account[]
      */
     public function getAccounts()
     {
@@ -404,7 +404,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets accounts
      *
-     * @param \YNAB\Api\Model\Account[] $accounts accounts
+     * @param \YNAB\Model\Account[] $accounts accounts
      *
      * @return $this
      */
@@ -418,7 +418,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets payees
      *
-     * @return \YNAB\Api\Model\Payee[]
+     * @return \YNAB\Model\Payee[]
      */
     public function getPayees()
     {
@@ -428,7 +428,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets payees
      *
-     * @param \YNAB\Api\Model\Payee[] $payees payees
+     * @param \YNAB\Model\Payee[] $payees payees
      *
      * @return $this
      */
@@ -442,7 +442,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets payeeLocations
      *
-     * @return \YNAB\Api\Model\PayeeLocation[]
+     * @return \YNAB\Model\PayeeLocation[]
      */
     public function getPayeeLocations()
     {
@@ -452,7 +452,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets payeeLocations
      *
-     * @param \YNAB\Api\Model\PayeeLocation[] $payeeLocations payeeLocations
+     * @param \YNAB\Model\PayeeLocation[] $payeeLocations payeeLocations
      *
      * @return $this
      */
@@ -466,7 +466,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets categoryGroups
      *
-     * @return \YNAB\Api\Model\CategoryGroup[]
+     * @return \YNAB\Model\CategoryGroup[]
      */
     public function getCategoryGroups()
     {
@@ -476,7 +476,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets categoryGroups
      *
-     * @param \YNAB\Api\Model\CategoryGroup[] $categoryGroups categoryGroups
+     * @param \YNAB\Model\CategoryGroup[] $categoryGroups categoryGroups
      *
      * @return $this
      */
@@ -490,7 +490,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets categories
      *
-     * @return \YNAB\Api\Model\Category[]
+     * @return \YNAB\Model\Category[]
      */
     public function getCategories()
     {
@@ -500,7 +500,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets categories
      *
-     * @param \YNAB\Api\Model\Category[] $categories categories
+     * @param \YNAB\Model\Category[] $categories categories
      *
      * @return $this
      */
@@ -514,7 +514,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets months
      *
-     * @return \YNAB\Api\Model\MonthDetail[]
+     * @return \YNAB\Model\MonthDetail[]
      */
     public function getMonths()
     {
@@ -524,7 +524,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets months
      *
-     * @param \YNAB\Api\Model\MonthDetail[] $months months
+     * @param \YNAB\Model\MonthDetail[] $months months
      *
      * @return $this
      */
@@ -538,7 +538,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets transactions
      *
-     * @return \YNAB\Api\Model\TransactionSummary[]
+     * @return \YNAB\Model\TransactionSummary[]
      */
     public function getTransactions()
     {
@@ -548,7 +548,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets transactions
      *
-     * @param \YNAB\Api\Model\TransactionSummary[] $transactions transactions
+     * @param \YNAB\Model\TransactionSummary[] $transactions transactions
      *
      * @return $this
      */
@@ -562,7 +562,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets subtransactions
      *
-     * @return \YNAB\Api\Model\SubTransaction[]
+     * @return \YNAB\Model\SubTransaction[]
      */
     public function getSubtransactions()
     {
@@ -572,7 +572,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets subtransactions
      *
-     * @param \YNAB\Api\Model\SubTransaction[] $subtransactions subtransactions
+     * @param \YNAB\Model\SubTransaction[] $subtransactions subtransactions
      *
      * @return $this
      */
@@ -586,7 +586,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets scheduledTransactions
      *
-     * @return \YNAB\Api\Model\ScheduledTransactionSummary[]
+     * @return \YNAB\Model\ScheduledTransactionSummary[]
      */
     public function getScheduledTransactions()
     {
@@ -596,7 +596,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets scheduledTransactions
      *
-     * @param \YNAB\Api\Model\ScheduledTransactionSummary[] $scheduledTransactions scheduledTransactions
+     * @param \YNAB\Model\ScheduledTransactionSummary[] $scheduledTransactions scheduledTransactions
      *
      * @return $this
      */
@@ -610,7 +610,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Gets scheduledSubtransactions
      *
-     * @return \YNAB\Api\Model\ScheduledSubTransaction[]
+     * @return \YNAB\Model\ScheduledSubTransaction[]
      */
     public function getScheduledSubtransactions()
     {
@@ -620,7 +620,7 @@ class BudgetDetail implements ModelInterface, ArrayAccess
     /**
      * Sets scheduledSubtransactions
      *
-     * @param \YNAB\Api\Model\ScheduledSubTransaction[] $scheduledSubtransactions scheduledSubtransactions
+     * @param \YNAB\Model\ScheduledSubTransaction[] $scheduledSubtransactions scheduledSubtransactions
      *
      * @return $this
      */

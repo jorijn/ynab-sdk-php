@@ -1,4 +1,4 @@
-# YNAB\Api\AccountsApi
+# YNAB\AccountsApi
 
 All URIs are relative to *https://api.youneedabudget.com/v1*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **getAccountById**
-> \YNAB\Api\Model\AccountResponse getAccountById($budgetId, $accountId)
+> \YNAB\Model\AccountResponse getAccountById($budgetId, $accountId)
 
 Single account
 
@@ -21,11 +21,11 @@ Returns a single account
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\AccountsApi(
+$apiInstance = new YNAB\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\AccountResponse**](../Model/AccountResponse.md)
+[**\YNAB\Model\AccountResponse**](../Model/AccountResponse.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAccounts**
-> \YNAB\Api\Model\AccountsResponse getAccounts($budgetId)
+> \YNAB\Model\AccountsResponse getAccounts($budgetId)
 
 Account list
 
@@ -78,11 +78,11 @@ Returns all accounts
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\AccountsApi(
+$apiInstance = new YNAB\Api\AccountsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\AccountsResponse**](../Model/AccountsResponse.md)
+[**\YNAB\Model\AccountsResponse**](../Model/AccountsResponse.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * PayeesWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class PayeesWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'payees' => '\YNAB\Api\Model\Payee[]'
+        'payees' => '\YNAB\Model\Payee[]'
     ];
 
     /**
@@ -214,7 +214,7 @@ class PayeesWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets payees
      *
-     * @return \YNAB\Api\Model\Payee[]
+     * @return \YNAB\Model\Payee[]
      */
     public function getPayees()
     {
@@ -224,7 +224,7 @@ class PayeesWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets payees
      *
-     * @param \YNAB\Api\Model\Payee[] $payees payees
+     * @param \YNAB\Model\Payee[] $payees payees
      *
      * @return $this
      */

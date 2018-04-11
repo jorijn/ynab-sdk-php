@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * UserApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -88,9 +88,9 @@ class UserApi
      * User info
      *
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\UserResponse
+     * @return \YNAB\Model\UserResponse
      */
     public function getUser()
     {
@@ -104,13 +104,13 @@ class UserApi
      * User info
      *
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\UserResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\UserResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUserWithHttpInfo()
     {
-        $returnType = '\YNAB\Api\Model\UserResponse';
+        $returnType = '\YNAB\Model\UserResponse';
         $request = $this->getUserRequest();
 
         try {
@@ -162,7 +162,7 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\UserResponse',
+                        '\YNAB\Model\UserResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -170,7 +170,7 @@ class UserApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -210,7 +210,7 @@ class UserApi
      */
     public function getUserAsyncWithHttpInfo()
     {
-        $returnType = '\YNAB\Api\Model\UserResponse';
+        $returnType = '\YNAB\Model\UserResponse';
         $request = $this->getUserRequest();
 
         return $this->client

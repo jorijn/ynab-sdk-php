@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * ErrorResponse Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'error' => '\YNAB\Api\Model\ErrorDetail'
+        'error' => '\YNAB\Model\ErrorDetail'
     ];
 
     /**
@@ -214,7 +214,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
     /**
      * Gets error
      *
-     * @return \YNAB\Api\Model\ErrorDetail
+     * @return \YNAB\Model\ErrorDetail
      */
     public function getError()
     {
@@ -224,7 +224,7 @@ class ErrorResponse implements ModelInterface, ArrayAccess
     /**
      * Sets error
      *
-     * @param \YNAB\Api\Model\ErrorDetail $error error
+     * @param \YNAB\Model\ErrorDetail $error error
      *
      * @return $this
      */

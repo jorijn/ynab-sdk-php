@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * PayeeLocationsApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -90,9 +90,9 @@ class PayeeLocationsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\PayeeLocationResponse
+     * @return \YNAB\Model\PayeeLocationResponse
      */
     public function getPayeeLocationById($budgetId, $payeeLocationId)
     {
@@ -108,13 +108,13 @@ class PayeeLocationsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\PayeeLocationResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\PayeeLocationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPayeeLocationByIdWithHttpInfo($budgetId, $payeeLocationId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationResponse';
+        $returnType = '\YNAB\Model\PayeeLocationResponse';
         $request = $this->getPayeeLocationByIdRequest($budgetId, $payeeLocationId);
 
         try {
@@ -166,7 +166,7 @@ class PayeeLocationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\PayeeLocationResponse',
+                        '\YNAB\Model\PayeeLocationResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class PayeeLocationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,7 +182,7 @@ class PayeeLocationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class PayeeLocationsApi
      */
     public function getPayeeLocationByIdAsyncWithHttpInfo($budgetId, $payeeLocationId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationResponse';
+        $returnType = '\YNAB\Model\PayeeLocationResponse';
         $request = $this->getPayeeLocationByIdRequest($budgetId, $payeeLocationId);
 
         return $this->client
@@ -391,9 +391,9 @@ class PayeeLocationsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\PayeeLocationsResponse
+     * @return \YNAB\Model\PayeeLocationsResponse
      */
     public function getPayeeLocations($budgetId)
     {
@@ -408,13 +408,13 @@ class PayeeLocationsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\PayeeLocationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\PayeeLocationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPayeeLocationsWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationsResponse';
+        $returnType = '\YNAB\Model\PayeeLocationsResponse';
         $request = $this->getPayeeLocationsRequest($budgetId);
 
         try {
@@ -466,7 +466,7 @@ class PayeeLocationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\PayeeLocationsResponse',
+                        '\YNAB\Model\PayeeLocationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -474,7 +474,7 @@ class PayeeLocationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -482,7 +482,7 @@ class PayeeLocationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class PayeeLocationsApi
      */
     public function getPayeeLocationsAsyncWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationsResponse';
+        $returnType = '\YNAB\Model\PayeeLocationsResponse';
         $request = $this->getPayeeLocationsRequest($budgetId);
 
         return $this->client
@@ -675,9 +675,9 @@ class PayeeLocationsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\PayeeLocationsResponse
+     * @return \YNAB\Model\PayeeLocationsResponse
      */
     public function getPayeeLocationsByPayee($budgetId, $payeeId)
     {
@@ -693,13 +693,13 @@ class PayeeLocationsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\PayeeLocationsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\PayeeLocationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getPayeeLocationsByPayeeWithHttpInfo($budgetId, $payeeId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationsResponse';
+        $returnType = '\YNAB\Model\PayeeLocationsResponse';
         $request = $this->getPayeeLocationsByPayeeRequest($budgetId, $payeeId);
 
         try {
@@ -751,7 +751,7 @@ class PayeeLocationsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\PayeeLocationsResponse',
+                        '\YNAB\Model\PayeeLocationsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -759,7 +759,7 @@ class PayeeLocationsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -767,7 +767,7 @@ class PayeeLocationsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -811,7 +811,7 @@ class PayeeLocationsApi
      */
     public function getPayeeLocationsByPayeeAsyncWithHttpInfo($budgetId, $payeeId)
     {
-        $returnType = '\YNAB\Api\Model\PayeeLocationsResponse';
+        $returnType = '\YNAB\Model\PayeeLocationsResponse';
         $request = $this->getPayeeLocationsByPayeeRequest($budgetId, $payeeId);
 
         return $this->client

@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * UserWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class UserWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'user' => '\YNAB\Api\Model\User'
+        'user' => '\YNAB\Model\User'
     ];
 
     /**
@@ -214,7 +214,7 @@ class UserWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets user
      *
-     * @return \YNAB\Api\Model\User
+     * @return \YNAB\Model\User
      */
     public function getUser()
     {
@@ -224,7 +224,7 @@ class UserWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets user
      *
-     * @param \YNAB\Api\Model\User $user user
+     * @param \YNAB\Model\User $user user
      *
      * @return $this
      */

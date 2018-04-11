@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * TransactionWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class TransactionWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'transaction' => '\YNAB\Api\Model\TransactionDetail'
+        'transaction' => '\YNAB\Model\TransactionDetail'
     ];
 
     /**
@@ -214,7 +214,7 @@ class TransactionWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets transaction
      *
-     * @return \YNAB\Api\Model\TransactionDetail
+     * @return \YNAB\Model\TransactionDetail
      */
     public function getTransaction()
     {
@@ -224,7 +224,7 @@ class TransactionWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets transaction
      *
-     * @param \YNAB\Api\Model\TransactionDetail $transaction transaction
+     * @param \YNAB\Model\TransactionDetail $transaction transaction
      *
      * @return $this
      */

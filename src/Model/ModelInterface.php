@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api\Model
+ * @package  YNAB\Model
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,12 +27,12 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 /**
  * Interface abstracting model access.
  *
- * @package YNAB\Api\Model
+ * @package YNAB\Model
  * @author  Swagger Codegen team
  */
 interface ModelInterface

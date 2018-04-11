@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * BudgetDetailWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class BudgetDetailWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'budget' => '\YNAB\Api\Model\BudgetDetail',
+        'budget' => '\YNAB\Model\BudgetDetail',
         'serverKnowledge' => 'float'
     ];
 
@@ -226,7 +226,7 @@ class BudgetDetailWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets budget
      *
-     * @return \YNAB\Api\Model\BudgetDetail
+     * @return \YNAB\Model\BudgetDetail
      */
     public function getBudget()
     {
@@ -236,7 +236,7 @@ class BudgetDetailWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets budget
      *
-     * @param \YNAB\Api\Model\BudgetDetail $budget budget
+     * @param \YNAB\Model\BudgetDetail $budget budget
      *
      * @return $this
      */

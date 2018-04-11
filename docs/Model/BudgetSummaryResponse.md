@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**\YNAB\Api\Model\BudgetSummaryWrapper**](BudgetSummaryWrapper.md) |  | 
+**data** | [**\YNAB\Model\BudgetSummaryWrapper**](BudgetSummaryWrapper.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

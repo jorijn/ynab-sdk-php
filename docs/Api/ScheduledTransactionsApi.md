@@ -1,4 +1,4 @@
-# YNAB\Api\ScheduledTransactionsApi
+# YNAB\ScheduledTransactionsApi
 
 All URIs are relative to *https://api.youneedabudget.com/v1*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **getScheduledTransactionById**
-> \YNAB\Api\Model\ScheduledTransactionResponse getScheduledTransactionById($budgetId, $scheduledTransactionId)
+> \YNAB\Model\ScheduledTransactionResponse getScheduledTransactionById($budgetId, $scheduledTransactionId)
 
 Single scheduled transaction
 
@@ -21,11 +21,11 @@ Returns a single scheduled transaction
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\ScheduledTransactionsApi(
+$apiInstance = new YNAB\Api\ScheduledTransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -52,7 +52,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\ScheduledTransactionResponse**](../Model/ScheduledTransactionResponse.md)
+[**\YNAB\Model\ScheduledTransactionResponse**](../Model/ScheduledTransactionResponse.md)
 
 ### Authorization
 
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getScheduledTransactions**
-> \YNAB\Api\Model\ScheduledTransactionsResponse getScheduledTransactions($budgetId)
+> \YNAB\Model\ScheduledTransactionsResponse getScheduledTransactions($budgetId)
 
 List scheduled transactions
 
@@ -78,11 +78,11 @@ Returns all scheduled transactions
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: bearer
-$config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = YNAB\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = YNAB\Api\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = YNAB\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new YNAB\Api\Api\ScheduledTransactionsApi(
+$apiInstance = new YNAB\Api\ScheduledTransactionsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\YNAB\Api\Model\ScheduledTransactionsResponse**](../Model/ScheduledTransactionsResponse.md)
+[**\YNAB\Model\ScheduledTransactionsResponse**](../Model/ScheduledTransactionsResponse.md)
 
 ### Authorization
 

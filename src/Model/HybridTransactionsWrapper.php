@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * HybridTransactionsWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class HybridTransactionsWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'transactions' => '\YNAB\Api\Model\HybridTransaction[]'
+        'transactions' => '\YNAB\Model\HybridTransaction[]'
     ];
 
     /**
@@ -214,7 +214,7 @@ class HybridTransactionsWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets transactions
      *
-     * @return \YNAB\Api\Model\HybridTransaction[]
+     * @return \YNAB\Model\HybridTransaction[]
      */
     public function getTransactions()
     {
@@ -224,7 +224,7 @@ class HybridTransactionsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets transactions
      *
-     * @param \YNAB\Api\Model\HybridTransaction[] $transactions transactions
+     * @param \YNAB\Model\HybridTransaction[] $transactions transactions
      *
      * @return $this
      */

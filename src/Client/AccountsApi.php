@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * AccountsApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -90,9 +90,9 @@ class AccountsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\AccountResponse
+     * @return \YNAB\Model\AccountResponse
      */
     public function getAccountById($budgetId, $accountId)
     {
@@ -108,13 +108,13 @@ class AccountsApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\AccountResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\AccountResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountByIdWithHttpInfo($budgetId, $accountId)
     {
-        $returnType = '\YNAB\Api\Model\AccountResponse';
+        $returnType = '\YNAB\Model\AccountResponse';
         $request = $this->getAccountByIdRequest($budgetId, $accountId);
 
         try {
@@ -166,7 +166,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\AccountResponse',
+                        '\YNAB\Model\AccountResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -174,7 +174,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -182,7 +182,7 @@ class AccountsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class AccountsApi
      */
     public function getAccountByIdAsyncWithHttpInfo($budgetId, $accountId)
     {
-        $returnType = '\YNAB\Api\Model\AccountResponse';
+        $returnType = '\YNAB\Model\AccountResponse';
         $request = $this->getAccountByIdRequest($budgetId, $accountId);
 
         return $this->client
@@ -391,9 +391,9 @@ class AccountsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\AccountsResponse
+     * @return \YNAB\Model\AccountsResponse
      */
     public function getAccounts($budgetId)
     {
@@ -408,13 +408,13 @@ class AccountsApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\AccountsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\AccountsResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getAccountsWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\AccountsResponse';
+        $returnType = '\YNAB\Model\AccountsResponse';
         $request = $this->getAccountsRequest($budgetId);
 
         try {
@@ -466,7 +466,7 @@ class AccountsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\AccountsResponse',
+                        '\YNAB\Model\AccountsResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -474,7 +474,7 @@ class AccountsApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -482,7 +482,7 @@ class AccountsApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -524,7 +524,7 @@ class AccountsApi
      */
     public function getAccountsAsyncWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\AccountsResponse';
+        $returnType = '\YNAB\Model\AccountsResponse';
         $request = $this->getAccountsRequest($budgetId);
 
         return $this->client

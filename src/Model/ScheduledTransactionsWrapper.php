@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * ScheduledTransactionsWrapper Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -57,7 +57,7 @@ class ScheduledTransactionsWrapper implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'scheduledTransactions' => '\YNAB\Api\Model\ScheduledTransactionDetail[]'
+        'scheduledTransactions' => '\YNAB\Model\ScheduledTransactionDetail[]'
     ];
 
     /**
@@ -214,7 +214,7 @@ class ScheduledTransactionsWrapper implements ModelInterface, ArrayAccess
     /**
      * Gets scheduledTransactions
      *
-     * @return \YNAB\Api\Model\ScheduledTransactionDetail[]
+     * @return \YNAB\Model\ScheduledTransactionDetail[]
      */
     public function getScheduledTransactions()
     {
@@ -224,7 +224,7 @@ class ScheduledTransactionsWrapper implements ModelInterface, ArrayAccess
     /**
      * Sets scheduledTransactions
      *
-     * @param \YNAB\Api\Model\ScheduledTransactionDetail[] $scheduledTransactions scheduledTransactions
+     * @param \YNAB\Model\ScheduledTransactionDetail[] $scheduledTransactions scheduledTransactions
      *
      * @return $this
      */

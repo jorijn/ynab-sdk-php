@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,16 +27,16 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Model;
+namespace YNAB\Model;
 
 use \ArrayAccess;
-use \YNAB\Api\ObjectSerializer;
+use \YNAB\ObjectSerializer;
 
 /**
  * BudgetSummary Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -59,8 +59,8 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'name' => 'string',
-        'dateFormat' => '\YNAB\Api\Model\DateFormat',
-        'currencyFormat' => '\YNAB\Api\Model\CurrencyFormat'
+        'dateFormat' => '\YNAB\Model\DateFormat',
+        'currencyFormat' => '\YNAB\Model\CurrencyFormat'
     ];
 
     /**
@@ -286,7 +286,7 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     /**
      * Gets dateFormat
      *
-     * @return \YNAB\Api\Model\DateFormat
+     * @return \YNAB\Model\DateFormat
      */
     public function getDateFormat()
     {
@@ -296,7 +296,7 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     /**
      * Sets dateFormat
      *
-     * @param \YNAB\Api\Model\DateFormat $dateFormat dateFormat
+     * @param \YNAB\Model\DateFormat $dateFormat dateFormat
      *
      * @return $this
      */
@@ -310,7 +310,7 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     /**
      * Gets currencyFormat
      *
-     * @return \YNAB\Api\Model\CurrencyFormat
+     * @return \YNAB\Model\CurrencyFormat
      */
     public function getCurrencyFormat()
     {
@@ -320,7 +320,7 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     /**
      * Sets currencyFormat
      *
-     * @param \YNAB\Api\Model\CurrencyFormat $currencyFormat currencyFormat
+     * @param \YNAB\Model\CurrencyFormat $currencyFormat currencyFormat
      *
      * @return $this
      */

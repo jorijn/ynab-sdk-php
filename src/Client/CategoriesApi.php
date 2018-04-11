@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,7 +26,7 @@
  * Do not edit the class manually.
  */
 
-namespace YNAB\Api\Client;
+namespace YNAB\Client;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
@@ -34,16 +34,16 @@ use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
-use YNAB\Api\ApiException;
-use YNAB\Api\Configuration;
-use YNAB\Api\HeaderSelector;
-use YNAB\Api\ObjectSerializer;
+use YNAB\ApiException;
+use YNAB\Configuration;
+use YNAB\HeaderSelector;
+use YNAB\ObjectSerializer;
 
 /**
  * CategoriesApi Class Doc Comment
  *
  * @category Class
- * @package  YNAB\Api
+ * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -89,9 +89,9 @@ class CategoriesApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\CategoriesResponse
+     * @return \YNAB\Model\CategoriesResponse
      */
     public function getCategories($budgetId)
     {
@@ -106,13 +106,13 @@ class CategoriesApi
      *
      * @param  string $budgetId The ID of the Budget. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\CategoriesResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\CategoriesResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCategoriesWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\CategoriesResponse';
+        $returnType = '\YNAB\Model\CategoriesResponse';
         $request = $this->getCategoriesRequest($budgetId);
 
         try {
@@ -164,7 +164,7 @@ class CategoriesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\CategoriesResponse',
+                        '\YNAB\Model\CategoriesResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -172,7 +172,7 @@ class CategoriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -180,7 +180,7 @@ class CategoriesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -222,7 +222,7 @@ class CategoriesApi
      */
     public function getCategoriesAsyncWithHttpInfo($budgetId)
     {
-        $returnType = '\YNAB\Api\Model\CategoriesResponse';
+        $returnType = '\YNAB\Model\CategoriesResponse';
         $request = $this->getCategoriesRequest($budgetId);
 
         return $this->client
@@ -373,9 +373,9 @@ class CategoriesApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \YNAB\Api\Model\CategoryResponse
+     * @return \YNAB\Model\CategoryResponse
      */
     public function getCategoryById($budgetId, $categoryId)
     {
@@ -391,13 +391,13 @@ class CategoriesApi
      * @param  string $budgetId The ID of the Budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
-     * @throws \YNAB\Api\ApiException on non-2xx response
+     * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \YNAB\Api\Model\CategoryResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \YNAB\Model\CategoryResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getCategoryByIdWithHttpInfo($budgetId, $categoryId)
     {
-        $returnType = '\YNAB\Api\Model\CategoryResponse';
+        $returnType = '\YNAB\Model\CategoryResponse';
         $request = $this->getCategoryByIdRequest($budgetId, $categoryId);
 
         try {
@@ -449,7 +449,7 @@ class CategoriesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\CategoryResponse',
+                        '\YNAB\Model\CategoryResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -457,7 +457,7 @@ class CategoriesApi
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -465,7 +465,7 @@ class CategoriesApi
                 default:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\YNAB\Api\Model\ErrorResponse',
+                        '\YNAB\Model\ErrorResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -509,7 +509,7 @@ class CategoriesApi
      */
     public function getCategoryByIdAsyncWithHttpInfo($budgetId, $categoryId)
     {
-        $returnType = '\YNAB\Api\Model\CategoryResponse';
+        $returnType = '\YNAB\Model\CategoryResponse';
         $request = $this->getCategoryByIdRequest($budgetId, $categoryId);
 
         return $this->client
