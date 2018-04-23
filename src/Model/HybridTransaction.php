@@ -62,8 +62,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'amount' => 'float',
         'cleared' => 'string',
         'approved' => 'bool',
+        'flagColor' => 'string',
         'accountId' => 'string',
+        'payeeId' => 'string',
+        'categoryId' => 'string',
+        'transferAccountId' => 'string',
+        'importId' => 'string',
         'type' => 'string',
+        'parentTransactionId' => 'string',
         'accountName' => 'string'
     ];
 
@@ -78,8 +84,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'amount' => '1234000',
         'cleared' => null,
         'approved' => null,
+        'flagColor' => null,
         'accountId' => 'uuid',
+        'payeeId' => 'uuid',
+        'categoryId' => 'uuid',
+        'transferAccountId' => 'uuid',
+        'importId' => null,
         'type' => null,
+        'parentTransactionId' => 'uuid',
         'accountName' => null
     ];
 
@@ -115,8 +127,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'amount' => 'amount',
         'cleared' => 'cleared',
         'approved' => 'approved',
+        'flagColor' => 'flag_color',
         'accountId' => 'account_id',
+        'payeeId' => 'payee_id',
+        'categoryId' => 'category_id',
+        'transferAccountId' => 'transfer_account_id',
+        'importId' => 'import_id',
         'type' => 'type',
+        'parentTransactionId' => 'parent_transaction_id',
         'accountName' => 'account_name'
     ];
 
@@ -131,8 +149,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'amount' => 'setAmount',
         'cleared' => 'setCleared',
         'approved' => 'setApproved',
+        'flagColor' => 'setFlagColor',
         'accountId' => 'setAccountId',
+        'payeeId' => 'setPayeeId',
+        'categoryId' => 'setCategoryId',
+        'transferAccountId' => 'setTransferAccountId',
+        'importId' => 'setImportId',
         'type' => 'setType',
+        'parentTransactionId' => 'setParentTransactionId',
         'accountName' => 'setAccountName'
     ];
 
@@ -147,8 +171,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'amount' => 'getAmount',
         'cleared' => 'getCleared',
         'approved' => 'getApproved',
+        'flagColor' => 'getFlagColor',
         'accountId' => 'getAccountId',
+        'payeeId' => 'getPayeeId',
+        'categoryId' => 'getCategoryId',
+        'transferAccountId' => 'getTransferAccountId',
+        'importId' => 'getImportId',
         'type' => 'getType',
+        'parentTransactionId' => 'getParentTransactionId',
         'accountName' => 'getAccountName'
     ];
 
@@ -196,6 +226,12 @@ class HybridTransaction implements ModelInterface, ArrayAccess
     const CLEARED_CLEARED = 'cleared';
     const CLEARED_UNCLEARED = 'uncleared';
     const CLEARED_RECONCILED = 'reconciled';
+    const FLAG_COLOR_RED = 'red';
+    const FLAG_COLOR_ORANGE = 'orange';
+    const FLAG_COLOR_YELLOW = 'yellow';
+    const FLAG_COLOR_GREEN = 'green';
+    const FLAG_COLOR_BLUE = 'blue';
+    const FLAG_COLOR_PURPLE = 'purple';
     const TYPE_TRANSACTION = 'transaction';
     const TYPE_SUBTRANSACTION = 'subtransaction';
     
@@ -212,6 +248,23 @@ class HybridTransaction implements ModelInterface, ArrayAccess
             self::CLEARED_CLEARED,
             self::CLEARED_UNCLEARED,
             self::CLEARED_RECONCILED,
+        ];
+    }
+    
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFlagColorAllowableValues()
+    {
+        return [
+            self::FLAG_COLOR_RED,
+            self::FLAG_COLOR_ORANGE,
+            self::FLAG_COLOR_YELLOW,
+            self::FLAG_COLOR_GREEN,
+            self::FLAG_COLOR_BLUE,
+            self::FLAG_COLOR_PURPLE,
         ];
     }
     
@@ -249,8 +302,14 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
         $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
         $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
+        $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
         $this->container['accountId'] = isset($data['accountId']) ? $data['accountId'] : null;
+        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
+        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
+        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
+        $this->container['importId'] = isset($data['importId']) ? $data['importId'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['parentTransactionId'] = isset($data['parentTransactionId']) ? $data['parentTransactionId'] : null;
         $this->container['accountName'] = isset($data['accountName']) ? $data['accountName'] : null;
     }
 
@@ -286,8 +345,31 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         if ($this->container['approved'] === null) {
             $invalidProperties[] = "'approved' can't be null";
         }
+        if ($this->container['flagColor'] === null) {
+            $invalidProperties[] = "'flagColor' can't be null";
+        }
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($this->container['flagColor'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'flagColor', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['accountId'] === null) {
             $invalidProperties[] = "'accountId' can't be null";
+        }
+        if ($this->container['payeeId'] === null) {
+            $invalidProperties[] = "'payeeId' can't be null";
+        }
+        if ($this->container['categoryId'] === null) {
+            $invalidProperties[] = "'categoryId' can't be null";
+        }
+        if ($this->container['transferAccountId'] === null) {
+            $invalidProperties[] = "'transferAccountId' can't be null";
+        }
+        if ($this->container['importId'] === null) {
+            $invalidProperties[] = "'importId' can't be null";
         }
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
@@ -300,6 +382,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
             );
         }
 
+        if ($this->container['parentTransactionId'] === null) {
+            $invalidProperties[] = "'parentTransactionId' can't be null";
+        }
         if ($this->container['accountName'] === null) {
             $invalidProperties[] = "'accountName' can't be null";
         }
@@ -334,7 +419,26 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         if ($this->container['approved'] === null) {
             return false;
         }
+        if ($this->container['flagColor'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($this->container['flagColor'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['accountId'] === null) {
+            return false;
+        }
+        if ($this->container['payeeId'] === null) {
+            return false;
+        }
+        if ($this->container['categoryId'] === null) {
+            return false;
+        }
+        if ($this->container['transferAccountId'] === null) {
+            return false;
+        }
+        if ($this->container['importId'] === null) {
             return false;
         }
         if ($this->container['type'] === null) {
@@ -342,6 +446,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         }
         $allowedValues = $this->getTypeAllowableValues();
         if (!in_array($this->container['type'], $allowedValues)) {
+            return false;
+        }
+        if ($this->container['parentTransactionId'] === null) {
             return false;
         }
         if ($this->container['accountName'] === null) {
@@ -481,6 +588,39 @@ class HybridTransaction implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets flagColor
+     *
+     * @return string
+     */
+    public function getFlagColor()
+    {
+        return $this->container['flagColor'];
+    }
+
+    /**
+     * Sets flagColor
+     *
+     * @param string $flagColor The transaction flag
+     *
+     * @return $this
+     */
+    public function setFlagColor($flagColor)
+    {
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($flagColor, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'flagColor', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['flagColor'] = $flagColor;
+
+        return $this;
+    }
+
+    /**
      * Gets accountId
      *
      * @return string
@@ -500,6 +640,102 @@ class HybridTransaction implements ModelInterface, ArrayAccess
     public function setAccountId($accountId)
     {
         $this->container['accountId'] = $accountId;
+
+        return $this;
+    }
+
+    /**
+     * Gets payeeId
+     *
+     * @return string
+     */
+    public function getPayeeId()
+    {
+        return $this->container['payeeId'];
+    }
+
+    /**
+     * Sets payeeId
+     *
+     * @param string $payeeId payeeId
+     *
+     * @return $this
+     */
+    public function setPayeeId($payeeId)
+    {
+        $this->container['payeeId'] = $payeeId;
+
+        return $this;
+    }
+
+    /**
+     * Gets categoryId
+     *
+     * @return string
+     */
+    public function getCategoryId()
+    {
+        return $this->container['categoryId'];
+    }
+
+    /**
+     * Sets categoryId
+     *
+     * @param string $categoryId categoryId
+     *
+     * @return $this
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->container['categoryId'] = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Gets transferAccountId
+     *
+     * @return string
+     */
+    public function getTransferAccountId()
+    {
+        return $this->container['transferAccountId'];
+    }
+
+    /**
+     * Sets transferAccountId
+     *
+     * @param string $transferAccountId transferAccountId
+     *
+     * @return $this
+     */
+    public function setTransferAccountId($transferAccountId)
+    {
+        $this->container['transferAccountId'] = $transferAccountId;
+
+        return $this;
+    }
+
+    /**
+     * Gets importId
+     *
+     * @return string
+     */
+    public function getImportId()
+    {
+        return $this->container['importId'];
+    }
+
+    /**
+     * Sets importId
+     *
+     * @param string $importId If the Transaction was imported, this field is a unique (by account) import identifier.  If this transaction was imported through File Based Import or Direct Import and not through the API, the import_id will have the format: 'YNAB:[milliunit_amount]:[iso_date]:[occurrence]'.  For example, a transaction dated 2015-12-30 in the amount of -$294.23 USD would have an import_id of 'YNAB:-294230:2015-12-30:1'.  If a second transaction on the same account was imported and had the same date and same amount, its import_id would be 'YNAB:-294230:2015-12-30:2'.
+     *
+     * @return $this
+     */
+    public function setImportId($importId)
+    {
+        $this->container['importId'] = $importId;
 
         return $this;
     }
@@ -533,6 +769,30 @@ class HybridTransaction implements ModelInterface, ArrayAccess
             );
         }
         $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets parentTransactionId
+     *
+     * @return string
+     */
+    public function getParentTransactionId()
+    {
+        return $this->container['parentTransactionId'];
+    }
+
+    /**
+     * Sets parentTransactionId
+     *
+     * @param string $parentTransactionId For subtransaction types, this is the id of the pararent transaction.  For transaction types, this id will be always be null.
+     *
+     * @return $this
+     */
+    public function setParentTransactionId($parentTransactionId)
+    {
+        $this->container['parentTransactionId'] = $parentTransactionId;
 
         return $this;
     }

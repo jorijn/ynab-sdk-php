@@ -57,7 +57,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        
+        'isoCode' => 'string',
+        'exampleFormat' => 'string',
+        'decimalDigits' => 'float',
+        'decimalSeparator' => 'string',
+        'symbolFirst' => 'bool',
+        'groupSeparator' => 'string',
+        'currencySymbol' => 'string',
+        'displaySymbol' => 'bool'
     ];
 
     /**
@@ -66,7 +73,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        
+        'isoCode' => null,
+        'exampleFormat' => null,
+        'decimalDigits' => null,
+        'decimalSeparator' => null,
+        'symbolFirst' => null,
+        'groupSeparator' => null,
+        'currencySymbol' => null,
+        'displaySymbol' => null
     ];
 
     /**
@@ -96,7 +110,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'isoCode' => 'iso_code',
+        'exampleFormat' => 'example_format',
+        'decimalDigits' => 'decimal_digits',
+        'decimalSeparator' => 'decimal_separator',
+        'symbolFirst' => 'symbol_first',
+        'groupSeparator' => 'group_separator',
+        'currencySymbol' => 'currency_symbol',
+        'displaySymbol' => 'display_symbol'
     ];
 
     /**
@@ -105,7 +126,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        
+        'isoCode' => 'setIsoCode',
+        'exampleFormat' => 'setExampleFormat',
+        'decimalDigits' => 'setDecimalDigits',
+        'decimalSeparator' => 'setDecimalSeparator',
+        'symbolFirst' => 'setSymbolFirst',
+        'groupSeparator' => 'setGroupSeparator',
+        'currencySymbol' => 'setCurrencySymbol',
+        'displaySymbol' => 'setDisplaySymbol'
     ];
 
     /**
@@ -114,7 +142,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        
+        'isoCode' => 'getIsoCode',
+        'exampleFormat' => 'getExampleFormat',
+        'decimalDigits' => 'getDecimalDigits',
+        'decimalSeparator' => 'getDecimalSeparator',
+        'symbolFirst' => 'getSymbolFirst',
+        'groupSeparator' => 'getGroupSeparator',
+        'currencySymbol' => 'getCurrencySymbol',
+        'displaySymbol' => 'getDisplaySymbol'
     ];
 
     /**
@@ -177,6 +212,14 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['isoCode'] = isset($data['isoCode']) ? $data['isoCode'] : null;
+        $this->container['exampleFormat'] = isset($data['exampleFormat']) ? $data['exampleFormat'] : null;
+        $this->container['decimalDigits'] = isset($data['decimalDigits']) ? $data['decimalDigits'] : null;
+        $this->container['decimalSeparator'] = isset($data['decimalSeparator']) ? $data['decimalSeparator'] : null;
+        $this->container['symbolFirst'] = isset($data['symbolFirst']) ? $data['symbolFirst'] : null;
+        $this->container['groupSeparator'] = isset($data['groupSeparator']) ? $data['groupSeparator'] : null;
+        $this->container['currencySymbol'] = isset($data['currencySymbol']) ? $data['currencySymbol'] : null;
+        $this->container['displaySymbol'] = isset($data['displaySymbol']) ? $data['displaySymbol'] : null;
     }
 
     /**
@@ -188,6 +231,30 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['isoCode'] === null) {
+            $invalidProperties[] = "'isoCode' can't be null";
+        }
+        if ($this->container['exampleFormat'] === null) {
+            $invalidProperties[] = "'exampleFormat' can't be null";
+        }
+        if ($this->container['decimalDigits'] === null) {
+            $invalidProperties[] = "'decimalDigits' can't be null";
+        }
+        if ($this->container['decimalSeparator'] === null) {
+            $invalidProperties[] = "'decimalSeparator' can't be null";
+        }
+        if ($this->container['symbolFirst'] === null) {
+            $invalidProperties[] = "'symbolFirst' can't be null";
+        }
+        if ($this->container['groupSeparator'] === null) {
+            $invalidProperties[] = "'groupSeparator' can't be null";
+        }
+        if ($this->container['currencySymbol'] === null) {
+            $invalidProperties[] = "'currencySymbol' can't be null";
+        }
+        if ($this->container['displaySymbol'] === null) {
+            $invalidProperties[] = "'displaySymbol' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -200,9 +267,225 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if ($this->container['isoCode'] === null) {
+            return false;
+        }
+        if ($this->container['exampleFormat'] === null) {
+            return false;
+        }
+        if ($this->container['decimalDigits'] === null) {
+            return false;
+        }
+        if ($this->container['decimalSeparator'] === null) {
+            return false;
+        }
+        if ($this->container['symbolFirst'] === null) {
+            return false;
+        }
+        if ($this->container['groupSeparator'] === null) {
+            return false;
+        }
+        if ($this->container['currencySymbol'] === null) {
+            return false;
+        }
+        if ($this->container['displaySymbol'] === null) {
+            return false;
+        }
         return true;
     }
 
+
+    /**
+     * Gets isoCode
+     *
+     * @return string
+     */
+    public function getIsoCode()
+    {
+        return $this->container['isoCode'];
+    }
+
+    /**
+     * Sets isoCode
+     *
+     * @param string $isoCode isoCode
+     *
+     * @return $this
+     */
+    public function setIsoCode($isoCode)
+    {
+        $this->container['isoCode'] = $isoCode;
+
+        return $this;
+    }
+
+    /**
+     * Gets exampleFormat
+     *
+     * @return string
+     */
+    public function getExampleFormat()
+    {
+        return $this->container['exampleFormat'];
+    }
+
+    /**
+     * Sets exampleFormat
+     *
+     * @param string $exampleFormat exampleFormat
+     *
+     * @return $this
+     */
+    public function setExampleFormat($exampleFormat)
+    {
+        $this->container['exampleFormat'] = $exampleFormat;
+
+        return $this;
+    }
+
+    /**
+     * Gets decimalDigits
+     *
+     * @return float
+     */
+    public function getDecimalDigits()
+    {
+        return $this->container['decimalDigits'];
+    }
+
+    /**
+     * Sets decimalDigits
+     *
+     * @param float $decimalDigits decimalDigits
+     *
+     * @return $this
+     */
+    public function setDecimalDigits($decimalDigits)
+    {
+        $this->container['decimalDigits'] = $decimalDigits;
+
+        return $this;
+    }
+
+    /**
+     * Gets decimalSeparator
+     *
+     * @return string
+     */
+    public function getDecimalSeparator()
+    {
+        return $this->container['decimalSeparator'];
+    }
+
+    /**
+     * Sets decimalSeparator
+     *
+     * @param string $decimalSeparator decimalSeparator
+     *
+     * @return $this
+     */
+    public function setDecimalSeparator($decimalSeparator)
+    {
+        $this->container['decimalSeparator'] = $decimalSeparator;
+
+        return $this;
+    }
+
+    /**
+     * Gets symbolFirst
+     *
+     * @return bool
+     */
+    public function getSymbolFirst()
+    {
+        return $this->container['symbolFirst'];
+    }
+
+    /**
+     * Sets symbolFirst
+     *
+     * @param bool $symbolFirst symbolFirst
+     *
+     * @return $this
+     */
+    public function setSymbolFirst($symbolFirst)
+    {
+        $this->container['symbolFirst'] = $symbolFirst;
+
+        return $this;
+    }
+
+    /**
+     * Gets groupSeparator
+     *
+     * @return string
+     */
+    public function getGroupSeparator()
+    {
+        return $this->container['groupSeparator'];
+    }
+
+    /**
+     * Sets groupSeparator
+     *
+     * @param string $groupSeparator groupSeparator
+     *
+     * @return $this
+     */
+    public function setGroupSeparator($groupSeparator)
+    {
+        $this->container['groupSeparator'] = $groupSeparator;
+
+        return $this;
+    }
+
+    /**
+     * Gets currencySymbol
+     *
+     * @return string
+     */
+    public function getCurrencySymbol()
+    {
+        return $this->container['currencySymbol'];
+    }
+
+    /**
+     * Sets currencySymbol
+     *
+     * @param string $currencySymbol currencySymbol
+     *
+     * @return $this
+     */
+    public function setCurrencySymbol($currencySymbol)
+    {
+        $this->container['currencySymbol'] = $currencySymbol;
+
+        return $this;
+    }
+
+    /**
+     * Gets displaySymbol
+     *
+     * @return bool
+     */
+    public function getDisplaySymbol()
+    {
+        return $this->container['displaySymbol'];
+    }
+
+    /**
+     * Sets displaySymbol
+     *
+     * @param bool $displaySymbol displaySymbol
+     *
+     * @return $this
+     */
+    public function setDisplaySymbol($displaySymbol)
+    {
+        $this->container['displaySymbol'] = $displaySymbol;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *

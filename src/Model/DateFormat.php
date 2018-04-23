@@ -57,7 +57,7 @@ class DateFormat implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        
+        'format' => 'string'
     ];
 
     /**
@@ -66,7 +66,7 @@ class DateFormat implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        
+        'format' => null
     ];
 
     /**
@@ -96,7 +96,7 @@ class DateFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        
+        'format' => 'format'
     ];
 
     /**
@@ -105,7 +105,7 @@ class DateFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        
+        'format' => 'setFormat'
     ];
 
     /**
@@ -114,7 +114,7 @@ class DateFormat implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        
+        'format' => 'getFormat'
     ];
 
     /**
@@ -177,6 +177,7 @@ class DateFormat implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['format'] = isset($data['format']) ? $data['format'] : null;
     }
 
     /**
@@ -188,6 +189,9 @@ class DateFormat implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
+        if ($this->container['format'] === null) {
+            $invalidProperties[] = "'format' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -200,9 +204,36 @@ class DateFormat implements ModelInterface, ArrayAccess
     public function valid()
     {
 
+        if ($this->container['format'] === null) {
+            return false;
+        }
         return true;
     }
 
+
+    /**
+     * Gets format
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->container['format'];
+    }
+
+    /**
+     * Sets format
+     *
+     * @param string $format format
+     *
+     * @return $this
+     */
+    public function setFormat($format)
+    {
+        $this->container['format'] = $format;
+
+        return $this;
+    }
     /**
      * Returns true if offset exists. False otherwise.
      *
