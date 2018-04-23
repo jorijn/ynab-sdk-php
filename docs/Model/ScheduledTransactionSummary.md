@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **dateNext** | [**\DateTime**](\DateTime.md) | The next date for which the Scheduled Transaction is scheduled. | 
 **frequency** | **string** |  | 
 **amount** | **float** | The scheduled transaction amount in milliunits format | 
+**memo** | **string** |  | 
 **flagColor** | **string** | The scheduled transaction flag | 
 **accountId** | **string** |  | 
 **payeeId** | **string** |  | 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | 
 **transactionId** | **string** |  | 
 **amount** | **float** | The subtransaction amount in milliunits format | 
+**memo** | **string** |  | 
 **payeeId** | **string** |  | 
 **categoryId** | **string** |  | 
 **transferAccountId** | **string** | If a transfer, the account_id which the subtransaction transfers to | 

@@ -60,6 +60,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'id' => 'string',
         'date' => '\DateTime',
         'amount' => 'float',
+        'memo' => 'string',
         'cleared' => 'string',
         'approved' => 'bool',
         'flagColor' => 'string',
@@ -70,7 +71,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'importId' => 'string',
         'type' => 'string',
         'parentTransactionId' => 'string',
-        'accountName' => 'string'
+        'accountName' => 'string',
+        'payeeName' => 'string',
+        'categoryName' => 'string'
     ];
 
     /**
@@ -82,6 +85,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'date' => 'date',
         'amount' => '1234000',
+        'memo' => null,
         'cleared' => null,
         'approved' => null,
         'flagColor' => null,
@@ -92,7 +96,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'importId' => null,
         'type' => null,
         'parentTransactionId' => 'uuid',
-        'accountName' => null
+        'accountName' => null,
+        'payeeName' => null,
+        'categoryName' => null
     ];
 
     /**
@@ -125,6 +131,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'id' => 'id',
         'date' => 'date',
         'amount' => 'amount',
+        'memo' => 'memo',
         'cleared' => 'cleared',
         'approved' => 'approved',
         'flagColor' => 'flag_color',
@@ -135,7 +142,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'importId' => 'import_id',
         'type' => 'type',
         'parentTransactionId' => 'parent_transaction_id',
-        'accountName' => 'account_name'
+        'accountName' => 'account_name',
+        'payeeName' => 'payee_name',
+        'categoryName' => 'category_name'
     ];
 
     /**
@@ -147,6 +156,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'date' => 'setDate',
         'amount' => 'setAmount',
+        'memo' => 'setMemo',
         'cleared' => 'setCleared',
         'approved' => 'setApproved',
         'flagColor' => 'setFlagColor',
@@ -157,7 +167,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'importId' => 'setImportId',
         'type' => 'setType',
         'parentTransactionId' => 'setParentTransactionId',
-        'accountName' => 'setAccountName'
+        'accountName' => 'setAccountName',
+        'payeeName' => 'setPayeeName',
+        'categoryName' => 'setCategoryName'
     ];
 
     /**
@@ -169,6 +181,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'date' => 'getDate',
         'amount' => 'getAmount',
+        'memo' => 'getMemo',
         'cleared' => 'getCleared',
         'approved' => 'getApproved',
         'flagColor' => 'getFlagColor',
@@ -179,7 +192,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         'importId' => 'getImportId',
         'type' => 'getType',
         'parentTransactionId' => 'getParentTransactionId',
-        'accountName' => 'getAccountName'
+        'accountName' => 'getAccountName',
+        'payeeName' => 'getPayeeName',
+        'categoryName' => 'getCategoryName'
     ];
 
     /**
@@ -300,6 +315,7 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['date'] = isset($data['date']) ? $data['date'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
         $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
         $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
@@ -311,6 +327,8 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['parentTransactionId'] = isset($data['parentTransactionId']) ? $data['parentTransactionId'] : null;
         $this->container['accountName'] = isset($data['accountName']) ? $data['accountName'] : null;
+        $this->container['payeeName'] = isset($data['payeeName']) ? $data['payeeName'] : null;
+        $this->container['categoryName'] = isset($data['categoryName']) ? $data['categoryName'] : null;
     }
 
     /**
@@ -330,6 +348,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
         }
         if ($this->container['cleared'] === null) {
             $invalidProperties[] = "'cleared' can't be null";
@@ -388,6 +409,12 @@ class HybridTransaction implements ModelInterface, ArrayAccess
         if ($this->container['accountName'] === null) {
             $invalidProperties[] = "'accountName' can't be null";
         }
+        if ($this->container['payeeName'] === null) {
+            $invalidProperties[] = "'payeeName' can't be null";
+        }
+        if ($this->container['categoryName'] === null) {
+            $invalidProperties[] = "'categoryName' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -407,6 +434,9 @@ class HybridTransaction implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['amount'] === null) {
+            return false;
+        }
+        if ($this->container['memo'] === null) {
             return false;
         }
         if ($this->container['cleared'] === null) {
@@ -452,6 +482,12 @@ class HybridTransaction implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['accountName'] === null) {
+            return false;
+        }
+        if ($this->container['payeeName'] === null) {
+            return false;
+        }
+        if ($this->container['categoryName'] === null) {
             return false;
         }
         return true;
@@ -526,6 +562,30 @@ class HybridTransaction implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
 
         return $this;
     }
@@ -817,6 +877,54 @@ class HybridTransaction implements ModelInterface, ArrayAccess
     public function setAccountName($accountName)
     {
         $this->container['accountName'] = $accountName;
+
+        return $this;
+    }
+
+    /**
+     * Gets payeeName
+     *
+     * @return string
+     */
+    public function getPayeeName()
+    {
+        return $this->container['payeeName'];
+    }
+
+    /**
+     * Sets payeeName
+     *
+     * @param string $payeeName payeeName
+     *
+     * @return $this
+     */
+    public function setPayeeName($payeeName)
+    {
+        $this->container['payeeName'] = $payeeName;
+
+        return $this;
+    }
+
+    /**
+     * Gets categoryName
+     *
+     * @return string
+     */
+    public function getCategoryName()
+    {
+        return $this->container['categoryName'];
+    }
+
+    /**
+     * Sets categoryName
+     *
+     * @param string $categoryName categoryName
+     *
+     * @return $this
+     */
+    public function setCategoryName($categoryName)
+    {
+        $this->container['categoryName'] = $categoryName;
 
         return $this;
     }

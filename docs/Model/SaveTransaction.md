@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **payeeId** | **string** | The payee for the transaction.  Transfer payees are not permitted and will be ignored if supplied. | [optional] 
 **payeeName** | **string** | The payee name.  If a payee_name value is provided and payee_id is not included or has a null value, payee_name will be used to create or use an existing payee. | [optional] 
 **categoryId** | **string** | The category for the transaction.  Split and Credit Card Payment categories are not permitted and will be ignored if supplied. | [optional] 
+**memo** | **string** |  | [optional] 
 **cleared** | **string** | The cleared status of the transaction | [optional] 
 **approved** | **bool** | Whether or not the transaction is approved.  If not supplied, transaction will be unapproved by default. | [optional] 
 **flagColor** | **string** | The transaction flag | [optional] 

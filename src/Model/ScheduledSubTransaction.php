@@ -60,6 +60,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'string',
         'scheduledTransactionId' => 'string',
         'amount' => 'float',
+        'memo' => 'string',
         'payeeId' => 'string',
         'categoryId' => 'string',
         'transferAccountId' => 'string'
@@ -74,6 +75,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'scheduledTransactionId' => 'uuid',
         'amount' => '1234000',
+        'memo' => null,
         'payeeId' => 'uuid',
         'categoryId' => 'uuid',
         'transferAccountId' => 'uuid'
@@ -109,6 +111,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'id',
         'scheduledTransactionId' => 'scheduled_transaction_id',
         'amount' => 'amount',
+        'memo' => 'memo',
         'payeeId' => 'payee_id',
         'categoryId' => 'category_id',
         'transferAccountId' => 'transfer_account_id'
@@ -123,6 +126,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'scheduledTransactionId' => 'setScheduledTransactionId',
         'amount' => 'setAmount',
+        'memo' => 'setMemo',
         'payeeId' => 'setPayeeId',
         'categoryId' => 'setCategoryId',
         'transferAccountId' => 'setTransferAccountId'
@@ -137,6 +141,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'scheduledTransactionId' => 'getScheduledTransactionId',
         'amount' => 'getAmount',
+        'memo' => 'getMemo',
         'payeeId' => 'getPayeeId',
         'categoryId' => 'getCategoryId',
         'transferAccountId' => 'getTransferAccountId'
@@ -205,6 +210,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['scheduledTransactionId'] = isset($data['scheduledTransactionId']) ? $data['scheduledTransactionId'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
         $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
         $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
@@ -227,6 +233,9 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
         }
         if ($this->container['payeeId'] === null) {
             $invalidProperties[] = "'payeeId' can't be null";
@@ -256,6 +265,9 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['amount'] === null) {
+            return false;
+        }
+        if ($this->container['memo'] === null) {
             return false;
         }
         if ($this->container['payeeId'] === null) {
@@ -339,6 +351,30 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
 
         return $this;
     }

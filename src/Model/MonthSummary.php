@@ -57,7 +57,8 @@ class MonthSummary implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'month' => '\DateTime'
+        'month' => '\DateTime',
+        'note' => 'string'
     ];
 
     /**
@@ -66,7 +67,8 @@ class MonthSummary implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'month' => 'date'
+        'month' => 'date',
+        'note' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class MonthSummary implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'month' => 'month'
+        'month' => 'month',
+        'note' => 'note'
     ];
 
     /**
@@ -105,7 +108,8 @@ class MonthSummary implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'month' => 'setMonth'
+        'month' => 'setMonth',
+        'note' => 'setNote'
     ];
 
     /**
@@ -114,7 +118,8 @@ class MonthSummary implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'month' => 'getMonth'
+        'month' => 'getMonth',
+        'note' => 'getNote'
     ];
 
     /**
@@ -178,6 +183,7 @@ class MonthSummary implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['month'] = isset($data['month']) ? $data['month'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
     }
 
     /**
@@ -192,6 +198,9 @@ class MonthSummary implements ModelInterface, ArrayAccess
         if ($this->container['month'] === null) {
             $invalidProperties[] = "'month' can't be null";
         }
+        if ($this->container['note'] === null) {
+            $invalidProperties[] = "'note' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -205,6 +214,9 @@ class MonthSummary implements ModelInterface, ArrayAccess
     {
 
         if ($this->container['month'] === null) {
+            return false;
+        }
+        if ($this->container['note'] === null) {
             return false;
         }
         return true;
@@ -231,6 +243,30 @@ class MonthSummary implements ModelInterface, ArrayAccess
     public function setMonth($month)
     {
         $this->container['month'] = $month;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string $note note
+     *
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

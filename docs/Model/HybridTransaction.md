@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | 
 **date** | [**\DateTime**](\DateTime.md) |  | 
 **amount** | **float** | The transaction amount in milliunits format | 
+**memo** | **string** |  | 
 **cleared** | **string** | The cleared status of the transaction | 
 **approved** | **bool** | Whether or not the transaction is approved | 
 **flagColor** | **string** | The transaction flag | 
@@ -17,6 +18,8 @@ Name | Type | Description | Notes
 **type** | **string** | Whether the hybrid transaction represents a regular transaction or a subtransaction | 
 **parentTransactionId** | **string** | For subtransaction types, this is the id of the pararent transaction.  For transaction types, this id will be always be null. | 
 **accountName** | **string** |  | 
+**payeeName** | **string** |  | 
+**categoryName** | **string** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

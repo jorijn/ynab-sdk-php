@@ -62,6 +62,7 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'string',
         'onBudget' => 'bool',
         'closed' => 'bool',
+        'note' => 'string',
         'balance' => 'float',
         'clearedBalance' => 'float',
         'unclearedBalance' => 'float'
@@ -78,6 +79,7 @@ class Account implements ModelInterface, ArrayAccess
         'type' => null,
         'onBudget' => null,
         'closed' => null,
+        'note' => null,
         'balance' => '1234000',
         'clearedBalance' => '1234000',
         'unclearedBalance' => '1234000'
@@ -115,6 +117,7 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'type',
         'onBudget' => 'on_budget',
         'closed' => 'closed',
+        'note' => 'note',
         'balance' => 'balance',
         'clearedBalance' => 'cleared_balance',
         'unclearedBalance' => 'uncleared_balance'
@@ -131,6 +134,7 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'setType',
         'onBudget' => 'setOnBudget',
         'closed' => 'setClosed',
+        'note' => 'setNote',
         'balance' => 'setBalance',
         'clearedBalance' => 'setClearedBalance',
         'unclearedBalance' => 'setUnclearedBalance'
@@ -147,6 +151,7 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'getType',
         'onBudget' => 'getOnBudget',
         'closed' => 'getClosed',
+        'note' => 'getNote',
         'balance' => 'getBalance',
         'clearedBalance' => 'getClearedBalance',
         'unclearedBalance' => 'getUnclearedBalance'
@@ -250,6 +255,7 @@ class Account implements ModelInterface, ArrayAccess
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['onBudget'] = isset($data['onBudget']) ? $data['onBudget'] : null;
         $this->container['closed'] = isset($data['closed']) ? $data['closed'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
         $this->container['clearedBalance'] = isset($data['clearedBalance']) ? $data['clearedBalance'] : null;
         $this->container['unclearedBalance'] = isset($data['unclearedBalance']) ? $data['unclearedBalance'] : null;
@@ -286,6 +292,9 @@ class Account implements ModelInterface, ArrayAccess
         }
         if ($this->container['closed'] === null) {
             $invalidProperties[] = "'closed' can't be null";
+        }
+        if ($this->container['note'] === null) {
+            $invalidProperties[] = "'note' can't be null";
         }
         if ($this->container['balance'] === null) {
             $invalidProperties[] = "'balance' can't be null";
@@ -325,6 +334,9 @@ class Account implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['closed'] === null) {
+            return false;
+        }
+        if ($this->container['note'] === null) {
             return false;
         }
         if ($this->container['balance'] === null) {
@@ -465,6 +477,30 @@ class Account implements ModelInterface, ArrayAccess
     public function setClosed($closed)
     {
         $this->container['closed'] = $closed;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string $note note
+     *
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

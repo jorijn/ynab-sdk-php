@@ -63,6 +63,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'payeeId' => 'string',
         'payeeName' => 'string',
         'categoryId' => 'string',
+        'memo' => 'string',
         'cleared' => 'string',
         'approved' => 'bool',
         'flagColor' => 'string',
@@ -81,6 +82,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'payeeId' => 'uuid',
         'payeeName' => null,
         'categoryId' => 'uuid',
+        'memo' => null,
         'cleared' => null,
         'approved' => null,
         'flagColor' => null,
@@ -120,6 +122,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'payeeId' => 'payee_id',
         'payeeName' => 'payee_name',
         'categoryId' => 'category_id',
+        'memo' => 'memo',
         'cleared' => 'cleared',
         'approved' => 'approved',
         'flagColor' => 'flag_color',
@@ -138,6 +141,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'payeeId' => 'setPayeeId',
         'payeeName' => 'setPayeeName',
         'categoryId' => 'setCategoryId',
+        'memo' => 'setMemo',
         'cleared' => 'setCleared',
         'approved' => 'setApproved',
         'flagColor' => 'setFlagColor',
@@ -156,6 +160,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'payeeId' => 'getPayeeId',
         'payeeName' => 'getPayeeName',
         'categoryId' => 'getCategoryId',
+        'memo' => 'getMemo',
         'cleared' => 'getCleared',
         'approved' => 'getApproved',
         'flagColor' => 'getFlagColor',
@@ -268,6 +273,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
         $this->container['payeeName'] = isset($data['payeeName']) ? $data['payeeName'] : null;
         $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
         $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
         $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
@@ -481,6 +487,30 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     public function setCategoryId($categoryId)
     {
         $this->container['categoryId'] = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
 
         return $this;
     }

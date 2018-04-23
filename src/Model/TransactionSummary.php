@@ -60,6 +60,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         'id' => 'string',
         'date' => '\DateTime',
         'amount' => 'float',
+        'memo' => 'string',
         'cleared' => 'string',
         'approved' => 'bool',
         'flagColor' => 'string',
@@ -79,6 +80,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'date' => 'date',
         'amount' => '1234000',
+        'memo' => null,
         'cleared' => null,
         'approved' => null,
         'flagColor' => null,
@@ -119,6 +121,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         'id' => 'id',
         'date' => 'date',
         'amount' => 'amount',
+        'memo' => 'memo',
         'cleared' => 'cleared',
         'approved' => 'approved',
         'flagColor' => 'flag_color',
@@ -138,6 +141,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'date' => 'setDate',
         'amount' => 'setAmount',
+        'memo' => 'setMemo',
         'cleared' => 'setCleared',
         'approved' => 'setApproved',
         'flagColor' => 'setFlagColor',
@@ -157,6 +161,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'date' => 'getDate',
         'amount' => 'getAmount',
+        'memo' => 'getMemo',
         'cleared' => 'getCleared',
         'approved' => 'getApproved',
         'flagColor' => 'getFlagColor',
@@ -270,6 +275,7 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['date'] = isset($data['date']) ? $data['date'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
         $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
         $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
@@ -297,6 +303,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess
         }
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
         }
         if ($this->container['cleared'] === null) {
             $invalidProperties[] = "'cleared' can't be null";
@@ -357,6 +366,9 @@ class TransactionSummary implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['amount'] === null) {
+            return false;
+        }
+        if ($this->container['memo'] === null) {
             return false;
         }
         if ($this->container['cleared'] === null) {
@@ -463,6 +475,30 @@ class TransactionSummary implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
 
         return $this;
     }

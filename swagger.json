@@ -1583,10 +1583,7 @@
                     "description": "Whether this account is closed or not"
                 },
                 "note": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "balance": {
                     "type": "number",
@@ -1724,10 +1721,7 @@
                     "type": "boolean"
                 },
                 "note": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "budgeted": {
                     "type": "number",
@@ -1807,10 +1801,7 @@
                 },
                 "transfer_account_id": {
                     "description": "If a transfer payee, the account_id to which this payee transfers to",
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             }
         },
@@ -1879,16 +1870,10 @@
                     "format": "uuid"
                 },
                 "latitude": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "longitude": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 }
             }
         },
@@ -1995,10 +1980,7 @@
                     "description": "The transaction amount in milliunits format"
                 },
                 "memo": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "cleared": {
                     "type": "string",
@@ -2066,16 +2048,10 @@
                             "type": "string"
                         },
                         "payee_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         },
                         "category_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         },
                         "subtransactions": {
                             "type": "array",
@@ -2120,16 +2096,10 @@
                             "type": "string"
                         },
                         "payee_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         },
                         "category_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         }
                     }
                 }
@@ -2182,10 +2152,7 @@
                     "description": "The category for the transaction.  Split and Credit Card Payment categories are not permitted and will be ignored if supplied."
                 },
                 "memo": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "cleared": {
                     "type": "string",
@@ -2304,10 +2271,7 @@
                     "description": "The subtransaction amount in milliunits format"
                 },
                 "memo": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "payee_id": {
                     "type": "string",
@@ -2425,10 +2389,7 @@
                     "description": "The scheduled transaction amount in milliunits format"
                 },
                 "memo": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "flag_color": {
                     "type": "string",
@@ -2480,16 +2441,10 @@
                             "type": "string"
                         },
                         "payee_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         },
                         "category_name": {
-                            "type": [
-                                "string",
-                                "null"
-                            ]
+                            "type": "string"
                         },
                         "subtransactions": {
                             "type": "array",
@@ -2528,10 +2483,7 @@
                     "description": "The scheduled subtransaction amount in milliunits format"
                 },
                 "memo": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "payee_id": {
                     "type": "string",
@@ -2609,10 +2561,7 @@
                     "format": "date"
                 },
                 "note": {
-                    "type": [
-                        "string",
-                        "null"
-                    ]
+                    "type": "string"
                 },
                 "to_be_budgeted": {
                     "type": [

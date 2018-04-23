@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **string** |  | 
 **date** | [**\DateTime**](\DateTime.md) |  | 
 **amount** | **float** | The transaction amount in milliunits format | 
+**memo** | **string** |  | 
 **cleared** | **string** | The cleared status of the transaction | 
 **approved** | **bool** | Whether or not the transaction is approved | 
 **flagColor** | **string** | The transaction flag | 

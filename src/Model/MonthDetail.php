@@ -58,6 +58,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'month' => '\DateTime',
+        'note' => 'string',
         'categories' => '\YNAB\Model\Category[]'
     ];
 
@@ -68,6 +69,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'month' => 'date',
+        'note' => null,
         'categories' => null
     ];
 
@@ -99,6 +101,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'month' => 'month',
+        'note' => 'note',
         'categories' => 'categories'
     ];
 
@@ -109,6 +112,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'month' => 'setMonth',
+        'note' => 'setNote',
         'categories' => 'setCategories'
     ];
 
@@ -119,6 +123,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'month' => 'getMonth',
+        'note' => 'getNote',
         'categories' => 'getCategories'
     ];
 
@@ -183,6 +188,7 @@ class MonthDetail implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['month'] = isset($data['month']) ? $data['month'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['categories'] = isset($data['categories']) ? $data['categories'] : null;
     }
 
@@ -197,6 +203,9 @@ class MonthDetail implements ModelInterface, ArrayAccess
 
         if ($this->container['month'] === null) {
             $invalidProperties[] = "'month' can't be null";
+        }
+        if ($this->container['note'] === null) {
+            $invalidProperties[] = "'note' can't be null";
         }
         if ($this->container['categories'] === null) {
             $invalidProperties[] = "'categories' can't be null";
@@ -214,6 +223,9 @@ class MonthDetail implements ModelInterface, ArrayAccess
     {
 
         if ($this->container['month'] === null) {
+            return false;
+        }
+        if ($this->container['note'] === null) {
             return false;
         }
         if ($this->container['categories'] === null) {
@@ -243,6 +255,30 @@ class MonthDetail implements ModelInterface, ArrayAccess
     public function setMonth($month)
     {
         $this->container['month'] = $month;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string $note note
+     *
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

@@ -62,6 +62,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => '\DateTime',
         'frequency' => 'string',
         'amount' => 'float',
+        'memo' => 'string',
         'flagColor' => 'string',
         'accountId' => 'string',
         'payeeId' => 'string',
@@ -80,6 +81,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'date',
         'frequency' => null,
         'amount' => '1234000',
+        'memo' => null,
         'flagColor' => null,
         'accountId' => 'uuid',
         'payeeId' => 'uuid',
@@ -119,6 +121,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'date_next',
         'frequency' => 'frequency',
         'amount' => 'amount',
+        'memo' => 'memo',
         'flagColor' => 'flag_color',
         'accountId' => 'account_id',
         'payeeId' => 'payee_id',
@@ -137,6 +140,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'setDateNext',
         'frequency' => 'setFrequency',
         'amount' => 'setAmount',
+        'memo' => 'setMemo',
         'flagColor' => 'setFlagColor',
         'accountId' => 'setAccountId',
         'payeeId' => 'setPayeeId',
@@ -155,6 +159,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'getDateNext',
         'frequency' => 'getFrequency',
         'amount' => 'getAmount',
+        'memo' => 'getMemo',
         'flagColor' => 'getFlagColor',
         'accountId' => 'getAccountId',
         'payeeId' => 'getPayeeId',
@@ -287,6 +292,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         $this->container['dateNext'] = isset($data['dateNext']) ? $data['dateNext'] : null;
         $this->container['frequency'] = isset($data['frequency']) ? $data['frequency'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
         $this->container['accountId'] = isset($data['accountId']) ? $data['accountId'] : null;
         $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
@@ -325,6 +331,9 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
 
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
+        }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
         }
         if ($this->container['flagColor'] === null) {
             $invalidProperties[] = "'flagColor' can't be null";
@@ -378,6 +387,9 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['amount'] === null) {
+            return false;
+        }
+        if ($this->container['memo'] === null) {
             return false;
         }
         if ($this->container['flagColor'] === null) {
@@ -528,6 +540,30 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
 
         return $this;
     }
