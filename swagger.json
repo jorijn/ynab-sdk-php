@@ -2564,18 +2564,12 @@
                     "type": "string"
                 },
                 "to_be_budgeted": {
-                    "type": [
-                        "number",
-                        "null"
-                    ],
+                    "type": "number",
                     "format": "1234000",
                     "description": "The current balance of the account in milliunits format"
                 },
                 "age_of_money": {
-                    "type": [
-                        "number",
-                        "null"
-                    ]
+                    "type": "number"
                 }
             }
         },

@@ -59,6 +59,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'month' => '\DateTime',
         'note' => 'string',
+        'toBeBudgeted' => 'float',
+        'ageOfMoney' => 'float',
         'categories' => '\YNAB\Model\Category[]'
     ];
 
@@ -70,6 +72,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'month' => 'date',
         'note' => null,
+        'toBeBudgeted' => '1234000',
+        'ageOfMoney' => null,
         'categories' => null
     ];
 
@@ -102,6 +106,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'month' => 'month',
         'note' => 'note',
+        'toBeBudgeted' => 'to_be_budgeted',
+        'ageOfMoney' => 'age_of_money',
         'categories' => 'categories'
     ];
 
@@ -113,6 +119,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     protected static $setters = [
         'month' => 'setMonth',
         'note' => 'setNote',
+        'toBeBudgeted' => 'setToBeBudgeted',
+        'ageOfMoney' => 'setAgeOfMoney',
         'categories' => 'setCategories'
     ];
 
@@ -124,6 +132,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     protected static $getters = [
         'month' => 'getMonth',
         'note' => 'getNote',
+        'toBeBudgeted' => 'getToBeBudgeted',
+        'ageOfMoney' => 'getAgeOfMoney',
         'categories' => 'getCategories'
     ];
 
@@ -189,6 +199,8 @@ class MonthDetail implements ModelInterface, ArrayAccess
     {
         $this->container['month'] = isset($data['month']) ? $data['month'] : null;
         $this->container['note'] = isset($data['note']) ? $data['note'] : null;
+        $this->container['toBeBudgeted'] = isset($data['toBeBudgeted']) ? $data['toBeBudgeted'] : null;
+        $this->container['ageOfMoney'] = isset($data['ageOfMoney']) ? $data['ageOfMoney'] : null;
         $this->container['categories'] = isset($data['categories']) ? $data['categories'] : null;
     }
 
@@ -206,6 +218,12 @@ class MonthDetail implements ModelInterface, ArrayAccess
         }
         if ($this->container['note'] === null) {
             $invalidProperties[] = "'note' can't be null";
+        }
+        if ($this->container['toBeBudgeted'] === null) {
+            $invalidProperties[] = "'toBeBudgeted' can't be null";
+        }
+        if ($this->container['ageOfMoney'] === null) {
+            $invalidProperties[] = "'ageOfMoney' can't be null";
         }
         if ($this->container['categories'] === null) {
             $invalidProperties[] = "'categories' can't be null";
@@ -226,6 +244,12 @@ class MonthDetail implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['note'] === null) {
+            return false;
+        }
+        if ($this->container['toBeBudgeted'] === null) {
+            return false;
+        }
+        if ($this->container['ageOfMoney'] === null) {
             return false;
         }
         if ($this->container['categories'] === null) {
@@ -279,6 +303,54 @@ class MonthDetail implements ModelInterface, ArrayAccess
     public function setNote($note)
     {
         $this->container['note'] = $note;
+
+        return $this;
+    }
+
+    /**
+     * Gets toBeBudgeted
+     *
+     * @return float
+     */
+    public function getToBeBudgeted()
+    {
+        return $this->container['toBeBudgeted'];
+    }
+
+    /**
+     * Sets toBeBudgeted
+     *
+     * @param float $toBeBudgeted The current balance of the account in milliunits format
+     *
+     * @return $this
+     */
+    public function setToBeBudgeted($toBeBudgeted)
+    {
+        $this->container['toBeBudgeted'] = $toBeBudgeted;
+
+        return $this;
+    }
+
+    /**
+     * Gets ageOfMoney
+     *
+     * @return float
+     */
+    public function getAgeOfMoney()
+    {
+        return $this->container['ageOfMoney'];
+    }
+
+    /**
+     * Sets ageOfMoney
+     *
+     * @param float $ageOfMoney ageOfMoney
+     *
+     * @return $this
+     */
+    public function setAgeOfMoney($ageOfMoney)
+    {
+        $this->container['ageOfMoney'] = $ageOfMoney;
 
         return $this;
     }
