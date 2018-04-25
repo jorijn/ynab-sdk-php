@@ -58,7 +58,9 @@ class PayeeLocation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'payeeId' => 'string'
+        'payeeId' => 'string',
+        'latitude' => 'string',
+        'longitude' => 'string'
     ];
 
     /**
@@ -68,7 +70,9 @@ class PayeeLocation implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-        'payeeId' => 'uuid'
+        'payeeId' => 'uuid',
+        'latitude' => null,
+        'longitude' => null
     ];
 
     /**
@@ -99,7 +103,9 @@ class PayeeLocation implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'payeeId' => 'payee_id'
+        'payeeId' => 'payee_id',
+        'latitude' => 'latitude',
+        'longitude' => 'longitude'
     ];
 
     /**
@@ -109,7 +115,9 @@ class PayeeLocation implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'payeeId' => 'setPayeeId'
+        'payeeId' => 'setPayeeId',
+        'latitude' => 'setLatitude',
+        'longitude' => 'setLongitude'
     ];
 
     /**
@@ -119,7 +127,9 @@ class PayeeLocation implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'payeeId' => 'getPayeeId'
+        'payeeId' => 'getPayeeId',
+        'latitude' => 'getLatitude',
+        'longitude' => 'getLongitude'
     ];
 
     /**
@@ -184,6 +194,8 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
+        $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
+        $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
     }
 
     /**
@@ -201,6 +213,12 @@ class PayeeLocation implements ModelInterface, ArrayAccess
         if ($this->container['payeeId'] === null) {
             $invalidProperties[] = "'payeeId' can't be null";
         }
+        if ($this->container['latitude'] === null) {
+            $invalidProperties[] = "'latitude' can't be null";
+        }
+        if ($this->container['longitude'] === null) {
+            $invalidProperties[] = "'longitude' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -217,6 +235,12 @@ class PayeeLocation implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['payeeId'] === null) {
+            return false;
+        }
+        if ($this->container['latitude'] === null) {
+            return false;
+        }
+        if ($this->container['longitude'] === null) {
             return false;
         }
         return true;
@@ -267,6 +291,54 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     public function setPayeeId($payeeId)
     {
         $this->container['payeeId'] = $payeeId;
+
+        return $this;
+    }
+
+    /**
+     * Gets latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->container['latitude'];
+    }
+
+    /**
+     * Sets latitude
+     *
+     * @param string $latitude latitude
+     *
+     * @return $this
+     */
+    public function setLatitude($latitude)
+    {
+        $this->container['latitude'] = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Gets longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->container['longitude'];
+    }
+
+    /**
+     * Sets longitude
+     *
+     * @param string $longitude longitude
+     *
+     * @return $this
+     */
+    public function setLongitude($longitude)
+    {
+        $this->container['longitude'] = $longitude;
 
         return $this;
     }

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-swagger-codegen generate -i "https://api.youneedabudget.com/papi/spec-v1-swagger.json" \
+swagger-codegen generate -i "./YNAB-SDK-PHP/swagger.json" \
     -l "php" \
     -c "./YNAB-SDK-PHP/generate/swagger-config-php.json" \
     --ignore-file-override="./YNAB-SDK-PHP/.swagger-codegen-ignore" \

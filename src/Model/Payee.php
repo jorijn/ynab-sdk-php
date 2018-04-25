@@ -58,7 +58,8 @@ class Payee implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'string',
-        'name' => 'string'
+        'name' => 'string',
+        'transferAccountId' => 'string'
     ];
 
     /**
@@ -68,7 +69,8 @@ class Payee implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'uuid',
-        'name' => null
+        'name' => null,
+        'transferAccountId' => null
     ];
 
     /**
@@ -99,7 +101,8 @@ class Payee implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
-        'name' => 'name'
+        'name' => 'name',
+        'transferAccountId' => 'transfer_account_id'
     ];
 
     /**
@@ -109,7 +112,8 @@ class Payee implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
-        'name' => 'setName'
+        'name' => 'setName',
+        'transferAccountId' => 'setTransferAccountId'
     ];
 
     /**
@@ -119,7 +123,8 @@ class Payee implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
-        'name' => 'getName'
+        'name' => 'getName',
+        'transferAccountId' => 'getTransferAccountId'
     ];
 
     /**
@@ -184,6 +189,7 @@ class Payee implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
     }
 
     /**
@@ -201,6 +207,9 @@ class Payee implements ModelInterface, ArrayAccess
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['transferAccountId'] === null) {
+            $invalidProperties[] = "'transferAccountId' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -217,6 +226,9 @@ class Payee implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['name'] === null) {
+            return false;
+        }
+        if ($this->container['transferAccountId'] === null) {
             return false;
         }
         return true;
@@ -267,6 +279,30 @@ class Payee implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets transferAccountId
+     *
+     * @return string
+     */
+    public function getTransferAccountId()
+    {
+        return $this->container['transferAccountId'];
+    }
+
+    /**
+     * Sets transferAccountId
+     *
+     * @param string $transferAccountId If a transfer payee, the account_id to which this payee transfers to
+     *
+     * @return $this
+     */
+    public function setTransferAccountId($transferAccountId)
+    {
+        $this->container['transferAccountId'] = $transferAccountId;
 
         return $this;
     }

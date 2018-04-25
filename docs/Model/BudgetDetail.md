@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **string** |  | 
 **name** | **string** |  | 
+**lastModifiedOn** | [**\DateTime**](\DateTime.md) | The last time any changes were made to the budget from either a web or mobile client. | [optional] 
 **dateFormat** | [**\YNAB\Model\DateFormat**](DateFormat.md) |  | [optional] 
 **currencyFormat** | [**\YNAB\Model\CurrencyFormat**](CurrencyFormat.md) |  | [optional] 
 **accounts** | [**\YNAB\Model\Account[]**](Account.md) |  | [optional] 

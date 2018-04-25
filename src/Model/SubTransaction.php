@@ -59,7 +59,11 @@ class SubTransaction implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'transactionId' => 'string',
-        'amount' => 'float'
+        'amount' => 'float',
+        'memo' => 'string',
+        'payeeId' => 'string',
+        'categoryId' => 'string',
+        'transferAccountId' => 'string'
     ];
 
     /**
@@ -70,7 +74,11 @@ class SubTransaction implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'uuid',
         'transactionId' => 'uuid',
-        'amount' => '1234000'
+        'amount' => '1234000',
+        'memo' => null,
+        'payeeId' => 'uuid',
+        'categoryId' => 'uuid',
+        'transferAccountId' => 'uuid'
     ];
 
     /**
@@ -102,7 +110,11 @@ class SubTransaction implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'transactionId' => 'transaction_id',
-        'amount' => 'amount'
+        'amount' => 'amount',
+        'memo' => 'memo',
+        'payeeId' => 'payee_id',
+        'categoryId' => 'category_id',
+        'transferAccountId' => 'transfer_account_id'
     ];
 
     /**
@@ -113,7 +125,11 @@ class SubTransaction implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'transactionId' => 'setTransactionId',
-        'amount' => 'setAmount'
+        'amount' => 'setAmount',
+        'memo' => 'setMemo',
+        'payeeId' => 'setPayeeId',
+        'categoryId' => 'setCategoryId',
+        'transferAccountId' => 'setTransferAccountId'
     ];
 
     /**
@@ -124,7 +140,11 @@ class SubTransaction implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'transactionId' => 'getTransactionId',
-        'amount' => 'getAmount'
+        'amount' => 'getAmount',
+        'memo' => 'getMemo',
+        'payeeId' => 'getPayeeId',
+        'categoryId' => 'getCategoryId',
+        'transferAccountId' => 'getTransferAccountId'
     ];
 
     /**
@@ -190,6 +210,10 @@ class SubTransaction implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['transactionId'] = isset($data['transactionId']) ? $data['transactionId'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
+        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
+        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
     }
 
     /**
@@ -210,6 +234,18 @@ class SubTransaction implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['payeeId'] === null) {
+            $invalidProperties[] = "'payeeId' can't be null";
+        }
+        if ($this->container['categoryId'] === null) {
+            $invalidProperties[] = "'categoryId' can't be null";
+        }
+        if ($this->container['transferAccountId'] === null) {
+            $invalidProperties[] = "'transferAccountId' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -229,6 +265,18 @@ class SubTransaction implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['amount'] === null) {
+            return false;
+        }
+        if ($this->container['memo'] === null) {
+            return false;
+        }
+        if ($this->container['payeeId'] === null) {
+            return false;
+        }
+        if ($this->container['categoryId'] === null) {
+            return false;
+        }
+        if ($this->container['transferAccountId'] === null) {
             return false;
         }
         return true;
@@ -303,6 +351,102 @@ class SubTransaction implements ModelInterface, ArrayAccess
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
+
+        return $this;
+    }
+
+    /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets payeeId
+     *
+     * @return string
+     */
+    public function getPayeeId()
+    {
+        return $this->container['payeeId'];
+    }
+
+    /**
+     * Sets payeeId
+     *
+     * @param string $payeeId payeeId
+     *
+     * @return $this
+     */
+    public function setPayeeId($payeeId)
+    {
+        $this->container['payeeId'] = $payeeId;
+
+        return $this;
+    }
+
+    /**
+     * Gets categoryId
+     *
+     * @return string
+     */
+    public function getCategoryId()
+    {
+        return $this->container['categoryId'];
+    }
+
+    /**
+     * Sets categoryId
+     *
+     * @param string $categoryId categoryId
+     *
+     * @return $this
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->container['categoryId'] = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Gets transferAccountId
+     *
+     * @return string
+     */
+    public function getTransferAccountId()
+    {
+        return $this->container['transferAccountId'];
+    }
+
+    /**
+     * Sets transferAccountId
+     *
+     * @param string $transferAccountId If a transfer, the account_id which the subtransaction transfers to
+     *
+     * @return $this
+     */
+    public function setTransferAccountId($transferAccountId)
+    {
+        $this->container['transferAccountId'] = $transferAccountId;
 
         return $this;
     }

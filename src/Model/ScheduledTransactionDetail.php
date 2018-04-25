@@ -62,8 +62,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         'dateNext' => '\DateTime',
         'frequency' => 'string',
         'amount' => 'float',
+        'memo' => 'string',
+        'flagColor' => 'string',
         'accountId' => 'string',
+        'payeeId' => 'string',
+        'categoryId' => 'string',
+        'transferAccountId' => 'string',
         'accountName' => 'string',
+        'payeeName' => 'string',
+        'categoryName' => 'string',
         'subtransactions' => '\YNAB\Model\ScheduledSubTransaction[]'
     ];
 
@@ -78,8 +85,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         'dateNext' => 'date',
         'frequency' => null,
         'amount' => '1234000',
+        'memo' => null,
+        'flagColor' => null,
         'accountId' => 'uuid',
+        'payeeId' => 'uuid',
+        'categoryId' => 'uuid',
+        'transferAccountId' => 'uuid',
         'accountName' => null,
+        'payeeName' => null,
+        'categoryName' => null,
         'subtransactions' => null
     ];
 
@@ -115,8 +129,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         'dateNext' => 'date_next',
         'frequency' => 'frequency',
         'amount' => 'amount',
+        'memo' => 'memo',
+        'flagColor' => 'flag_color',
         'accountId' => 'account_id',
+        'payeeId' => 'payee_id',
+        'categoryId' => 'category_id',
+        'transferAccountId' => 'transfer_account_id',
         'accountName' => 'account_name',
+        'payeeName' => 'payee_name',
+        'categoryName' => 'category_name',
         'subtransactions' => 'subtransactions'
     ];
 
@@ -131,8 +152,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         'dateNext' => 'setDateNext',
         'frequency' => 'setFrequency',
         'amount' => 'setAmount',
+        'memo' => 'setMemo',
+        'flagColor' => 'setFlagColor',
         'accountId' => 'setAccountId',
+        'payeeId' => 'setPayeeId',
+        'categoryId' => 'setCategoryId',
+        'transferAccountId' => 'setTransferAccountId',
         'accountName' => 'setAccountName',
+        'payeeName' => 'setPayeeName',
+        'categoryName' => 'setCategoryName',
         'subtransactions' => 'setSubtransactions'
     ];
 
@@ -147,8 +175,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         'dateNext' => 'getDateNext',
         'frequency' => 'getFrequency',
         'amount' => 'getAmount',
+        'memo' => 'getMemo',
+        'flagColor' => 'getFlagColor',
         'accountId' => 'getAccountId',
+        'payeeId' => 'getPayeeId',
+        'categoryId' => 'getCategoryId',
+        'transferAccountId' => 'getTransferAccountId',
         'accountName' => 'getAccountName',
+        'payeeName' => 'getPayeeName',
+        'categoryName' => 'getCategoryName',
         'subtransactions' => 'getSubtransactions'
     ];
 
@@ -206,6 +241,12 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
     const FREQUENCY_TWICE_A_YEAR = 'twiceAYear';
     const FREQUENCY_YEARLY = 'yearly';
     const FREQUENCY_EVERY_OTHER_YEAR = 'everyOtherYear';
+    const FLAG_COLOR_RED = 'red';
+    const FLAG_COLOR_ORANGE = 'orange';
+    const FLAG_COLOR_YELLOW = 'yellow';
+    const FLAG_COLOR_GREEN = 'green';
+    const FLAG_COLOR_BLUE = 'blue';
+    const FLAG_COLOR_PURPLE = 'purple';
     
 
     
@@ -233,6 +274,23 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         ];
     }
     
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getFlagColorAllowableValues()
+    {
+        return [
+            self::FLAG_COLOR_RED,
+            self::FLAG_COLOR_ORANGE,
+            self::FLAG_COLOR_YELLOW,
+            self::FLAG_COLOR_GREEN,
+            self::FLAG_COLOR_BLUE,
+            self::FLAG_COLOR_PURPLE,
+        ];
+    }
+    
 
     /**
      * Associative array for storing property values
@@ -254,8 +312,15 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         $this->container['dateNext'] = isset($data['dateNext']) ? $data['dateNext'] : null;
         $this->container['frequency'] = isset($data['frequency']) ? $data['frequency'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
+        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
+        $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
         $this->container['accountId'] = isset($data['accountId']) ? $data['accountId'] : null;
+        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
+        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
+        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
         $this->container['accountName'] = isset($data['accountName']) ? $data['accountName'] : null;
+        $this->container['payeeName'] = isset($data['payeeName']) ? $data['payeeName'] : null;
+        $this->container['categoryName'] = isset($data['categoryName']) ? $data['categoryName'] : null;
         $this->container['subtransactions'] = isset($data['subtransactions']) ? $data['subtransactions'] : null;
     }
 
@@ -291,11 +356,40 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
+        if ($this->container['memo'] === null) {
+            $invalidProperties[] = "'memo' can't be null";
+        }
+        if ($this->container['flagColor'] === null) {
+            $invalidProperties[] = "'flagColor' can't be null";
+        }
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($this->container['flagColor'], $allowedValues)) {
+            $invalidProperties[] = sprintf(
+                "invalid value for 'flagColor', must be one of '%s'",
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['accountId'] === null) {
             $invalidProperties[] = "'accountId' can't be null";
         }
+        if ($this->container['payeeId'] === null) {
+            $invalidProperties[] = "'payeeId' can't be null";
+        }
+        if ($this->container['categoryId'] === null) {
+            $invalidProperties[] = "'categoryId' can't be null";
+        }
+        if ($this->container['transferAccountId'] === null) {
+            $invalidProperties[] = "'transferAccountId' can't be null";
+        }
         if ($this->container['accountName'] === null) {
             $invalidProperties[] = "'accountName' can't be null";
+        }
+        if ($this->container['payeeName'] === null) {
+            $invalidProperties[] = "'payeeName' can't be null";
+        }
+        if ($this->container['categoryName'] === null) {
+            $invalidProperties[] = "'categoryName' can't be null";
         }
         if ($this->container['subtransactions'] === null) {
             $invalidProperties[] = "'subtransactions' can't be null";
@@ -331,10 +425,35 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             return false;
         }
+        if ($this->container['memo'] === null) {
+            return false;
+        }
+        if ($this->container['flagColor'] === null) {
+            return false;
+        }
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($this->container['flagColor'], $allowedValues)) {
+            return false;
+        }
         if ($this->container['accountId'] === null) {
             return false;
         }
+        if ($this->container['payeeId'] === null) {
+            return false;
+        }
+        if ($this->container['categoryId'] === null) {
+            return false;
+        }
+        if ($this->container['transferAccountId'] === null) {
+            return false;
+        }
         if ($this->container['accountName'] === null) {
+            return false;
+        }
+        if ($this->container['payeeName'] === null) {
+            return false;
+        }
+        if ($this->container['categoryName'] === null) {
             return false;
         }
         if ($this->container['subtransactions'] === null) {
@@ -474,6 +593,63 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets memo
+     *
+     * @return string
+     */
+    public function getMemo()
+    {
+        return $this->container['memo'];
+    }
+
+    /**
+     * Sets memo
+     *
+     * @param string $memo memo
+     *
+     * @return $this
+     */
+    public function setMemo($memo)
+    {
+        $this->container['memo'] = $memo;
+
+        return $this;
+    }
+
+    /**
+     * Gets flagColor
+     *
+     * @return string
+     */
+    public function getFlagColor()
+    {
+        return $this->container['flagColor'];
+    }
+
+    /**
+     * Sets flagColor
+     *
+     * @param string $flagColor The scheduled transaction flag
+     *
+     * @return $this
+     */
+    public function setFlagColor($flagColor)
+    {
+        $allowedValues = $this->getFlagColorAllowableValues();
+        if (!in_array($flagColor, $allowedValues)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value for 'flagColor', must be one of '%s'",
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['flagColor'] = $flagColor;
+
+        return $this;
+    }
+
+    /**
      * Gets accountId
      *
      * @return string
@@ -498,6 +674,78 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets payeeId
+     *
+     * @return string
+     */
+    public function getPayeeId()
+    {
+        return $this->container['payeeId'];
+    }
+
+    /**
+     * Sets payeeId
+     *
+     * @param string $payeeId payeeId
+     *
+     * @return $this
+     */
+    public function setPayeeId($payeeId)
+    {
+        $this->container['payeeId'] = $payeeId;
+
+        return $this;
+    }
+
+    /**
+     * Gets categoryId
+     *
+     * @return string
+     */
+    public function getCategoryId()
+    {
+        return $this->container['categoryId'];
+    }
+
+    /**
+     * Sets categoryId
+     *
+     * @param string $categoryId categoryId
+     *
+     * @return $this
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->container['categoryId'] = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Gets transferAccountId
+     *
+     * @return string
+     */
+    public function getTransferAccountId()
+    {
+        return $this->container['transferAccountId'];
+    }
+
+    /**
+     * Sets transferAccountId
+     *
+     * @param string $transferAccountId If a transfer, the account_id which the scheduled transaction transfers to
+     *
+     * @return $this
+     */
+    public function setTransferAccountId($transferAccountId)
+    {
+        $this->container['transferAccountId'] = $transferAccountId;
+
+        return $this;
+    }
+
+    /**
      * Gets accountName
      *
      * @return string
@@ -517,6 +765,54 @@ class ScheduledTransactionDetail implements ModelInterface, ArrayAccess
     public function setAccountName($accountName)
     {
         $this->container['accountName'] = $accountName;
+
+        return $this;
+    }
+
+    /**
+     * Gets payeeName
+     *
+     * @return string
+     */
+    public function getPayeeName()
+    {
+        return $this->container['payeeName'];
+    }
+
+    /**
+     * Sets payeeName
+     *
+     * @param string $payeeName payeeName
+     *
+     * @return $this
+     */
+    public function setPayeeName($payeeName)
+    {
+        $this->container['payeeName'] = $payeeName;
+
+        return $this;
+    }
+
+    /**
+     * Gets categoryName
+     *
+     * @return string
+     */
+    public function getCategoryName()
+    {
+        return $this->container['categoryName'];
+    }
+
+    /**
+     * Sets categoryName
+     *
+     * @param string $categoryName categoryName
+     *
+     * @return $this
+     */
+    public function setCategoryName($categoryName)
+    {
+        $this->container['categoryName'] = $categoryName;
 
         return $this;
     }

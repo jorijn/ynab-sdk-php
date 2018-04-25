@@ -61,6 +61,7 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'string',
         'name' => 'string',
         'hidden' => 'bool',
+        'note' => 'string',
         'budgeted' => 'float',
         'activity' => 'float',
         'balance' => 'float'
@@ -76,6 +77,7 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'uuid',
         'name' => null,
         'hidden' => null,
+        'note' => null,
         'budgeted' => null,
         'activity' => null,
         'balance' => null
@@ -112,6 +114,7 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'category_group_id',
         'name' => 'name',
         'hidden' => 'hidden',
+        'note' => 'note',
         'budgeted' => 'budgeted',
         'activity' => 'activity',
         'balance' => 'balance'
@@ -127,6 +130,7 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'setCategoryGroupId',
         'name' => 'setName',
         'hidden' => 'setHidden',
+        'note' => 'setNote',
         'budgeted' => 'setBudgeted',
         'activity' => 'setActivity',
         'balance' => 'setBalance'
@@ -142,6 +146,7 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'getCategoryGroupId',
         'name' => 'getName',
         'hidden' => 'getHidden',
+        'note' => 'getNote',
         'budgeted' => 'getBudgeted',
         'activity' => 'getActivity',
         'balance' => 'getBalance'
@@ -211,6 +216,7 @@ class Category implements ModelInterface, ArrayAccess
         $this->container['categoryGroupId'] = isset($data['categoryGroupId']) ? $data['categoryGroupId'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
+        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['budgeted'] = isset($data['budgeted']) ? $data['budgeted'] : null;
         $this->container['activity'] = isset($data['activity']) ? $data['activity'] : null;
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
@@ -236,6 +242,9 @@ class Category implements ModelInterface, ArrayAccess
         }
         if ($this->container['hidden'] === null) {
             $invalidProperties[] = "'hidden' can't be null";
+        }
+        if ($this->container['note'] === null) {
+            $invalidProperties[] = "'note' can't be null";
         }
         if ($this->container['budgeted'] === null) {
             $invalidProperties[] = "'budgeted' can't be null";
@@ -268,6 +277,9 @@ class Category implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['hidden'] === null) {
+            return false;
+        }
+        if ($this->container['note'] === null) {
             return false;
         }
         if ($this->container['budgeted'] === null) {
@@ -375,6 +387,30 @@ class Category implements ModelInterface, ArrayAccess
     public function setHidden($hidden)
     {
         $this->container['hidden'] = $hidden;
+
+        return $this;
+    }
+
+    /**
+     * Gets note
+     *
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->container['note'];
+    }
+
+    /**
+     * Sets note
+     *
+     * @param string $note note
+     *
+     * @return $this
+     */
+    public function setNote($note)
+    {
+        $this->container['note'] = $note;
 
         return $this;
     }

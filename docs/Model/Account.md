@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **type** | **string** |  | 
 **onBudget** | **bool** | Whether this account is on budget or not | 
 **closed** | **bool** | Whether this account is closed or not | 
+**note** | **string** |  | 
 **balance** | **float** | The current balance of the account in milliunits format | 
 **clearedBalance** | **float** | The current cleared balance of the account in milliunits format | 
 **unclearedBalance** | **float** | The current uncleared balance of the account in milliunits format | 
