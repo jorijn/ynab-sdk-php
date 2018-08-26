@@ -1,11 +1,9 @@
-# PayeeLocation
+# BudgetSettingsResponse
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **string** |  | 
-**payeeId** | **string** |  | 
-**deleted** | **bool** | Whether or not the payee location has been deleted.  Deleted payee locations will only be included in delta requests. | 
+**data** | [**\YNAB\Model\BudgetSettingsWrapper**](BudgetSettingsWrapper.md) |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -59,7 +59,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'name' => 'string',
-        'lastModifiedOn' => '\DateTime',
         'dateFormat' => '\YNAB\Model\DateFormat',
         'currencyFormat' => '\YNAB\Model\CurrencyFormat'
     ];
@@ -72,7 +71,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'uuid',
         'name' => null,
-        'lastModifiedOn' => 'date-time',
         'dateFormat' => null,
         'currencyFormat' => null
     ];
@@ -106,7 +104,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'name' => 'name',
-        'lastModifiedOn' => 'last_modified_on',
         'dateFormat' => 'date_format',
         'currencyFormat' => 'currency_format'
     ];
@@ -119,7 +116,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'name' => 'setName',
-        'lastModifiedOn' => 'setLastModifiedOn',
         'dateFormat' => 'setDateFormat',
         'currencyFormat' => 'setCurrencyFormat'
     ];
@@ -132,7 +128,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'name' => 'getName',
-        'lastModifiedOn' => 'getLastModifiedOn',
         'dateFormat' => 'getDateFormat',
         'currencyFormat' => 'getCurrencyFormat'
     ];
@@ -199,7 +194,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['lastModifiedOn'] = isset($data['lastModifiedOn']) ? $data['lastModifiedOn'] : null;
         $this->container['dateFormat'] = isset($data['dateFormat']) ? $data['dateFormat'] : null;
         $this->container['currencyFormat'] = isset($data['currencyFormat']) ? $data['currencyFormat'] : null;
     }
@@ -285,30 +279,6 @@ class BudgetSummary implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets lastModifiedOn
-     *
-     * @return \DateTime
-     */
-    public function getLastModifiedOn()
-    {
-        return $this->container['lastModifiedOn'];
-    }
-
-    /**
-     * Sets lastModifiedOn
-     *
-     * @param \DateTime $lastModifiedOn The last time any changes were made to the budget from either a web or mobile client.
-     *
-     * @return $this
-     */
-    public function setLastModifiedOn($lastModifiedOn)
-    {
-        $this->container['lastModifiedOn'] = $lastModifiedOn;
 
         return $this;
     }

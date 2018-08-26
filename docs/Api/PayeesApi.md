@@ -31,7 +31,7 @@ $apiInstance = new YNAB\Api\PayeesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$budgetId = "budgetId_example"; // string | The ID of the Budget.
+$budgetId = "budgetId_example"; // string | The ID of the Budget.  \"last-used\" can also be used to specify the last used budget.
 $payeeId = "payeeId_example"; // string | The ID of the Payee.
 
 try {
@@ -47,7 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
+ **budgetId** | [**string**](../Model/.md)| The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. |
  **payeeId** | [**string**](../Model/.md)| The ID of the Payee. |
 
 ### Return type
@@ -88,7 +88,7 @@ $apiInstance = new YNAB\Api\PayeesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$budgetId = "budgetId_example"; // string | The ID of the Budget.
+$budgetId = "budgetId_example"; // string | The ID of the Budget.  \"last-used\" can also be used to specify the last used budget.
 
 try {
     $result = $apiInstance->getPayees($budgetId);
@@ -103,7 +103,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
+ **budgetId** | [**string**](../Model/.md)| The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. |
 
 ### Return type
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryGroup
+ * BudgetSettingsWrapper
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \YNAB\ObjectSerializer;
 
 /**
- * CategoryGroup Class Doc Comment
+ * BudgetSettingsWrapper Class Doc Comment
  *
  * @category Class
  * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryGroup implements ModelInterface, ArrayAccess
+class BudgetSettingsWrapper implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategoryGroup';
+    protected static $swaggerModelName = 'BudgetSettingsWrapper';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'hidden' => 'bool',
-        'deleted' => 'bool'
+        'settings' => '\YNAB\Model\BudgetSettings'
     ];
 
     /**
@@ -69,10 +66,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'uuid',
-        'name' => null,
-        'hidden' => null,
-        'deleted' => null
+        'settings' => null
     ];
 
     /**
@@ -102,10 +96,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'hidden' => 'hidden',
-        'deleted' => 'deleted'
+        'settings' => 'settings'
     ];
 
     /**
@@ -114,10 +105,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'hidden' => 'setHidden',
-        'deleted' => 'setDeleted'
+        'settings' => 'setSettings'
     ];
 
     /**
@@ -126,10 +114,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'hidden' => 'getHidden',
-        'deleted' => 'getDeleted'
+        'settings' => 'getSettings'
     ];
 
     /**
@@ -192,10 +177,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
-        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
+        $this->container['settings'] = isset($data['settings']) ? $data['settings'] : null;
     }
 
     /**
@@ -207,17 +189,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['hidden'] === null) {
-            $invalidProperties[] = "'hidden' can't be null";
-        }
-        if ($this->container['deleted'] === null) {
-            $invalidProperties[] = "'deleted' can't be null";
+        if ($this->container['settings'] === null) {
+            $invalidProperties[] = "'settings' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,16 +204,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
-            return false;
-        }
-        if ($this->container['name'] === null) {
-            return false;
-        }
-        if ($this->container['hidden'] === null) {
-            return false;
-        }
-        if ($this->container['deleted'] === null) {
+        if ($this->container['settings'] === null) {
             return false;
         }
         return true;
@@ -248,97 +212,25 @@ class CategoryGroup implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets settings
      *
-     * @return string
+     * @return \YNAB\Model\BudgetSettings
      */
-    public function getId()
+    public function getSettings()
     {
-        return $this->container['id'];
+        return $this->container['settings'];
     }
 
     /**
-     * Sets id
+     * Sets settings
      *
-     * @param string $id id
+     * @param \YNAB\Model\BudgetSettings $settings settings
      *
      * @return $this
      */
-    public function setId($id)
+    public function setSettings($settings)
     {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool $hidden Whether or not the category group is hidden
-     *
-     * @return $this
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted
-     *
-     * @return bool
-     */
-    public function getDeleted()
-    {
-        return $this->container['deleted'];
-    }
-
-    /**
-     * Sets deleted
-     *
-     * @param bool $deleted Whether or not the category group has been deleted.  Deleted category groups will only be included in delta requests.
-     *
-     * @return $this
-     */
-    public function setDeleted($deleted)
-    {
-        $this->container['deleted'] = $deleted;
+        $this->container['settings'] = $settings;
 
         return $this;
     }

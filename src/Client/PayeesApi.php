@@ -87,7 +87,7 @@ class PayeesApi
      *
      * Single payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -105,7 +105,7 @@ class PayeesApi
      *
      * Single payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -197,7 +197,7 @@ class PayeesApi
      *
      * Single payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
      * @throws \InvalidArgumentException
@@ -218,7 +218,7 @@ class PayeesApi
      *
      * Single payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
      * @throws \InvalidArgumentException
@@ -269,7 +269,7 @@ class PayeesApi
     /**
      * Create request for operation 'getPayeeById'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      *
      * @throws \InvalidArgumentException
@@ -389,7 +389,7 @@ class PayeesApi
      *
      * List payees
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -406,7 +406,7 @@ class PayeesApi
      *
      * List payees
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -497,7 +497,7 @@ class PayeesApi
      *
      * List payees
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -517,7 +517,7 @@ class PayeesApi
      *
      * List payees
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -567,7 +567,7 @@ class PayeesApi
     /**
      * Create request for operation 'getPayees'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

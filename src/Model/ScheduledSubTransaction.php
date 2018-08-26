@@ -59,11 +59,8 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'scheduledTransactionId' => 'string',
-        'amount' => 'float',
-        'memo' => 'string',
-        'payeeId' => 'string',
-        'categoryId' => 'string',
-        'transferAccountId' => 'string'
+        'amount' => 'int',
+        'deleted' => 'bool'
     ];
 
     /**
@@ -75,10 +72,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'uuid',
         'scheduledTransactionId' => 'uuid',
         'amount' => '1234000',
-        'memo' => null,
-        'payeeId' => 'uuid',
-        'categoryId' => 'uuid',
-        'transferAccountId' => 'uuid'
+        'deleted' => null
     ];
 
     /**
@@ -111,10 +105,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'id',
         'scheduledTransactionId' => 'scheduled_transaction_id',
         'amount' => 'amount',
-        'memo' => 'memo',
-        'payeeId' => 'payee_id',
-        'categoryId' => 'category_id',
-        'transferAccountId' => 'transfer_account_id'
+        'deleted' => 'deleted'
     ];
 
     /**
@@ -126,10 +117,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'setId',
         'scheduledTransactionId' => 'setScheduledTransactionId',
         'amount' => 'setAmount',
-        'memo' => 'setMemo',
-        'payeeId' => 'setPayeeId',
-        'categoryId' => 'setCategoryId',
-        'transferAccountId' => 'setTransferAccountId'
+        'deleted' => 'setDeleted'
     ];
 
     /**
@@ -141,10 +129,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         'id' => 'getId',
         'scheduledTransactionId' => 'getScheduledTransactionId',
         'amount' => 'getAmount',
-        'memo' => 'getMemo',
-        'payeeId' => 'getPayeeId',
-        'categoryId' => 'getCategoryId',
-        'transferAccountId' => 'getTransferAccountId'
+        'deleted' => 'getDeleted'
     ];
 
     /**
@@ -210,10 +195,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['scheduledTransactionId'] = isset($data['scheduledTransactionId']) ? $data['scheduledTransactionId'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
-        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
-        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
     }
 
     /**
@@ -234,17 +216,8 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['payeeId'] === null) {
-            $invalidProperties[] = "'payeeId' can't be null";
-        }
-        if ($this->container['categoryId'] === null) {
-            $invalidProperties[] = "'categoryId' can't be null";
-        }
-        if ($this->container['transferAccountId'] === null) {
-            $invalidProperties[] = "'transferAccountId' can't be null";
+        if ($this->container['deleted'] === null) {
+            $invalidProperties[] = "'deleted' can't be null";
         }
         return $invalidProperties;
     }
@@ -267,16 +240,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             return false;
         }
-        if ($this->container['memo'] === null) {
-            return false;
-        }
-        if ($this->container['payeeId'] === null) {
-            return false;
-        }
-        if ($this->container['categoryId'] === null) {
-            return false;
-        }
-        if ($this->container['transferAccountId'] === null) {
+        if ($this->container['deleted'] === null) {
             return false;
         }
         return true;
@@ -334,7 +298,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return float
+     * @return int
      */
     public function getAmount()
     {
@@ -344,7 +308,7 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param float $amount The scheduled subtransaction amount in milliunits format
+     * @param int $amount The scheduled subtransaction amount in milliunits format
      *
      * @return $this
      */
@@ -356,97 +320,25 @@ class ScheduledSubTransaction implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets memo
+     * Gets deleted
      *
-     * @return string
+     * @return bool
      */
-    public function getMemo()
+    public function getDeleted()
     {
-        return $this->container['memo'];
+        return $this->container['deleted'];
     }
 
     /**
-     * Sets memo
+     * Sets deleted
      *
-     * @param string $memo memo
+     * @param bool $deleted Whether or not the scheduled subtransaction has been deleted.  Deleted scheduled subtransactions will only be included in delta requests.
      *
      * @return $this
      */
-    public function setMemo($memo)
+    public function setDeleted($deleted)
     {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets payeeId
-     *
-     * @return string
-     */
-    public function getPayeeId()
-    {
-        return $this->container['payeeId'];
-    }
-
-    /**
-     * Sets payeeId
-     *
-     * @param string $payeeId payeeId
-     *
-     * @return $this
-     */
-    public function setPayeeId($payeeId)
-    {
-        $this->container['payeeId'] = $payeeId;
-
-        return $this;
-    }
-
-    /**
-     * Gets categoryId
-     *
-     * @return string
-     */
-    public function getCategoryId()
-    {
-        return $this->container['categoryId'];
-    }
-
-    /**
-     * Sets categoryId
-     *
-     * @param string $categoryId categoryId
-     *
-     * @return $this
-     */
-    public function setCategoryId($categoryId)
-    {
-        $this->container['categoryId'] = $categoryId;
-
-        return $this;
-    }
-
-    /**
-     * Gets transferAccountId
-     *
-     * @return string
-     */
-    public function getTransferAccountId()
-    {
-        return $this->container['transferAccountId'];
-    }
-
-    /**
-     * Sets transferAccountId
-     *
-     * @param string $transferAccountId If a transfer, the account_id which the scheduled sub transaction transfers to
-     *
-     * @return $this
-     */
-    public function setTransferAccountId($transferAccountId)
-    {
-        $this->container['transferAccountId'] = $transferAccountId;
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

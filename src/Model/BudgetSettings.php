@@ -1,6 +1,6 @@
 <?php
 /**
- * CategoryGroup
+ * BudgetSettings
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \YNAB\ObjectSerializer;
 
 /**
- * CategoryGroup Class Doc Comment
+ * BudgetSettings Class Doc Comment
  *
  * @category Class
  * @package  YNAB
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class CategoryGroup implements ModelInterface, ArrayAccess
+class BudgetSettings implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'CategoryGroup';
+    protected static $swaggerModelName = 'BudgetSettings';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
-        'name' => 'string',
-        'hidden' => 'bool',
-        'deleted' => 'bool'
+        'dateFormat' => '\YNAB\Model\DateFormat',
+        'currencyFormat' => '\YNAB\Model\CurrencyFormat'
     ];
 
     /**
@@ -69,10 +67,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'uuid',
-        'name' => null,
-        'hidden' => null,
-        'deleted' => null
+        'dateFormat' => null,
+        'currencyFormat' => null
     ];
 
     /**
@@ -102,10 +98,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'hidden' => 'hidden',
-        'deleted' => 'deleted'
+        'dateFormat' => 'date_format',
+        'currencyFormat' => 'currency_format'
     ];
 
     /**
@@ -114,10 +108,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'hidden' => 'setHidden',
-        'deleted' => 'setDeleted'
+        'dateFormat' => 'setDateFormat',
+        'currencyFormat' => 'setCurrencyFormat'
     ];
 
     /**
@@ -126,10 +118,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'hidden' => 'getHidden',
-        'deleted' => 'getDeleted'
+        'dateFormat' => 'getDateFormat',
+        'currencyFormat' => 'getCurrencyFormat'
     ];
 
     /**
@@ -192,10 +182,8 @@ class CategoryGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
-        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
+        $this->container['dateFormat'] = isset($data['dateFormat']) ? $data['dateFormat'] : null;
+        $this->container['currencyFormat'] = isset($data['currencyFormat']) ? $data['currencyFormat'] : null;
     }
 
     /**
@@ -207,17 +195,11 @@ class CategoryGroup implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['dateFormat'] === null) {
+            $invalidProperties[] = "'dateFormat' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['hidden'] === null) {
-            $invalidProperties[] = "'hidden' can't be null";
-        }
-        if ($this->container['deleted'] === null) {
-            $invalidProperties[] = "'deleted' can't be null";
+        if ($this->container['currencyFormat'] === null) {
+            $invalidProperties[] = "'currencyFormat' can't be null";
         }
         return $invalidProperties;
     }
@@ -231,16 +213,10 @@ class CategoryGroup implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        if ($this->container['id'] === null) {
+        if ($this->container['dateFormat'] === null) {
             return false;
         }
-        if ($this->container['name'] === null) {
-            return false;
-        }
-        if ($this->container['hidden'] === null) {
-            return false;
-        }
-        if ($this->container['deleted'] === null) {
+        if ($this->container['currencyFormat'] === null) {
             return false;
         }
         return true;
@@ -248,97 +224,49 @@ class CategoryGroup implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets dateFormat
      *
-     * @return string
+     * @return \YNAB\Model\DateFormat
      */
-    public function getId()
+    public function getDateFormat()
     {
-        return $this->container['id'];
+        return $this->container['dateFormat'];
     }
 
     /**
-     * Sets id
+     * Sets dateFormat
      *
-     * @param string $id id
+     * @param \YNAB\Model\DateFormat $dateFormat dateFormat
      *
      * @return $this
      */
-    public function setId($id)
+    public function setDateFormat($dateFormat)
     {
-        $this->container['id'] = $id;
+        $this->container['dateFormat'] = $dateFormat;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets currencyFormat
      *
-     * @return string
+     * @return \YNAB\Model\CurrencyFormat
      */
-    public function getName()
+    public function getCurrencyFormat()
     {
-        return $this->container['name'];
+        return $this->container['currencyFormat'];
     }
 
     /**
-     * Sets name
+     * Sets currencyFormat
      *
-     * @param string $name name
+     * @param \YNAB\Model\CurrencyFormat $currencyFormat currencyFormat
      *
      * @return $this
      */
-    public function setName($name)
+    public function setCurrencyFormat($currencyFormat)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets hidden
-     *
-     * @return bool
-     */
-    public function getHidden()
-    {
-        return $this->container['hidden'];
-    }
-
-    /**
-     * Sets hidden
-     *
-     * @param bool $hidden Whether or not the category group is hidden
-     *
-     * @return $this
-     */
-    public function setHidden($hidden)
-    {
-        $this->container['hidden'] = $hidden;
-
-        return $this;
-    }
-
-    /**
-     * Gets deleted
-     *
-     * @return bool
-     */
-    public function getDeleted()
-    {
-        return $this->container['deleted'];
-    }
-
-    /**
-     * Sets deleted
-     *
-     * @param bool $deleted Whether or not the category group has been deleted.  Deleted category groups will only be included in delta requests.
-     *
-     * @return $this
-     */
-    public function setDeleted($deleted)
-    {
-        $this->container['deleted'] = $deleted;
+        $this->container['currencyFormat'] = $currencyFormat;
 
         return $this;
     }

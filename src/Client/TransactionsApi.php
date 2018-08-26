@@ -87,7 +87,7 @@ class TransactionsApi
      *
      * Bulk create transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -105,7 +105,7 @@ class TransactionsApi
      *
      * Bulk create transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -189,7 +189,7 @@ class TransactionsApi
      *
      * Bulk create transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -210,7 +210,7 @@ class TransactionsApi
      *
      * Bulk create transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -261,7 +261,7 @@ class TransactionsApi
     /**
      * Create request for operation 'bulkCreateTransactions'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\BulkTransactions $transactions The list of Transactions to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -376,7 +376,7 @@ class TransactionsApi
      *
      * Create new transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -394,7 +394,7 @@ class TransactionsApi
      *
      * Create new transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -468,7 +468,7 @@ class TransactionsApi
                     );
                     $e->setResponseObject($data);
                     break;
-                case 422:
+                case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\YNAB\Model\ErrorResponse',
@@ -486,7 +486,7 @@ class TransactionsApi
      *
      * Create new transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -507,7 +507,7 @@ class TransactionsApi
      *
      * Create new transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -558,7 +558,7 @@ class TransactionsApi
     /**
      * Create request for operation 'createTransaction'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to create. (required)
      *
      * @throws \InvalidArgumentException
@@ -669,13 +669,315 @@ class TransactionsApi
     }
 
     /**
+     * Operation getTransactionById
+     *
+     * Single transaction
+     *
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
+     * @param  string $transactionId The ID of the Transaction. (required)
+     *
+     * @throws \YNAB\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \YNAB\Model\TransactionResponse
+     */
+    public function getTransactionById($budgetId, $transactionId)
+    {
+        list($response) = $this->getTransactionByIdWithHttpInfo($budgetId, $transactionId);
+        return $response;
+    }
+
+    /**
+     * Operation getTransactionByIdWithHttpInfo
+     *
+     * Single transaction
+     *
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
+     * @param  string $transactionId The ID of the Transaction. (required)
+     *
+     * @throws \YNAB\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \YNAB\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getTransactionByIdWithHttpInfo($budgetId, $transactionId)
+    {
+        $returnType = '\YNAB\Model\TransactionResponse';
+        $request = $this->getTransactionByIdRequest($budgetId, $transactionId);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YNAB\Model\TransactionResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YNAB\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                default:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\YNAB\Model\ErrorResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getTransactionByIdAsync
+     *
+     * Single transaction
+     *
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
+     * @param  string $transactionId The ID of the Transaction. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTransactionByIdAsync($budgetId, $transactionId)
+    {
+        return $this->getTransactionByIdAsyncWithHttpInfo($budgetId, $transactionId)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getTransactionByIdAsyncWithHttpInfo
+     *
+     * Single transaction
+     *
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
+     * @param  string $transactionId The ID of the Transaction. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getTransactionByIdAsyncWithHttpInfo($budgetId, $transactionId)
+    {
+        $returnType = '\YNAB\Model\TransactionResponse';
+        $request = $this->getTransactionByIdRequest($budgetId, $transactionId);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getTransactionById'
+     *
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
+     * @param  string $transactionId The ID of the Transaction. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function getTransactionByIdRequest($budgetId, $transactionId)
+    {
+        // verify the required parameter 'budgetId' is set
+        if ($budgetId === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $budgetId when calling getTransactionById'
+            );
+        }
+        // verify the required parameter 'transactionId' is set
+        if ($transactionId === null) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $transactionId when calling getTransactionById'
+            );
+        }
+
+        $resourcePath = '/budgets/{budget_id}/transactions/{transaction_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($budgetId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'budget_id' . '}',
+                ObjectSerializer::toPathValue($budgetId),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($transactionId !== null) {
+            $resourcePath = str_replace(
+                '{' . 'transaction_id' . '}',
+                ObjectSerializer::toPathValue($transactionId),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getTransactions
      *
      * List transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
-     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
+     * @param  string $type Only return transactions of a certain type (&#39;uncategorized&#39; and &#39;unapproved&#39; are currently supported) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -692,9 +994,9 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
-     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
+     * @param  string $type Only return transactions of a certain type (&#39;uncategorized&#39; and &#39;unapproved&#39; are currently supported) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -785,9 +1087,9 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
-     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
+     * @param  string $type Only return transactions of a certain type (&#39;uncategorized&#39; and &#39;unapproved&#39; are currently supported) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -807,9 +1109,9 @@ class TransactionsApi
      *
      * List transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
-     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
+     * @param  string $type Only return transactions of a certain type (&#39;uncategorized&#39; and &#39;unapproved&#39; are currently supported) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -859,9 +1161,9 @@ class TransactionsApi
     /**
      * Create request for operation 'getTransactions'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
-     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
+     * @param  string $type Only return transactions of a certain type (&#39;uncategorized&#39; and &#39;unapproved&#39; are currently supported) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -974,17 +1276,18 @@ class TransactionsApi
      *
      * List account transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \YNAB\Model\TransactionsResponse
      */
-    public function getTransactionsByAccount($budgetId, $accountId, $sinceDate = null)
+    public function getTransactionsByAccount($budgetId, $accountId, $sinceDate = null, $type = null)
     {
-        list($response) = $this->getTransactionsByAccountWithHttpInfo($budgetId, $accountId, $sinceDate);
+        list($response) = $this->getTransactionsByAccountWithHttpInfo($budgetId, $accountId, $sinceDate, $type);
         return $response;
     }
 
@@ -993,18 +1296,19 @@ class TransactionsApi
      *
      * List account transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \YNAB\Model\TransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTransactionsByAccountWithHttpInfo($budgetId, $accountId, $sinceDate = null)
+    public function getTransactionsByAccountWithHttpInfo($budgetId, $accountId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\TransactionsResponse';
-        $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate);
+        $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate, $type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1086,16 +1390,17 @@ class TransactionsApi
      *
      * List account transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByAccountAsync($budgetId, $accountId, $sinceDate = null)
+    public function getTransactionsByAccountAsync($budgetId, $accountId, $sinceDate = null, $type = null)
     {
-        return $this->getTransactionsByAccountAsyncWithHttpInfo($budgetId, $accountId, $sinceDate)
+        return $this->getTransactionsByAccountAsyncWithHttpInfo($budgetId, $accountId, $sinceDate, $type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1108,17 +1413,18 @@ class TransactionsApi
      *
      * List account transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByAccountAsyncWithHttpInfo($budgetId, $accountId, $sinceDate = null)
+    public function getTransactionsByAccountAsyncWithHttpInfo($budgetId, $accountId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\TransactionsResponse';
-        $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate);
+        $request = $this->getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate, $type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1160,14 +1466,15 @@ class TransactionsApi
     /**
      * Create request for operation 'getTransactionsByAccount'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate = null)
+    protected function getTransactionsByAccountRequest($budgetId, $accountId, $sinceDate = null, $type = null)
     {
         // verify the required parameter 'budgetId' is set
         if ($budgetId === null) {
@@ -1192,6 +1499,10 @@ class TransactionsApi
         // query params
         if ($sinceDate !== null) {
             $queryParams['since_date'] = ObjectSerializer::toQueryValue($sinceDate);
+        }
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = ObjectSerializer::toQueryValue($type);
         }
 
         // path params
@@ -1285,17 +1596,18 @@ class TransactionsApi
      *
      * List category transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \YNAB\Model\HybridTransactionsResponse
      */
-    public function getTransactionsByCategory($budgetId, $categoryId, $sinceDate = null)
+    public function getTransactionsByCategory($budgetId, $categoryId, $sinceDate = null, $type = null)
     {
-        list($response) = $this->getTransactionsByCategoryWithHttpInfo($budgetId, $categoryId, $sinceDate);
+        list($response) = $this->getTransactionsByCategoryWithHttpInfo($budgetId, $categoryId, $sinceDate, $type);
         return $response;
     }
 
@@ -1304,18 +1616,19 @@ class TransactionsApi
      *
      * List category transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \YNAB\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTransactionsByCategoryWithHttpInfo($budgetId, $categoryId, $sinceDate = null)
+    public function getTransactionsByCategoryWithHttpInfo($budgetId, $categoryId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\HybridTransactionsResponse';
-        $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate);
+        $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate, $type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1397,16 +1710,17 @@ class TransactionsApi
      *
      * List category transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByCategoryAsync($budgetId, $categoryId, $sinceDate = null)
+    public function getTransactionsByCategoryAsync($budgetId, $categoryId, $sinceDate = null, $type = null)
     {
-        return $this->getTransactionsByCategoryAsyncWithHttpInfo($budgetId, $categoryId, $sinceDate)
+        return $this->getTransactionsByCategoryAsyncWithHttpInfo($budgetId, $categoryId, $sinceDate, $type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1419,17 +1733,18 @@ class TransactionsApi
      *
      * List category transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByCategoryAsyncWithHttpInfo($budgetId, $categoryId, $sinceDate = null)
+    public function getTransactionsByCategoryAsyncWithHttpInfo($budgetId, $categoryId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\HybridTransactionsResponse';
-        $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate);
+        $request = $this->getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate, $type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1471,14 +1786,15 @@ class TransactionsApi
     /**
      * Create request for operation 'getTransactionsByCategory'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate = null)
+    protected function getTransactionsByCategoryRequest($budgetId, $categoryId, $sinceDate = null, $type = null)
     {
         // verify the required parameter 'budgetId' is set
         if ($budgetId === null) {
@@ -1503,6 +1819,10 @@ class TransactionsApi
         // query params
         if ($sinceDate !== null) {
             $queryParams['since_date'] = ObjectSerializer::toQueryValue($sinceDate);
+        }
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = ObjectSerializer::toQueryValue($type);
         }
 
         // path params
@@ -1592,323 +1912,22 @@ class TransactionsApi
     }
 
     /**
-     * Operation getTransactionsById
-     *
-     * Single transaction
-     *
-     * @param  string $budgetId The ID of the Budget. (required)
-     * @param  string $transactionId The ID of the Transaction. (required)
-     *
-     * @throws \YNAB\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \YNAB\Model\TransactionResponse
-     */
-    public function getTransactionsById($budgetId, $transactionId)
-    {
-        list($response) = $this->getTransactionsByIdWithHttpInfo($budgetId, $transactionId);
-        return $response;
-    }
-
-    /**
-     * Operation getTransactionsByIdWithHttpInfo
-     *
-     * Single transaction
-     *
-     * @param  string $budgetId The ID of the Budget. (required)
-     * @param  string $transactionId The ID of the Transaction. (required)
-     *
-     * @throws \YNAB\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \YNAB\Model\TransactionResponse, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getTransactionsByIdWithHttpInfo($budgetId, $transactionId)
-    {
-        $returnType = '\YNAB\Model\TransactionResponse';
-        $request = $this->getTransactionsByIdRequest($budgetId, $transactionId);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\YNAB\Model\TransactionResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\YNAB\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                default:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\YNAB\Model\ErrorResponse',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation getTransactionsByIdAsync
-     *
-     * Single transaction
-     *
-     * @param  string $budgetId The ID of the Budget. (required)
-     * @param  string $transactionId The ID of the Transaction. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionsByIdAsync($budgetId, $transactionId)
-    {
-        return $this->getTransactionsByIdAsyncWithHttpInfo($budgetId, $transactionId)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation getTransactionsByIdAsyncWithHttpInfo
-     *
-     * Single transaction
-     *
-     * @param  string $budgetId The ID of the Budget. (required)
-     * @param  string $transactionId The ID of the Transaction. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function getTransactionsByIdAsyncWithHttpInfo($budgetId, $transactionId)
-    {
-        $returnType = '\YNAB\Model\TransactionResponse';
-        $request = $this->getTransactionsByIdRequest($budgetId, $transactionId);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'getTransactionsById'
-     *
-     * @param  string $budgetId The ID of the Budget. (required)
-     * @param  string $transactionId The ID of the Transaction. (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function getTransactionsByIdRequest($budgetId, $transactionId)
-    {
-        // verify the required parameter 'budgetId' is set
-        if ($budgetId === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $budgetId when calling getTransactionsById'
-            );
-        }
-        // verify the required parameter 'transactionId' is set
-        if ($transactionId === null) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $transactionId when calling getTransactionsById'
-            );
-        }
-
-        $resourcePath = '/budgets/{budget_id}/transactions/{transaction_id}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($budgetId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'budget_id' . '}',
-                ObjectSerializer::toPathValue($budgetId),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($transactionId !== null) {
-            $resourcePath = str_replace(
-                '{' . 'transaction_id' . '}',
-                ObjectSerializer::toPathValue($transactionId),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation getTransactionsByPayee
      *
      * List payee transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \YNAB\Model\HybridTransactionsResponse
      */
-    public function getTransactionsByPayee($budgetId, $payeeId, $sinceDate = null)
+    public function getTransactionsByPayee($budgetId, $payeeId, $sinceDate = null, $type = null)
     {
-        list($response) = $this->getTransactionsByPayeeWithHttpInfo($budgetId, $payeeId, $sinceDate);
+        list($response) = $this->getTransactionsByPayeeWithHttpInfo($budgetId, $payeeId, $sinceDate, $type);
         return $response;
     }
 
@@ -1917,18 +1936,19 @@ class TransactionsApi
      *
      * List payee transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \YNAB\Model\HybridTransactionsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getTransactionsByPayeeWithHttpInfo($budgetId, $payeeId, $sinceDate = null)
+    public function getTransactionsByPayeeWithHttpInfo($budgetId, $payeeId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\HybridTransactionsResponse';
-        $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate);
+        $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate, $type);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2010,16 +2030,17 @@ class TransactionsApi
      *
      * List payee transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByPayeeAsync($budgetId, $payeeId, $sinceDate = null)
+    public function getTransactionsByPayeeAsync($budgetId, $payeeId, $sinceDate = null, $type = null)
     {
-        return $this->getTransactionsByPayeeAsyncWithHttpInfo($budgetId, $payeeId, $sinceDate)
+        return $this->getTransactionsByPayeeAsyncWithHttpInfo($budgetId, $payeeId, $sinceDate, $type)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2032,17 +2053,18 @@ class TransactionsApi
      *
      * List payee transactions
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getTransactionsByPayeeAsyncWithHttpInfo($budgetId, $payeeId, $sinceDate = null)
+    public function getTransactionsByPayeeAsyncWithHttpInfo($budgetId, $payeeId, $sinceDate = null, $type = null)
     {
         $returnType = '\YNAB\Model\HybridTransactionsResponse';
-        $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate);
+        $request = $this->getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate, $type);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2084,14 +2106,15 @@ class TransactionsApi
     /**
      * Create request for operation 'getTransactionsByPayee'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId The ID of the Payee. (required)
      * @param  \DateTime $sinceDate Only return transactions on or after this date. (optional)
+     * @param  string $type Only return transactions of a certain type (i.e. &#39;uncategorized&#39;, &#39;unapproved&#39;) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate = null)
+    protected function getTransactionsByPayeeRequest($budgetId, $payeeId, $sinceDate = null, $type = null)
     {
         // verify the required parameter 'budgetId' is set
         if ($budgetId === null) {
@@ -2116,6 +2139,10 @@ class TransactionsApi
         // query params
         if ($sinceDate !== null) {
             $queryParams['since_date'] = ObjectSerializer::toQueryValue($sinceDate);
+        }
+        // query params
+        if ($type !== null) {
+            $queryParams['type'] = ObjectSerializer::toQueryValue($type);
         }
 
         // path params
@@ -2209,7 +2236,7 @@ class TransactionsApi
      *
      * Updates an existing transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
@@ -2228,7 +2255,7 @@ class TransactionsApi
      *
      * Updates an existing transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
@@ -2313,7 +2340,7 @@ class TransactionsApi
      *
      * Updates an existing transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
@@ -2335,7 +2362,7 @@ class TransactionsApi
      *
      * Updates an existing transaction
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *
@@ -2387,7 +2414,7 @@ class TransactionsApi
     /**
      * Create request for operation 'updateTransaction'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $transactionId The ID of the Transaction. (required)
      * @param  \YNAB\Model\SaveTransactionWrapper $transaction The Transaction to update. (required)
      *

@@ -59,8 +59,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'string',
         'payeeId' => 'string',
-        'latitude' => 'string',
-        'longitude' => 'string'
+        'deleted' => 'bool'
     ];
 
     /**
@@ -71,8 +70,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'uuid',
         'payeeId' => 'uuid',
-        'latitude' => null,
-        'longitude' => null
+        'deleted' => null
     ];
 
     /**
@@ -104,8 +102,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'payeeId' => 'payee_id',
-        'latitude' => 'latitude',
-        'longitude' => 'longitude'
+        'deleted' => 'deleted'
     ];
 
     /**
@@ -116,8 +113,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'payeeId' => 'setPayeeId',
-        'latitude' => 'setLatitude',
-        'longitude' => 'setLongitude'
+        'deleted' => 'setDeleted'
     ];
 
     /**
@@ -128,8 +124,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'payeeId' => 'getPayeeId',
-        'latitude' => 'getLatitude',
-        'longitude' => 'getLongitude'
+        'deleted' => 'getDeleted'
     ];
 
     /**
@@ -194,8 +189,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
-        $this->container['latitude'] = isset($data['latitude']) ? $data['latitude'] : null;
-        $this->container['longitude'] = isset($data['longitude']) ? $data['longitude'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
     }
 
     /**
@@ -213,11 +207,8 @@ class PayeeLocation implements ModelInterface, ArrayAccess
         if ($this->container['payeeId'] === null) {
             $invalidProperties[] = "'payeeId' can't be null";
         }
-        if ($this->container['latitude'] === null) {
-            $invalidProperties[] = "'latitude' can't be null";
-        }
-        if ($this->container['longitude'] === null) {
-            $invalidProperties[] = "'longitude' can't be null";
+        if ($this->container['deleted'] === null) {
+            $invalidProperties[] = "'deleted' can't be null";
         }
         return $invalidProperties;
     }
@@ -237,10 +228,7 @@ class PayeeLocation implements ModelInterface, ArrayAccess
         if ($this->container['payeeId'] === null) {
             return false;
         }
-        if ($this->container['latitude'] === null) {
-            return false;
-        }
-        if ($this->container['longitude'] === null) {
+        if ($this->container['deleted'] === null) {
             return false;
         }
         return true;
@@ -296,49 +284,25 @@ class PayeeLocation implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets latitude
+     * Gets deleted
      *
-     * @return string
+     * @return bool
      */
-    public function getLatitude()
+    public function getDeleted()
     {
-        return $this->container['latitude'];
+        return $this->container['deleted'];
     }
 
     /**
-     * Sets latitude
+     * Sets deleted
      *
-     * @param string $latitude latitude
+     * @param bool $deleted Whether or not the payee location has been deleted.  Deleted payee locations will only be included in delta requests.
      *
      * @return $this
      */
-    public function setLatitude($latitude)
+    public function setDeleted($deleted)
     {
-        $this->container['latitude'] = $latitude;
-
-        return $this;
-    }
-
-    /**
-     * Gets longitude
-     *
-     * @return string
-     */
-    public function getLongitude()
-    {
-        return $this->container['longitude'];
-    }
-
-    /**
-     * Sets longitude
-     *
-     * @param string $longitude longitude
-     *
-     * @return $this
-     */
-    public function setLongitude($longitude)
-    {
-        $this->container['longitude'] = $longitude;
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

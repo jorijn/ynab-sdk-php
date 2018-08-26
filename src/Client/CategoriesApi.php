@@ -87,7 +87,7 @@ class CategoriesApi
      *
      * List categories
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -104,7 +104,7 @@ class CategoriesApi
      *
      * List categories
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -195,7 +195,7 @@ class CategoriesApi
      *
      * List categories
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -215,7 +215,7 @@ class CategoriesApi
      *
      * List categories
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -265,7 +265,7 @@ class CategoriesApi
     /**
      * Create request for operation 'getCategories'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -370,7 +370,7 @@ class CategoriesApi
      *
      * Single category
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -388,7 +388,7 @@ class CategoriesApi
      *
      * Single category
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -480,7 +480,7 @@ class CategoriesApi
      *
      * Single category
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
      * @throws \InvalidArgumentException
@@ -501,7 +501,7 @@ class CategoriesApi
      *
      * Single category
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
      * @throws \InvalidArgumentException
@@ -552,7 +552,7 @@ class CategoriesApi
     /**
      * Create request for operation 'getCategoryById'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $categoryId The ID of the Category. (required)
      *
      * @throws \InvalidArgumentException

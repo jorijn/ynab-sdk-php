@@ -61,10 +61,10 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'string',
         'name' => 'string',
         'hidden' => 'bool',
-        'note' => 'string',
-        'budgeted' => 'float',
-        'activity' => 'float',
-        'balance' => 'float'
+        'budgeted' => 'int',
+        'activity' => 'int',
+        'balance' => 'int',
+        'deleted' => 'bool'
     ];
 
     /**
@@ -77,10 +77,10 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'uuid',
         'name' => null,
         'hidden' => null,
-        'note' => null,
         'budgeted' => null,
         'activity' => null,
-        'balance' => null
+        'balance' => null,
+        'deleted' => null
     ];
 
     /**
@@ -114,10 +114,10 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'category_group_id',
         'name' => 'name',
         'hidden' => 'hidden',
-        'note' => 'note',
         'budgeted' => 'budgeted',
         'activity' => 'activity',
-        'balance' => 'balance'
+        'balance' => 'balance',
+        'deleted' => 'deleted'
     ];
 
     /**
@@ -130,10 +130,10 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'setCategoryGroupId',
         'name' => 'setName',
         'hidden' => 'setHidden',
-        'note' => 'setNote',
         'budgeted' => 'setBudgeted',
         'activity' => 'setActivity',
-        'balance' => 'setBalance'
+        'balance' => 'setBalance',
+        'deleted' => 'setDeleted'
     ];
 
     /**
@@ -146,10 +146,10 @@ class Category implements ModelInterface, ArrayAccess
         'categoryGroupId' => 'getCategoryGroupId',
         'name' => 'getName',
         'hidden' => 'getHidden',
-        'note' => 'getNote',
         'budgeted' => 'getBudgeted',
         'activity' => 'getActivity',
-        'balance' => 'getBalance'
+        'balance' => 'getBalance',
+        'deleted' => 'getDeleted'
     ];
 
     /**
@@ -216,10 +216,10 @@ class Category implements ModelInterface, ArrayAccess
         $this->container['categoryGroupId'] = isset($data['categoryGroupId']) ? $data['categoryGroupId'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['hidden'] = isset($data['hidden']) ? $data['hidden'] : null;
-        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['budgeted'] = isset($data['budgeted']) ? $data['budgeted'] : null;
         $this->container['activity'] = isset($data['activity']) ? $data['activity'] : null;
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
     }
 
     /**
@@ -243,9 +243,6 @@ class Category implements ModelInterface, ArrayAccess
         if ($this->container['hidden'] === null) {
             $invalidProperties[] = "'hidden' can't be null";
         }
-        if ($this->container['note'] === null) {
-            $invalidProperties[] = "'note' can't be null";
-        }
         if ($this->container['budgeted'] === null) {
             $invalidProperties[] = "'budgeted' can't be null";
         }
@@ -254,6 +251,9 @@ class Category implements ModelInterface, ArrayAccess
         }
         if ($this->container['balance'] === null) {
             $invalidProperties[] = "'balance' can't be null";
+        }
+        if ($this->container['deleted'] === null) {
+            $invalidProperties[] = "'deleted' can't be null";
         }
         return $invalidProperties;
     }
@@ -279,9 +279,6 @@ class Category implements ModelInterface, ArrayAccess
         if ($this->container['hidden'] === null) {
             return false;
         }
-        if ($this->container['note'] === null) {
-            return false;
-        }
         if ($this->container['budgeted'] === null) {
             return false;
         }
@@ -289,6 +286,9 @@ class Category implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['balance'] === null) {
+            return false;
+        }
+        if ($this->container['deleted'] === null) {
             return false;
         }
         return true;
@@ -392,33 +392,9 @@ class Category implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets note
-     *
-     * @return string
-     */
-    public function getNote()
-    {
-        return $this->container['note'];
-    }
-
-    /**
-     * Sets note
-     *
-     * @param string $note note
-     *
-     * @return $this
-     */
-    public function setNote($note)
-    {
-        $this->container['note'] = $note;
-
-        return $this;
-    }
-
-    /**
      * Gets budgeted
      *
-     * @return float
+     * @return int
      */
     public function getBudgeted()
     {
@@ -428,7 +404,7 @@ class Category implements ModelInterface, ArrayAccess
     /**
      * Sets budgeted
      *
-     * @param float $budgeted Budgeted amount in current month in milliunits format
+     * @param int $budgeted Budgeted amount in current month in milliunits format
      *
      * @return $this
      */
@@ -442,7 +418,7 @@ class Category implements ModelInterface, ArrayAccess
     /**
      * Gets activity
      *
-     * @return float
+     * @return int
      */
     public function getActivity()
     {
@@ -452,7 +428,7 @@ class Category implements ModelInterface, ArrayAccess
     /**
      * Sets activity
      *
-     * @param float $activity Activity amount in current month in milliunits format
+     * @param int $activity Activity amount in current month in milliunits format
      *
      * @return $this
      */
@@ -466,7 +442,7 @@ class Category implements ModelInterface, ArrayAccess
     /**
      * Gets balance
      *
-     * @return float
+     * @return int
      */
     public function getBalance()
     {
@@ -476,13 +452,37 @@ class Category implements ModelInterface, ArrayAccess
     /**
      * Sets balance
      *
-     * @param float $balance Balance in current month in milliunits format
+     * @param int $balance Balance in current month in milliunits format
      *
      * @return $this
      */
     public function setBalance($balance)
     {
         $this->container['balance'] = $balance;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted
+     *
+     * @return bool
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool $deleted Whether or not the category has been deleted.  Deleted categories will only be included in delta requests.
+     *
+     * @return $this
+     */
+    public function setDeleted($deleted)
+    {
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

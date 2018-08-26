@@ -61,13 +61,9 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateFirst' => '\DateTime',
         'dateNext' => '\DateTime',
         'frequency' => 'string',
-        'amount' => 'float',
-        'memo' => 'string',
-        'flagColor' => 'string',
+        'amount' => 'int',
         'accountId' => 'string',
-        'payeeId' => 'string',
-        'categoryId' => 'string',
-        'transferAccountId' => 'string'
+        'deleted' => 'bool'
     ];
 
     /**
@@ -81,12 +77,8 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'date',
         'frequency' => null,
         'amount' => '1234000',
-        'memo' => null,
-        'flagColor' => null,
         'accountId' => 'uuid',
-        'payeeId' => 'uuid',
-        'categoryId' => 'uuid',
-        'transferAccountId' => 'uuid'
+        'deleted' => null
     ];
 
     /**
@@ -121,12 +113,8 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'date_next',
         'frequency' => 'frequency',
         'amount' => 'amount',
-        'memo' => 'memo',
-        'flagColor' => 'flag_color',
         'accountId' => 'account_id',
-        'payeeId' => 'payee_id',
-        'categoryId' => 'category_id',
-        'transferAccountId' => 'transfer_account_id'
+        'deleted' => 'deleted'
     ];
 
     /**
@@ -140,12 +128,8 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'setDateNext',
         'frequency' => 'setFrequency',
         'amount' => 'setAmount',
-        'memo' => 'setMemo',
-        'flagColor' => 'setFlagColor',
         'accountId' => 'setAccountId',
-        'payeeId' => 'setPayeeId',
-        'categoryId' => 'setCategoryId',
-        'transferAccountId' => 'setTransferAccountId'
+        'deleted' => 'setDeleted'
     ];
 
     /**
@@ -159,12 +143,8 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         'dateNext' => 'getDateNext',
         'frequency' => 'getFrequency',
         'amount' => 'getAmount',
-        'memo' => 'getMemo',
-        'flagColor' => 'getFlagColor',
         'accountId' => 'getAccountId',
-        'payeeId' => 'getPayeeId',
-        'categoryId' => 'getCategoryId',
-        'transferAccountId' => 'getTransferAccountId'
+        'deleted' => 'getDeleted'
     ];
 
     /**
@@ -221,12 +201,6 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
     const FREQUENCY_TWICE_A_YEAR = 'twiceAYear';
     const FREQUENCY_YEARLY = 'yearly';
     const FREQUENCY_EVERY_OTHER_YEAR = 'everyOtherYear';
-    const FLAG_COLOR_RED = 'red';
-    const FLAG_COLOR_ORANGE = 'orange';
-    const FLAG_COLOR_YELLOW = 'yellow';
-    const FLAG_COLOR_GREEN = 'green';
-    const FLAG_COLOR_BLUE = 'blue';
-    const FLAG_COLOR_PURPLE = 'purple';
     
 
     
@@ -254,23 +228,6 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         ];
     }
     
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFlagColorAllowableValues()
-    {
-        return [
-            self::FLAG_COLOR_RED,
-            self::FLAG_COLOR_ORANGE,
-            self::FLAG_COLOR_YELLOW,
-            self::FLAG_COLOR_GREEN,
-            self::FLAG_COLOR_BLUE,
-            self::FLAG_COLOR_PURPLE,
-        ];
-    }
-    
 
     /**
      * Associative array for storing property values
@@ -292,12 +249,8 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         $this->container['dateNext'] = isset($data['dateNext']) ? $data['dateNext'] : null;
         $this->container['frequency'] = isset($data['frequency']) ? $data['frequency'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
-        $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
         $this->container['accountId'] = isset($data['accountId']) ? $data['accountId'] : null;
-        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
-        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
-        $this->container['transferAccountId'] = isset($data['transferAccountId']) ? $data['transferAccountId'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
     }
 
     /**
@@ -332,31 +285,11 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             $invalidProperties[] = "'amount' can't be null";
         }
-        if ($this->container['memo'] === null) {
-            $invalidProperties[] = "'memo' can't be null";
-        }
-        if ($this->container['flagColor'] === null) {
-            $invalidProperties[] = "'flagColor' can't be null";
-        }
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!in_array($this->container['flagColor'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'flagColor', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         if ($this->container['accountId'] === null) {
             $invalidProperties[] = "'accountId' can't be null";
         }
-        if ($this->container['payeeId'] === null) {
-            $invalidProperties[] = "'payeeId' can't be null";
-        }
-        if ($this->container['categoryId'] === null) {
-            $invalidProperties[] = "'categoryId' can't be null";
-        }
-        if ($this->container['transferAccountId'] === null) {
-            $invalidProperties[] = "'transferAccountId' can't be null";
+        if ($this->container['deleted'] === null) {
+            $invalidProperties[] = "'deleted' can't be null";
         }
         return $invalidProperties;
     }
@@ -389,26 +322,10 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
         if ($this->container['amount'] === null) {
             return false;
         }
-        if ($this->container['memo'] === null) {
-            return false;
-        }
-        if ($this->container['flagColor'] === null) {
-            return false;
-        }
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!in_array($this->container['flagColor'], $allowedValues)) {
-            return false;
-        }
         if ($this->container['accountId'] === null) {
             return false;
         }
-        if ($this->container['payeeId'] === null) {
-            return false;
-        }
-        if ($this->container['categoryId'] === null) {
-            return false;
-        }
-        if ($this->container['transferAccountId'] === null) {
+        if ($this->container['deleted'] === null) {
             return false;
         }
         return true;
@@ -523,7 +440,7 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return float
+     * @return int
      */
     public function getAmount()
     {
@@ -533,70 +450,13 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param float $amount The scheduled transaction amount in milliunits format
+     * @param int $amount The scheduled transaction amount in milliunits format
      *
      * @return $this
      */
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string $memo memo
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
-
-        return $this;
-    }
-
-    /**
-     * Gets flagColor
-     *
-     * @return string
-     */
-    public function getFlagColor()
-    {
-        return $this->container['flagColor'];
-    }
-
-    /**
-     * Sets flagColor
-     *
-     * @param string $flagColor The scheduled transaction flag
-     *
-     * @return $this
-     */
-    public function setFlagColor($flagColor)
-    {
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!in_array($flagColor, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'flagColor', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['flagColor'] = $flagColor;
 
         return $this;
     }
@@ -626,73 +486,25 @@ class ScheduledTransactionSummary implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets payeeId
+     * Gets deleted
      *
-     * @return string
+     * @return bool
      */
-    public function getPayeeId()
+    public function getDeleted()
     {
-        return $this->container['payeeId'];
+        return $this->container['deleted'];
     }
 
     /**
-     * Sets payeeId
+     * Sets deleted
      *
-     * @param string $payeeId payeeId
+     * @param bool $deleted Whether or not the scheduled transaction has been deleted.  Deleted scheduled transactions will only be included in delta requests.
      *
      * @return $this
      */
-    public function setPayeeId($payeeId)
+    public function setDeleted($deleted)
     {
-        $this->container['payeeId'] = $payeeId;
-
-        return $this;
-    }
-
-    /**
-     * Gets categoryId
-     *
-     * @return string
-     */
-    public function getCategoryId()
-    {
-        return $this->container['categoryId'];
-    }
-
-    /**
-     * Sets categoryId
-     *
-     * @param string $categoryId categoryId
-     *
-     * @return $this
-     */
-    public function setCategoryId($categoryId)
-    {
-        $this->container['categoryId'] = $categoryId;
-
-        return $this;
-    }
-
-    /**
-     * Gets transferAccountId
-     *
-     * @return string
-     */
-    public function getTransferAccountId()
-    {
-        return $this->container['transferAccountId'];
-    }
-
-    /**
-     * Sets transferAccountId
-     *
-     * @param string $transferAccountId If a transfer, the account_id which the scheduled transaction transfers to
-     *
-     * @return $this
-     */
-    public function setTransferAccountId($transferAccountId)
-    {
-        $this->container['transferAccountId'] = $transferAccountId;
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

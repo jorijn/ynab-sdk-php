@@ -31,8 +31,8 @@ $apiInstance = new YNAB\Api\MonthsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$budgetId = "budgetId_example"; // string | The ID of the Budget.
-$month = new \DateTime("2013-10-20"); // \DateTime | The Budget Month.  \"current\" can also be used to specify the current calendar month (UTC).
+$budgetId = "budgetId_example"; // string | The ID of the Budget.  \"last-used\" can also be used to specify the last used budget.
+$month = new \DateTime("2013-10-20"); // \DateTime | The Budget Month in ISO format (e.g. 2016-12-01).    \"current\" can also be used to specify the current calendar month (UTC).
 
 try {
     $result = $apiInstance->getBudgetMonth($budgetId, $month);
@@ -47,8 +47,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
- **month** | **\DateTime**| The Budget Month.  \&quot;current\&quot; can also be used to specify the current calendar month (UTC). |
+ **budgetId** | [**string**](../Model/.md)| The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. |
+ **month** | **\DateTime**| The Budget Month in ISO format (e.g. 2016-12-01).    \&quot;current\&quot; can also be used to specify the current calendar month (UTC). |
 
 ### Return type
 
@@ -88,7 +88,7 @@ $apiInstance = new YNAB\Api\MonthsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$budgetId = "budgetId_example"; // string | The ID of the Budget.
+$budgetId = "budgetId_example"; // string | The ID of the Budget.  \"last-used\" can also be used to specify the last used budget.
 
 try {
     $result = $apiInstance->getBudgetMonths($budgetId);
@@ -103,7 +103,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **budgetId** | [**string**](../Model/.md)| The ID of the Budget. |
+ **budgetId** | [**string**](../Model/.md)| The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. |
 
 ### Return type
 

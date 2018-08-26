@@ -59,7 +59,7 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'isoCode' => 'string',
         'exampleFormat' => 'string',
-        'decimalDigits' => 'float',
+        'decimalDigits' => 'int',
         'decimalSeparator' => 'string',
         'symbolFirst' => 'bool',
         'groupSeparator' => 'string',
@@ -346,7 +346,7 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
     /**
      * Gets decimalDigits
      *
-     * @return float
+     * @return int
      */
     public function getDecimalDigits()
     {
@@ -356,7 +356,7 @@ class CurrencyFormat implements ModelInterface, ArrayAccess
     /**
      * Sets decimalDigits
      *
-     * @param float $decimalDigits decimalDigits
+     * @param int $decimalDigits decimalDigits
      *
      * @return $this
      */

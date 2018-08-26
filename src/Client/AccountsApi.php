@@ -87,7 +87,7 @@ class AccountsApi
      *
      * Single account
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -105,7 +105,7 @@ class AccountsApi
      *
      * Single account
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -197,7 +197,7 @@ class AccountsApi
      *
      * Single account
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
      * @throws \InvalidArgumentException
@@ -218,7 +218,7 @@ class AccountsApi
      *
      * Single account
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
      * @throws \InvalidArgumentException
@@ -269,7 +269,7 @@ class AccountsApi
     /**
      * Create request for operation 'getAccountById'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $accountId The ID of the Account. (required)
      *
      * @throws \InvalidArgumentException
@@ -389,7 +389,7 @@ class AccountsApi
      *
      * Account list
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -406,7 +406,7 @@ class AccountsApi
      *
      * Account list
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -497,7 +497,7 @@ class AccountsApi
      *
      * Account list
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -517,7 +517,7 @@ class AccountsApi
      *
      * Account list
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -567,7 +567,7 @@ class AccountsApi
     /**
      * Create request for operation 'getAccounts'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

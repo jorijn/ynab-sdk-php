@@ -62,10 +62,10 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'string',
         'onBudget' => 'bool',
         'closed' => 'bool',
-        'note' => 'string',
-        'balance' => 'float',
-        'clearedBalance' => 'float',
-        'unclearedBalance' => 'float'
+        'balance' => 'int',
+        'clearedBalance' => 'int',
+        'unclearedBalance' => 'int',
+        'deleted' => 'bool'
     ];
 
     /**
@@ -79,10 +79,10 @@ class Account implements ModelInterface, ArrayAccess
         'type' => null,
         'onBudget' => null,
         'closed' => null,
-        'note' => null,
         'balance' => '1234000',
         'clearedBalance' => '1234000',
-        'unclearedBalance' => '1234000'
+        'unclearedBalance' => '1234000',
+        'deleted' => null
     ];
 
     /**
@@ -117,10 +117,10 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'type',
         'onBudget' => 'on_budget',
         'closed' => 'closed',
-        'note' => 'note',
         'balance' => 'balance',
         'clearedBalance' => 'cleared_balance',
-        'unclearedBalance' => 'uncleared_balance'
+        'unclearedBalance' => 'uncleared_balance',
+        'deleted' => 'deleted'
     ];
 
     /**
@@ -134,10 +134,10 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'setType',
         'onBudget' => 'setOnBudget',
         'closed' => 'setClosed',
-        'note' => 'setNote',
         'balance' => 'setBalance',
         'clearedBalance' => 'setClearedBalance',
-        'unclearedBalance' => 'setUnclearedBalance'
+        'unclearedBalance' => 'setUnclearedBalance',
+        'deleted' => 'setDeleted'
     ];
 
     /**
@@ -151,10 +151,10 @@ class Account implements ModelInterface, ArrayAccess
         'type' => 'getType',
         'onBudget' => 'getOnBudget',
         'closed' => 'getClosed',
-        'note' => 'getNote',
         'balance' => 'getBalance',
         'clearedBalance' => 'getClearedBalance',
-        'unclearedBalance' => 'getUnclearedBalance'
+        'unclearedBalance' => 'getUnclearedBalance',
+        'deleted' => 'getDeleted'
     ];
 
     /**
@@ -200,15 +200,15 @@ class Account implements ModelInterface, ArrayAccess
 
     const TYPE_CHECKING = 'checking';
     const TYPE_SAVINGS = 'savings';
-    const TYPE_CREDIT_CARD = 'creditCard';
     const TYPE_CASH = 'cash';
+    const TYPE_CREDIT_CARD = 'creditCard';
     const TYPE_LINE_OF_CREDIT = 'lineOfCredit';
-    const TYPE_MERCHANT_ACCOUNT = 'merchantAccount';
-    const TYPE_PAY_PAL = 'payPal';
-    const TYPE_INVESTMENT_ACCOUNT = 'investmentAccount';
-    const TYPE_MORTGAGE = 'mortgage';
     const TYPE_OTHER_ASSET = 'otherAsset';
     const TYPE_OTHER_LIABILITY = 'otherLiability';
+    const TYPE_PAY_PAL = 'payPal';
+    const TYPE_MERCHANT_ACCOUNT = 'merchantAccount';
+    const TYPE_INVESTMENT_ACCOUNT = 'investmentAccount';
+    const TYPE_MORTGAGE = 'mortgage';
     
 
     
@@ -222,15 +222,15 @@ class Account implements ModelInterface, ArrayAccess
         return [
             self::TYPE_CHECKING,
             self::TYPE_SAVINGS,
-            self::TYPE_CREDIT_CARD,
             self::TYPE_CASH,
+            self::TYPE_CREDIT_CARD,
             self::TYPE_LINE_OF_CREDIT,
-            self::TYPE_MERCHANT_ACCOUNT,
-            self::TYPE_PAY_PAL,
-            self::TYPE_INVESTMENT_ACCOUNT,
-            self::TYPE_MORTGAGE,
             self::TYPE_OTHER_ASSET,
             self::TYPE_OTHER_LIABILITY,
+            self::TYPE_PAY_PAL,
+            self::TYPE_MERCHANT_ACCOUNT,
+            self::TYPE_INVESTMENT_ACCOUNT,
+            self::TYPE_MORTGAGE,
         ];
     }
     
@@ -255,10 +255,10 @@ class Account implements ModelInterface, ArrayAccess
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['onBudget'] = isset($data['onBudget']) ? $data['onBudget'] : null;
         $this->container['closed'] = isset($data['closed']) ? $data['closed'] : null;
-        $this->container['note'] = isset($data['note']) ? $data['note'] : null;
         $this->container['balance'] = isset($data['balance']) ? $data['balance'] : null;
         $this->container['clearedBalance'] = isset($data['clearedBalance']) ? $data['clearedBalance'] : null;
         $this->container['unclearedBalance'] = isset($data['unclearedBalance']) ? $data['unclearedBalance'] : null;
+        $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
     }
 
     /**
@@ -293,9 +293,6 @@ class Account implements ModelInterface, ArrayAccess
         if ($this->container['closed'] === null) {
             $invalidProperties[] = "'closed' can't be null";
         }
-        if ($this->container['note'] === null) {
-            $invalidProperties[] = "'note' can't be null";
-        }
         if ($this->container['balance'] === null) {
             $invalidProperties[] = "'balance' can't be null";
         }
@@ -304,6 +301,9 @@ class Account implements ModelInterface, ArrayAccess
         }
         if ($this->container['unclearedBalance'] === null) {
             $invalidProperties[] = "'unclearedBalance' can't be null";
+        }
+        if ($this->container['deleted'] === null) {
+            $invalidProperties[] = "'deleted' can't be null";
         }
         return $invalidProperties;
     }
@@ -336,9 +336,6 @@ class Account implements ModelInterface, ArrayAccess
         if ($this->container['closed'] === null) {
             return false;
         }
-        if ($this->container['note'] === null) {
-            return false;
-        }
         if ($this->container['balance'] === null) {
             return false;
         }
@@ -346,6 +343,9 @@ class Account implements ModelInterface, ArrayAccess
             return false;
         }
         if ($this->container['unclearedBalance'] === null) {
+            return false;
+        }
+        if ($this->container['deleted'] === null) {
             return false;
         }
         return true;
@@ -413,7 +413,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type The type of account. Note: payPal, merchantAccount, investmentAccount, and mortgage types have been deprecated and will be removed in the future.
      *
      * @return $this
      */
@@ -482,33 +482,9 @@ class Account implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets note
-     *
-     * @return string
-     */
-    public function getNote()
-    {
-        return $this->container['note'];
-    }
-
-    /**
-     * Sets note
-     *
-     * @param string $note note
-     *
-     * @return $this
-     */
-    public function setNote($note)
-    {
-        $this->container['note'] = $note;
-
-        return $this;
-    }
-
-    /**
      * Gets balance
      *
-     * @return float
+     * @return int
      */
     public function getBalance()
     {
@@ -518,7 +494,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets balance
      *
-     * @param float $balance The current balance of the account in milliunits format
+     * @param int $balance The current balance of the account in milliunits format
      *
      * @return $this
      */
@@ -532,7 +508,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Gets clearedBalance
      *
-     * @return float
+     * @return int
      */
     public function getClearedBalance()
     {
@@ -542,7 +518,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets clearedBalance
      *
-     * @param float $clearedBalance The current cleared balance of the account in milliunits format
+     * @param int $clearedBalance The current cleared balance of the account in milliunits format
      *
      * @return $this
      */
@@ -556,7 +532,7 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Gets unclearedBalance
      *
-     * @return float
+     * @return int
      */
     public function getUnclearedBalance()
     {
@@ -566,13 +542,37 @@ class Account implements ModelInterface, ArrayAccess
     /**
      * Sets unclearedBalance
      *
-     * @param float $unclearedBalance The current uncleared balance of the account in milliunits format
+     * @param int $unclearedBalance The current uncleared balance of the account in milliunits format
      *
      * @return $this
      */
     public function setUnclearedBalance($unclearedBalance)
     {
         $this->container['unclearedBalance'] = $unclearedBalance;
+
+        return $this;
+    }
+
+    /**
+     * Gets deleted
+     *
+     * @return bool
+     */
+    public function getDeleted()
+    {
+        return $this->container['deleted'];
+    }
+
+    /**
+     * Sets deleted
+     *
+     * @param bool $deleted Whether or not the account has been deleted.  Deleted accounts will only be included in delta requests.
+     *
+     * @return $this
+     */
+    public function setDeleted($deleted)
+    {
+        $this->container['deleted'] = $deleted;
 
         return $this;
     }

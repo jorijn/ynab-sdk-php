@@ -59,15 +59,9 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'accountId' => 'string',
         'date' => '\DateTime',
-        'amount' => 'float',
-        'payeeId' => 'string',
-        'payeeName' => 'string',
-        'categoryId' => 'string',
-        'memo' => 'string',
+        'amount' => 'int',
         'cleared' => 'string',
-        'approved' => 'bool',
-        'flagColor' => 'string',
-        'importId' => 'string'
+        'approved' => 'bool'
     ];
 
     /**
@@ -79,14 +73,8 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'accountId' => 'uuid',
         'date' => 'date',
         'amount' => '1234000',
-        'payeeId' => 'uuid',
-        'payeeName' => null,
-        'categoryId' => 'uuid',
-        'memo' => null,
         'cleared' => null,
-        'approved' => null,
-        'flagColor' => null,
-        'importId' => null
+        'approved' => null
     ];
 
     /**
@@ -119,14 +107,8 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'accountId' => 'account_id',
         'date' => 'date',
         'amount' => 'amount',
-        'payeeId' => 'payee_id',
-        'payeeName' => 'payee_name',
-        'categoryId' => 'category_id',
-        'memo' => 'memo',
         'cleared' => 'cleared',
-        'approved' => 'approved',
-        'flagColor' => 'flag_color',
-        'importId' => 'import_id'
+        'approved' => 'approved'
     ];
 
     /**
@@ -138,14 +120,8 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'accountId' => 'setAccountId',
         'date' => 'setDate',
         'amount' => 'setAmount',
-        'payeeId' => 'setPayeeId',
-        'payeeName' => 'setPayeeName',
-        'categoryId' => 'setCategoryId',
-        'memo' => 'setMemo',
         'cleared' => 'setCleared',
-        'approved' => 'setApproved',
-        'flagColor' => 'setFlagColor',
-        'importId' => 'setImportId'
+        'approved' => 'setApproved'
     ];
 
     /**
@@ -157,14 +133,8 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         'accountId' => 'getAccountId',
         'date' => 'getDate',
         'amount' => 'getAmount',
-        'payeeId' => 'getPayeeId',
-        'payeeName' => 'getPayeeName',
-        'categoryId' => 'getCategoryId',
-        'memo' => 'getMemo',
         'cleared' => 'getCleared',
-        'approved' => 'getApproved',
-        'flagColor' => 'getFlagColor',
-        'importId' => 'getImportId'
+        'approved' => 'getApproved'
     ];
 
     /**
@@ -211,12 +181,6 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     const CLEARED_CLEARED = 'cleared';
     const CLEARED_UNCLEARED = 'uncleared';
     const CLEARED_RECONCILED = 'reconciled';
-    const FLAG_COLOR_RED = 'red';
-    const FLAG_COLOR_ORANGE = 'orange';
-    const FLAG_COLOR_YELLOW = 'yellow';
-    const FLAG_COLOR_GREEN = 'green';
-    const FLAG_COLOR_BLUE = 'blue';
-    const FLAG_COLOR_PURPLE = 'purple';
     
 
     
@@ -231,23 +195,6 @@ class SaveTransaction implements ModelInterface, ArrayAccess
             self::CLEARED_CLEARED,
             self::CLEARED_UNCLEARED,
             self::CLEARED_RECONCILED,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getFlagColorAllowableValues()
-    {
-        return [
-            self::FLAG_COLOR_RED,
-            self::FLAG_COLOR_ORANGE,
-            self::FLAG_COLOR_YELLOW,
-            self::FLAG_COLOR_GREEN,
-            self::FLAG_COLOR_BLUE,
-            self::FLAG_COLOR_PURPLE,
         ];
     }
     
@@ -270,14 +217,8 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         $this->container['accountId'] = isset($data['accountId']) ? $data['accountId'] : null;
         $this->container['date'] = isset($data['date']) ? $data['date'] : null;
         $this->container['amount'] = isset($data['amount']) ? $data['amount'] : null;
-        $this->container['payeeId'] = isset($data['payeeId']) ? $data['payeeId'] : null;
-        $this->container['payeeName'] = isset($data['payeeName']) ? $data['payeeName'] : null;
-        $this->container['categoryId'] = isset($data['categoryId']) ? $data['categoryId'] : null;
-        $this->container['memo'] = isset($data['memo']) ? $data['memo'] : null;
         $this->container['cleared'] = isset($data['cleared']) ? $data['cleared'] : null;
         $this->container['approved'] = isset($data['approved']) ? $data['approved'] : null;
-        $this->container['flagColor'] = isset($data['flagColor']) ? $data['flagColor'] : null;
-        $this->container['importId'] = isset($data['importId']) ? $data['importId'] : null;
     }
 
     /**
@@ -306,14 +247,6 @@ class SaveTransaction implements ModelInterface, ArrayAccess
             );
         }
 
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!in_array($this->container['flagColor'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'flagColor', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -337,10 +270,6 @@ class SaveTransaction implements ModelInterface, ArrayAccess
         }
         $allowedValues = $this->getClearedAllowableValues();
         if (!in_array($this->container['cleared'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!in_array($this->container['flagColor'], $allowedValues)) {
             return false;
         }
         return true;
@@ -398,7 +327,7 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     /**
      * Gets amount
      *
-     * @return float
+     * @return int
      */
     public function getAmount()
     {
@@ -408,109 +337,13 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     /**
      * Sets amount
      *
-     * @param float $amount The transaction amount in milliunits format
+     * @param int $amount The transaction amount in milliunits format
      *
      * @return $this
      */
     public function setAmount($amount)
     {
         $this->container['amount'] = $amount;
-
-        return $this;
-    }
-
-    /**
-     * Gets payeeId
-     *
-     * @return string
-     */
-    public function getPayeeId()
-    {
-        return $this->container['payeeId'];
-    }
-
-    /**
-     * Sets payeeId
-     *
-     * @param string $payeeId The payee for the transaction.  Transfer payees are not permitted and will be ignored if supplied.
-     *
-     * @return $this
-     */
-    public function setPayeeId($payeeId)
-    {
-        $this->container['payeeId'] = $payeeId;
-
-        return $this;
-    }
-
-    /**
-     * Gets payeeName
-     *
-     * @return string
-     */
-    public function getPayeeName()
-    {
-        return $this->container['payeeName'];
-    }
-
-    /**
-     * Sets payeeName
-     *
-     * @param string $payeeName The payee name.  If a payee_name value is provided and payee_id is not included or has a null value, payee_name will be used to create or use an existing payee.
-     *
-     * @return $this
-     */
-    public function setPayeeName($payeeName)
-    {
-        $this->container['payeeName'] = $payeeName;
-
-        return $this;
-    }
-
-    /**
-     * Gets categoryId
-     *
-     * @return string
-     */
-    public function getCategoryId()
-    {
-        return $this->container['categoryId'];
-    }
-
-    /**
-     * Sets categoryId
-     *
-     * @param string $categoryId The category for the transaction.  Split and Credit Card Payment categories are not permitted and will be ignored if supplied.
-     *
-     * @return $this
-     */
-    public function setCategoryId($categoryId)
-    {
-        $this->container['categoryId'] = $categoryId;
-
-        return $this;
-    }
-
-    /**
-     * Gets memo
-     *
-     * @return string
-     */
-    public function getMemo()
-    {
-        return $this->container['memo'];
-    }
-
-    /**
-     * Sets memo
-     *
-     * @param string $memo memo
-     *
-     * @return $this
-     */
-    public function setMemo($memo)
-    {
-        $this->container['memo'] = $memo;
 
         return $this;
     }
@@ -568,63 +401,6 @@ class SaveTransaction implements ModelInterface, ArrayAccess
     public function setApproved($approved)
     {
         $this->container['approved'] = $approved;
-
-        return $this;
-    }
-
-    /**
-     * Gets flagColor
-     *
-     * @return string
-     */
-    public function getFlagColor()
-    {
-        return $this->container['flagColor'];
-    }
-
-    /**
-     * Sets flagColor
-     *
-     * @param string $flagColor The transaction flag
-     *
-     * @return $this
-     */
-    public function setFlagColor($flagColor)
-    {
-        $allowedValues = $this->getFlagColorAllowableValues();
-        if (!is_null($flagColor) && !in_array($flagColor, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'flagColor', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['flagColor'] = $flagColor;
-
-        return $this;
-    }
-
-    /**
-     * Gets importId
-     *
-     * @return string
-     */
-    public function getImportId()
-    {
-        return $this->container['importId'];
-    }
-
-    /**
-     * Sets importId
-     *
-     * @param string $importId If specified for a new transaction, the transaction will be treated as Imported and assigned this import_id.  If another transaction on the same account with this same import_id is later attempted to be created, it will be skipped to prevent duplication.  Transactions imported through File Based Import or Direct Import and not through the API, are assigned an import_id in the format: 'YNAB:[milliunit_amount]:[iso_date]:[occurrence]'.  For example, a transaction dated 2015-12-30 in the amount of -$294.23 USD would have an import_id of 'YNAB:-294230:2015-12-30:1'.  If a second transaction on the same account was imported and had the same date and same amount, its import_id would be 'YNAB:-294230:2015-12-30:2'.  Using a consistent format will prevent duplicates through Direct Import and File Based Import.  If import_id is specified as null, the transaction will be treated as a user entered transaction.
-     *
-     * @return $this
-     */
-    public function setImportId($importId)
-    {
-        $this->container['importId'] = $importId;
 
         return $this;
     }

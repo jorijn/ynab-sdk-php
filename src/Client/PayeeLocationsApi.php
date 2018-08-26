@@ -87,7 +87,7 @@ class PayeeLocationsApi
      *
      * Single payee location
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -105,7 +105,7 @@ class PayeeLocationsApi
      *
      * Single payee location
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -197,7 +197,7 @@ class PayeeLocationsApi
      *
      * Single payee location
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
      * @throws \InvalidArgumentException
@@ -218,7 +218,7 @@ class PayeeLocationsApi
      *
      * Single payee location
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
      * @throws \InvalidArgumentException
@@ -269,7 +269,7 @@ class PayeeLocationsApi
     /**
      * Create request for operation 'getPayeeLocationById'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeLocationId ID of payee location (required)
      *
      * @throws \InvalidArgumentException
@@ -389,7 +389,7 @@ class PayeeLocationsApi
      *
      * List payee locations
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -406,7 +406,7 @@ class PayeeLocationsApi
      *
      * List payee locations
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -497,7 +497,7 @@ class PayeeLocationsApi
      *
      * List payee locations
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -517,7 +517,7 @@ class PayeeLocationsApi
      *
      * List payee locations
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -567,7 +567,7 @@ class PayeeLocationsApi
     /**
      * Create request for operation 'getPayeeLocations'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -672,7 +672,7 @@ class PayeeLocationsApi
      *
      * List locations for a payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -690,7 +690,7 @@ class PayeeLocationsApi
      *
      * List locations for a payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
      * @throws \YNAB\ApiException on non-2xx response
@@ -782,7 +782,7 @@ class PayeeLocationsApi
      *
      * List locations for a payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
      * @throws \InvalidArgumentException
@@ -803,7 +803,7 @@ class PayeeLocationsApi
      *
      * List locations for a payee
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
      * @throws \InvalidArgumentException
@@ -854,7 +854,7 @@ class PayeeLocationsApi
     /**
      * Create request for operation 'getPayeeLocationsByPayee'
      *
-     * @param  string $budgetId The ID of the Budget. (required)
+     * @param  string $budgetId The ID of the Budget.  \&quot;last-used\&quot; can also be used to specify the last used budget. (required)
      * @param  string $payeeId ID of payee (required)
      *
      * @throws \InvalidArgumentException
