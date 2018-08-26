@@ -62,7 +62,7 @@ $apiInstance = new YNAB\Api\AccountsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$budgetId = "budgetId_example"; // string | The ID of the Budget.
+$budgetId = "budgetId_example"; // string | The ID of the Budget.  \"last-used\" can also be used to specify the last used budget.
 $accountId = "accountId_example"; // string | The ID of the Account.
 
 try {
@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *AccountsApi* | [**getAccountById**](docs/Api/AccountsApi.md#getaccountbyid) | **GET** /budgets/{budget_id}/accounts/{account_id} | Single account
 *AccountsApi* | [**getAccounts**](docs/Api/AccountsApi.md#getaccounts) | **GET** /budgets/{budget_id}/accounts | Account list
 *BudgetsApi* | [**getBudgetById**](docs/Api/BudgetsApi.md#getbudgetbyid) | **GET** /budgets/{budget_id} | Single budget
+*BudgetsApi* | [**getBudgetSettingsById**](docs/Api/BudgetsApi.md#getbudgetsettingsbyid) | **GET** /budgets/{budget_id}/settings | Budget Settings
 *BudgetsApi* | [**getBudgets**](docs/Api/BudgetsApi.md#getbudgets) | **GET** /budgets | List budgets
 *CategoriesApi* | [**getCategories**](docs/Api/CategoriesApi.md#getcategories) | **GET** /budgets/{budget_id}/categories | List categories
 *CategoriesApi* | [**getCategoryById**](docs/Api/CategoriesApi.md#getcategorybyid) | **GET** /budgets/{budget_id}/categories/{category_id} | Single category
@@ -98,10 +99,10 @@ Class | Method | HTTP request | Description
 *ScheduledTransactionsApi* | [**getScheduledTransactions**](docs/Api/ScheduledTransactionsApi.md#getscheduledtransactions) | **GET** /budgets/{budget_id}/scheduled_transactions | List scheduled transactions
 *TransactionsApi* | [**bulkCreateTransactions**](docs/Api/TransactionsApi.md#bulkcreatetransactions) | **POST** /budgets/{budget_id}/transactions/bulk | Bulk create transactions
 *TransactionsApi* | [**createTransaction**](docs/Api/TransactionsApi.md#createtransaction) | **POST** /budgets/{budget_id}/transactions | Create new transaction
+*TransactionsApi* | [**getTransactionById**](docs/Api/TransactionsApi.md#gettransactionbyid) | **GET** /budgets/{budget_id}/transactions/{transaction_id} | Single transaction
 *TransactionsApi* | [**getTransactions**](docs/Api/TransactionsApi.md#gettransactions) | **GET** /budgets/{budget_id}/transactions | List transactions
 *TransactionsApi* | [**getTransactionsByAccount**](docs/Api/TransactionsApi.md#gettransactionsbyaccount) | **GET** /budgets/{budget_id}/accounts/{account_id}/transactions | List account transactions
 *TransactionsApi* | [**getTransactionsByCategory**](docs/Api/TransactionsApi.md#gettransactionsbycategory) | **GET** /budgets/{budget_id}/categories/{category_id}/transactions | List category transactions
-*TransactionsApi* | [**getTransactionsById**](docs/Api/TransactionsApi.md#gettransactionsbyid) | **GET** /budgets/{budget_id}/transactions/{transaction_id} | Single transaction
 *TransactionsApi* | [**getTransactionsByPayee**](docs/Api/TransactionsApi.md#gettransactionsbypayee) | **GET** /budgets/{budget_id}/payees/{payee_id}/transactions | List payee transactions
 *TransactionsApi* | [**updateTransaction**](docs/Api/TransactionsApi.md#updatetransaction) | **PUT** /budgets/{budget_id}/transactions/{transaction_id} | Updates an existing transaction
 *UserApi* | [**getUser**](docs/Api/UserApi.md#getuser) | **GET** /user | User info
@@ -116,6 +117,9 @@ Class | Method | HTTP request | Description
  - [AccountsWrapper](docs/Model/AccountsWrapper.md)
  - [BudgetDetailResponse](docs/Model/BudgetDetailResponse.md)
  - [BudgetDetailWrapper](docs/Model/BudgetDetailWrapper.md)
+ - [BudgetSettings](docs/Model/BudgetSettings.md)
+ - [BudgetSettingsResponse](docs/Model/BudgetSettingsResponse.md)
+ - [BudgetSettingsWrapper](docs/Model/BudgetSettingsWrapper.md)
  - [BudgetSummary](docs/Model/BudgetSummary.md)
  - [BudgetSummaryResponse](docs/Model/BudgetSummaryResponse.md)
  - [BudgetSummaryWrapper](docs/Model/BudgetSummaryWrapper.md)
